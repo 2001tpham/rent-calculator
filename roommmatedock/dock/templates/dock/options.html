@@ -3,6 +3,67 @@
 
 {% block body %}
 
-    <h1 style='margin-top: 100px'>Options</h1>
+    {% comment %} MAIN PART OF PAGE {% endcomment %}
+
+    <div class="content-wrapper background-image-options-main padding-top">
+
+        <h1 class='big-text left-in-div'>Use our tools to make rental management manageable</h1>
+
+    </div>
+
+    {% comment %} BANNER {% endcomment %}
+    <div class="content-wrapper banner">
+
+        <h1 class='big-text text-center'>Check out our tools</h1>
+
+    </div>
+
+    {% comment %} Rent Splitter {% endcomment %}
+    <div class="content-wrapper next-to-eachother">
+
+        <div class="half-div padding-left-big">
+            {% load static %}
+            <img src={% static 'media/landing-page-main-image.jpeg'%} alt="Rent Split" width='500px' class='padding-top'>
+        </div>
+
+        <div class="half-div">
+            <h1 class='big-text'>Let us help you keep track of you and your roommates expenses</h1>
+            <a href="{% url 'index'%}">Check It Out</a>
+
+        </div>
+
+    </div>
+
+    {% comment %} Other {% endcomment %}
+    <div class="content-wrapper next-to-eachother">
+
+        <div class="half-div padding-left-big">
+            {% load static %}
+            <img src={% static 'media/landing-page-main-image.jpeg'%} alt="Rent Split" width='500px' class='padding-top'>
+        </div>
+
+        <div class="half-div">
+            <h1 class='big-text'>Let us help you keep track of you and your roommates expenses</h1>
+            <a href="{% url 'index'%}">Check It Out</a>
+
+        </div>
+
+    </div>
+
+        {% comment %} Other {% endcomment %}
+    <div class="content-wrapper next-to-eachother">
+
+        <div class="half-div padding-left-big">
+            {% load static %}
+            <img src={% static 'media/landing-page-main-image.jpeg'%} alt="Rent Split" width='500px' class='padding-top'>
+        </div>
+
+        <div class="half-div">
+            <h1 class='big-text'>Let us help you keep track of you and your roommates expenses</h1>
+            <a href="{% url 'index'%}">Check It Out</a>
+
+        </div>
+
+    </div>
 
 {% endblock body %}
