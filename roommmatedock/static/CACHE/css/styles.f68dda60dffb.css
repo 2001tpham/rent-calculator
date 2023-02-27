@@ -1,0 +1,101 @@
+/* line 1, dock/static/dock/styles.scss */
+body {
+  padding: 0;
+  margin: 0; }
+
+/* line 6, dock/static/dock/styles.scss */
+html {
+  padding: 0;
+  margin: 0; }
+
+/* line 14, dock/static/dock/styles.scss */
+.nav-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  background-color: grey; }
+
+/* line 23, dock/static/dock/styles.scss */
+.nav-contents {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%; }
+
+/* line 30, dock/static/dock/styles.scss */
+.nav-options {
+  display: flex;
+  flex-direction: row;
+  list-style: none; }
+
+/* line 36, dock/static/dock/styles.scss */
+.nav-option {
+  margin-right: 10px; }
+
+/* line 40, dock/static/dock/styles.scss */
+.right-in-div {
+  display: flex;
+  margin-left: auto;
+  margin-right: 40px; }
+
+/* line 46, dock/static/dock/styles.scss */
+.nav-profile {
+  display: flex;
+  flex-direction: column;
+  position: relative; }
+
+/* line 62, dock/static/dock/styles.scss */
+.dropdown-menu {
+  background-color: white;
+  padding: 0.75rem; }
+
+/* line 67, dock/static/dock/styles.scss */
+.dropdown-menu-container.open-menu {
+  opacity: 1;
+  transform: translateY(0); }
+
+/* line 72, dock/static/dock/styles.scss */
+.next-to-eachother {
+  display: flex;
+  flex-direction: row;
+  align-items: center; }
+
+/* line 79, dock/static/dock/styles.scss */
+.dropdown-tools-container {
+  position: absolute;
+  box-shadow: 5px 5px 5px grey;
+  top: 20px;
+  left: 0;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-10px);
+  transition: opacity 0.3s, transform 0.3s; }
+
+/* line 90, dock/static/dock/styles.scss */
+.dropdown-tools-container.open-menu {
+  position: absolute;
+  box-shadow: 5px 5px 5px grey;
+  top: 20px;
+  left: 0;
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+  transition: opacity 0.3s, transform 0.3s; }
+
+/* line 101, dock/static/dock/styles.scss */
+.tools-menu {
+  position: relative; }
+
+/* line 105, dock/static/dock/styles.scss */
+.logged-out-nav-btn {
+  margin-right: 10px; }
+
+/* line 112, dock/static/dock/styles.scss */
+.padding-top {
+  padding-top: 100px; }
+
+/* line 116, dock/static/dock/styles.scss */
+.left-in-div {
+  margin-left: 20px; }

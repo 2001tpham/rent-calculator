@@ -1,0 +1,41 @@
+{% extends 'dock/layout-landing.html' %}
+
+{% block body %}
+
+
+    {% comment %} MAIN PART OF PAGE {% endcomment %}
+    <div class="content-wrapper">
+        <div class="main-title">
+
+            <h1 class='main-title-text top-of-title left-in-div padding-top'>Make Living With Roommates</h1>
+            <h1 class='main-title-text left-in-div bottom-of-title'>Easier Than Ever</h1>
+
+        </div>
+    </div>
+    
+    {% comment %} BUTTON TO GET STARTED {% endcomment %}
+    <div class="content-wrapper">
+
+        <a href="{% url 'options' %}" class='main-big-btn'>Get Started</a>
+
+    </div>
+    
+    {% comment %} SNIPPET OF QUICK INFO {% endcomment %}
+    <div class="content-wrapper">
+        <div class="next-to-eachother">
+
+            <div class='half-div'>
+                <h2>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Placeat consequatur sunt sint nemo odit odio?</h2>
+            </div>
+            
+            <div class='half-div'>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur, corporis cupiditate soluta consectetur architecto quae!</p>
+            </div>
+
+        </div>
+    </div>
+
+    {% comment %} SECTIONS THAT LIST APPS {% endcomment %}
+    
+
+{% endblock body %}

@@ -1,0 +1,131 @@
+body {
+    padding: 0;
+    margin: 0;
+}
+
+html {
+    padding: 0;
+    margin: 0;
+}
+
+//NAV BAR
+//COMPUTER SIZE
+
+    .nav-container {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        position: fixed;
+        top: 0;
+        background-color: grey;
+    }
+
+    .nav-contents {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        width: 100%;
+    }
+
+    .nav-options {
+        display: flex;
+        flex-direction: row;
+        list-style: none;
+    }
+
+    .nav-option {
+        margin-right: 10px;
+    }
+
+    .right-in-div {
+        display: flex;
+        margin-left: auto;
+        margin-right: 40px;
+    }
+
+    .nav-profile {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+    }
+        
+    .dropdown-menu {
+        background-color: white;
+        padding: 0.75rem;
+    }
+
+    .dropdown-menu-container.open-menu {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .next-to-eachother {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        
+    }
+
+    .dropdown-tools-container {
+        position: absolute;
+        box-shadow: 5px 5px 5px grey;
+        top: 20px;
+        left: 0;
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(-10px);
+        transition: opacity 0.3s, transform 0.3s;
+    }
+
+    .dropdown-tools-container.open-menu {
+        position: absolute;
+        box-shadow: 5px 5px 5px grey;
+        top: 20px;
+        left: 0;
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+        transition: opacity 0.3s, transform 0.3s;
+    }
+
+    .dropdown-profile-container {
+        position: absolute;
+        box-shadow: 5px 5px 5px grey;
+        top: 20px;
+        right: 0;
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(-10px);
+        transition: opacity 0.3s, transform 0.3s;
+    }
+
+    .dropdown-profile-container.open-menu {
+        position: absolute;
+        box-shadow: 5px 5px 5px grey;
+        top: 20px;
+        right: 0;
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+        transition: opacity 0.3s, transform 0.3s;
+    }
+
+    .tools-menu {
+        position: relative;
+    }
+
+    .logged-out-nav-btn {
+        margin-right: 10px;
+    }
+
+// LANDING PAGE
+// COMPUTER SIZE
+
+    .padding-top {
+        padding-top: 100px;
+    }
+
+    .left-in-div {
+        margin-left: 20px;
+    }
+

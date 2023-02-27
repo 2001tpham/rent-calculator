@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    {% load static %}
+    {% load compress %}
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="{% static 'dock/script.js' %}"></script>
+
+    {% compress css %}
+    <link href="{% static 'dock/styles.scss' %}" rel="stylesheet" type="text/x-scss">
+    {% endcompress %}
+
+    <title>Home</title>
+</head>
+<body>
+
+    {% comment %} NAV BAR {% endcomment %}
+
+    <div class="nav-container">
+
+        <div class="nav-contents">
+
+            <div class="left-in-div">
+                <h3 class='nav-brand'>Roommate Dock</h3>
+            </div>
+            <div class="nav-options-container">
+
+                <ul class='nav-options'>
+                    <li class='nav-option'><a href="{% url 'index' %}">Home</a></li>
+                    <div class='tools-menu'>
+                        <li class='nav-option hover-dropdown' id='hover-tools-dropdownid'><a href="{% url 'options' %}">Tools</a></li>
+                            
+                        <div class="dropdown-tools-container" id='dropdown-tools-containerid'>
+    
+                                <div class="dropdown-menu">
+    
+                                    <div class="dropdown-menu-option">
+                                        <a href="{% url 'index'%}">Option</a>
+                                    </div>
+                                    
+                                    <div class="dropdown-menu-option">
+                                        <a href="{% url 'index'%}">Option</a>
+                                    </div>
+                                    
+                                    <div class="dropdown-menu-option">
+                                        <a href="{% url 'index'%}">Option</a>
+                                    </div>
+    
+                                </div>
+    
+                            </div>
+                        </div>
+
+                        <li class='nav-option'><a href="{% url 'index' %}">Option</a></li>
+                        <li class='nav-option'><a href="{% url 'index' %}">Option</a></li>
+                    </ul>
+
+
+            </div>
+
+            {% comment %} IF USER IS AUTHENTICATED THEY SEE PROFILE {% endcomment %}
+
+            <div class="right-in-div nav-profile">
+
+                <a href="#" class='hover-dropdown' id='hover-profile-dropdownid'>TODO USERNAME</a>
+
+                <div class='dropdown-profile-container' id='dropdown-profile-containerid'>
+    
+                    <div class="dropdown-menu">
+
+                        <div class="dropdown-menu-option">
+                            <a href="{% url 'index'%}">Option</a>
+                        </div>
+                        
+                        <div class="dropdown-menu-option">
+                            <a href="{% url 'index'%}">Option</a>
+                        </div>
+                        
+                        <div class="dropdown-menu-option">
+                            <a href="{% url 'index'%}">Option</a>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            {% comment %} IF USER IS NOT AUTHENTICATED {% endcomment %}
+            
+            {% comment %} <div class="right-in-div logged-out-register">
+            
+            <div class='next-to-eachother'>
+
+                    <div class="try-loggedout">
+                        <a href="{% url 'options' %}" class='logged-out-nav-btn'>Try Without an Account</a>
+
+                    </div>
+
+                    <div class="logged-out-main-btns">
+                        <a href="{% url 'login' %}" class='logged-out-nav-btn'>Log In</a>
+                        <a href="{% url 'register' %}" class='logged-out-nav-btn'>Register For Free</a>
+                    </div>
+                </div>
+
+            </div> {% endcomment %}
+
+        </div>
+
+    </div>
+
+    {% block body %}
+    {% endblock body %}
+</body>
+</html>
