@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'sass_processor',
     'dock',
     'compressor',
+    'rentsplit',
 ]
 
 MIDDLEWARE = [
