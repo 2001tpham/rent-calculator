@@ -39,6 +39,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     dropDownProfileButton.addEventListener('mouseout', function() {
         dropDownProfileMenu.classList.remove('open-menu');
+        
     })
     
     dropDownProfileMenu.addEventListener('mouseover', function() {

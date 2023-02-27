@@ -63,6 +63,7 @@ html {
         display: flex;
         flex-direction: row;
         align-items: center;
+        justify-content: space-evenly;
         
     }
 
@@ -129,3 +130,44 @@ html {
         margin-left: 20px;
     }
 
+    .background-image-landing-main {
+        background-image: url('../media/landing-page-main-image.jpeg');
+        height: 700px;
+        background-position: 20% 90%;
+        background-size: 95%;
+    }
+
+    .banner {
+        background-color: grey;
+    }
+
+    .text-center {
+        text-align: center;
+    }
+
+    .footer-next-to-eachother {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .stack-divs {
+        display: flex;
+        flex-direction: column ;
+    }
+
+    .text-right-in-div {
+        text-align: end;
+    }
+
+    .text-left-in-div {
+        text-align: start;
+    }
+
+    .padding-left-big {
+        padding-left: 100px;
+    }
+    
+    .padding-right-big {
+        padding-right: 100px;
+    }

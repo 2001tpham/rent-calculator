@@ -4,31 +4,32 @@
 
 
     {% comment %} MAIN PART OF PAGE {% endcomment %}
-    <div class="content-wrapper">
+    <div class="content-wrapper background-image-landing-main">
         <div class="main-title">
 
             <h1 class='main-title-text top-of-title left-in-div padding-top'>Make Living With Roommates</h1>
             <h1 class='main-title-text left-in-div bottom-of-title'>Easier Than Ever</h1>
 
         </div>
+        
+        <div class="content-wrapper left-in-div">
+    
+            <a href="{% url 'options' %}" class='main-big-btn'>Get Started</a>
+    
+        </div>
     </div>
     
     {% comment %} BUTTON TO GET STARTED {% endcomment %}
-    <div class="content-wrapper">
-
-        <a href="{% url 'options' %}" class='main-big-btn'>Get Started</a>
-
-    </div>
     
     {% comment %} SNIPPET OF QUICK INFO {% endcomment %}
     <div class="content-wrapper">
-        <div class="next-to-eachother">
+        <div class="next-to-eachother banner">
 
             <div class='half-div'>
-                <h2>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Placeat consequatur sunt sint nemo odit odio?</h2>
+                <h2 class='big-text'>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Placeat consequatur sunt sint nemo odit odio?</h2>
             </div>
             
-            <div class='half-div'>
+            <div class='half-div small-text'>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur, corporis cupiditate soluta consectetur architecto quae!</p>
             </div>
 
@@ -36,6 +37,78 @@
     </div>
 
     {% comment %} SECTIONS THAT LIST APPS {% endcomment %}
-    
+    <div class="content-wrapper next-to-eachother">
+
+        <div class="half-div">
+
+            <h2 class='big-text'>Lorem ipsum dolor sit amet.</h2>
+            <div class="small-text">
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deleniti excepturi aut dolores in debitis sit?</p>
+            </div>
+
+            <a href="{% url 'index' %}">Try it Now</a>
+
+        </div>
+
+        <div class="half-div">
+            {% load static %}
+            <img src="{% static 'media/landing-page-main-image.jpeg' %}" alt="Roommate Dock" width='500px'>
+        </div>
+
+    </div>
+
+    <div class="content-wrapper next-to-eachother">
+
+        <div class="half-div">
+            {% load static %}
+            <img src="{% static 'media/landing-page-main-image.jpeg' %}" alt="Roommate Dock" width='500px'>
+        </div>
+
+        <div class="half-div">
+
+            <h2 class='big-text'>Lorem ipsum dolor sit amet.</h2>
+            <div class="small-text">
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deleniti excepturi aut dolores in debitis sit?</p>
+            </div>
+
+            <a href="{% url 'index' %}">Try it Now</a>
+
+        </div>
+
+    </div>
+
+    {% comment %} CREATE AN ACCOUNT DIV OR LOG IN {% endcomment %}
+    <div class="content-wrapper banner next-to-eachother">
+
+        <div class="half-div">
+            <h2 class='big-text'>Features Include:</h2>
+            <h3 class='med-text'>Lorem, ipsum.</h3>
+            <h3 class='med-text'>Lorem, ipsum.</h3>
+            <h3 class='med-text'>Lorem, ipsum.</h3>
+        </div>
+
+        <div class="half-div">
+            <h1 class='big-text'>Gain access to all of them for free</h1>
+            <a href="{% url 'login'%}">Create an account or Log in</a>
+        </div>
+
+    </div>
+
+    {% comment %} TRY WITHOUT AN ACCOUNT SECTION SECTION {% endcomment %}
+    <div class='content-wrapper next-to-eachother'>
+
+        <div class="half-div">
+            <h2 class='big-text'>Try it before creating an account</h2>
+            <a href="{% url 'options'%}">Check it Out</a>
+        </div>
+
+        <div class="half-div">
+            <h1 class='big-text text-center'>Access our tools without an account</h1>
+            <h3 class='med-text text-center'>Lorem, ipsum.</h3>
+            <h3 class='med-text text-center'>Lorem, ipsum.</h3>
+            <h3 class='med-text text-center'>Lorem, ipsum.</h3>
+        </div>
+
+    </div>
 
 {% endblock body %}

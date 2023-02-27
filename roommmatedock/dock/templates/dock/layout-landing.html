@@ -64,7 +64,7 @@
 
             {% comment %} IF USER IS AUTHENTICATED THEY SEE PROFILE {% endcomment %}
 
-            <div class="right-in-div nav-profile">
+            {% comment %} <div class="right-in-div nav-profile">
 
                 <a href="#" class='hover-dropdown' id='hover-profile-dropdownid'>TODO USERNAME</a>
 
@@ -88,11 +88,11 @@
 
                 </div>
 
-            </div>
+            </div> {% endcomment %}
 
             {% comment %} IF USER IS NOT AUTHENTICATED {% endcomment %}
             
-            {% comment %} <div class="right-in-div logged-out-register">
+            <div class="right-in-div logged-out-register">
             
             <div class='next-to-eachother'>
 
@@ -107,7 +107,7 @@
                     </div>
                 </div>
 
-            </div> {% endcomment %}
+            </div>
 
         </div>
 
@@ -115,5 +115,34 @@
 
     {% block body %}
     {% endblock body %}
+
+    <footer class='footer footer-next-to-eachother banner'>
+
+        <div class="half-div left-in-div stack-divs padding-left-big">
+            <div>
+                <h3 class='med-text bottom-padding-small'>Roommate Dock</h3>
+            </div>
+            
+            <div>
+                <h4 class='med-text'>Get in Touch</h4>
+                <h5 class='small-text bottom-padding-small'>Email</h5>
+            </div>
+        </div>
+
+        <div class="half-div right-in-div stack-divs padding-right-big">
+            <div>
+                <h3 class='med-text bottom-padding-small'>
+                    Follow Us For News and Updates
+                </h3>
+            </div>
+            <div>
+                <h4 class='small-text text-right-in-div'>Social Media</h4>
+                <h4 class='small-text text-right-in-div'>Social Media</h4>
+                <h4 class='small-text text-right-in-div'>Social Media</h4>
+            </div>
+
+        </div>
+
+    </footer>
 </body>
 </html>
