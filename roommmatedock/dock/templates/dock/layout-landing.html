@@ -15,6 +15,10 @@
     {% endcompress %}
 
     <title>Home</title>
+
+    {% block head %}
+    {% endblock head %}
+
 </head>
 <body>
 
@@ -130,7 +134,7 @@
         </div>
 
         <div class="half-div right-in-div stack-divs padding-right-big">
-            <div>
+            <div class='right-in-div' style='margin-right: 0px'>
                 <h3 class='med-text bottom-padding-small'>
                     Follow Us For News and Updates
                 </h3>

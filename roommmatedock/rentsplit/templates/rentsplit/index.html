@@ -1,6 +1,54 @@
 {% extends 'dock/layout-landing.html' %}
 
+{% block head %}
+{% load static %}
+<script src="{% static 'rentsplit/rentsplitguest.js'%}"></script>
+{% endblock head %}
 
 {% block body %}
-<h1 class='padding-top'>Rent Split</h1>
+<div class="content-wrapper app-banner background-image-app-main">
+    <h1 class='padding-top'>Rent Split</h1>
+</div>
+
+{% comment %} TABS {% endcomment %}
+
+<div class="content-wrapper app-page">
+
+    <div class="tabs">
+
+        <div class="tab center" id='tab-guest-create-profileid'>
+            <h2 class='big-text'>Create a Profile</h2>
+        </div>
+
+        <div class="tab center" id='tab-guest-expenseid'>
+            <h2 class='big-text'>Expenses</h2>
+        </div>
+
+        <div class="tab center" id='tab-guest-resultsid'>
+            <h2 class='big-text'>Results</h2>
+        </div>
+
+    </div>
+
+    {% comment %} APP CONTENT {% endcomment %}
+    <div class="content-wrapper padding-left-big" id='app-guest-create-profileid'>
+
+        <h1>Create Profile</h1>
+
+    </div>
+    
+    <div class="content-wrapper padding-left-big" id='app-guest-expenseid'>
+
+        <h1>Expenses</h1>
+
+    </div>
+    
+    <div class="content-wrapper padding-left-big" id='app-guest-resultsid'>
+
+        <h1>Results</h1>
+
+    </div>
+</div>
+
+
 {% endblock %}

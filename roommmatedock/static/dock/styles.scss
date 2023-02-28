@@ -48,17 +48,7 @@ html {
         flex-direction: column;
         position: relative;
     }
-
-    .dropdown-menu-container {
-        position: absolute;
-        box-shadow: 5px 5px 5px grey;
-        top: 30px;
-        right: 0;
-        opacity: 1;
-        transform: translateY(-10px);
-        transition: opacity 0.3s, transform 0.3s;
-    }
-    
+        
     .dropdown-menu {
         background-color: white;
         padding: 0.75rem;
@@ -73,6 +63,7 @@ html {
         display: flex;
         flex-direction: row;
         align-items: center;
+        justify-content: space-evenly;
         
     }
 
@@ -82,6 +73,7 @@ html {
         top: 20px;
         left: 0;
         opacity: 0;
+        pointer-events: none;
         transform: translateY(-10px);
         transition: opacity 0.3s, transform 0.3s;
     }
@@ -93,6 +85,29 @@ html {
         left: 0;
         opacity: 1;
         transform: translateY(0);
+        pointer-events: auto;
+        transition: opacity 0.3s, transform 0.3s;
+    }
+
+    .dropdown-profile-container {
+        position: absolute;
+        box-shadow: 5px 5px 5px grey;
+        top: 20px;
+        right: 0;
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(-10px);
+        transition: opacity 0.3s, transform 0.3s;
+    }
+
+    .dropdown-profile-container.open-menu {
+        position: absolute;
+        box-shadow: 5px 5px 5px grey;
+        top: 20px;
+        right: 0;
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
         transition: opacity 0.3s, transform 0.3s;
     }
 
@@ -115,11 +130,90 @@ html {
         margin-left: 20px;
     }
 
-    .top-of-title {
-        position: relative;
+    .background-image-landing-main {
+        background-image: url('../media/landing-page-main-image.jpeg');
+        height: 700px;
+        background-position: 20% 90%;
+        background-size: 95%;
     }
 
-    .bottom-of-title {
-        position: absolute;
-        left: 5%;
+    .banner {
+        background-color: grey;
+    }
+
+    .text-center {
+        text-align: center;
+    }
+
+    .footer-next-to-eachother {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .stack-divs {
+        display: flex;
+        flex-direction: column ;
+    }
+
+    .text-right-in-div {
+        text-align: end;
+    }
+
+    .text-left-in-div {
+        text-align: start;
+    }
+
+    .padding-left-big {
+        padding-left: 100px;
+    }
+    
+    .padding-right-big {
+        padding-right: 100px;
+    }
+
+    .background-image-options-main {
+            background-image: url('../media/landing-page-main-image.jpeg');
+            height: 500px;
+            background-position: 20% 90%;
+            background-size: 95%;
+    }
+
+    
+    .half-div {
+        width: 50%;
+    }
+    
+    .big-text {
+        margin: 0;
+    }
+    
+//TABS
+
+.tab {
+    height: 100px;
+    width: 200px;
+    border: solid black 2px;
+    background-color: white;
+    cursor: pointer;
+}
+
+.tabs {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 200px;
+    }
+    
+    .background-image-app-main {
+            background-image: url('../media/landing-page-main-image.jpeg');
+            height: 200px;
+            background-position: 20% 90%;
+            background-size: 95%;
+    }
+    
+    .center {
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }

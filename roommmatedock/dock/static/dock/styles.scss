@@ -179,10 +179,49 @@ html {
             background-size: 95%;
     }
 
+    
     .half-div {
         width: 50%;
     }
-
+    
     .big-text {
         margin: 0;
+    }
+
+    
+//TABS
+
+.tab {
+    height: 100px;
+    width: 200px;
+    border: solid black 2px;
+    background-color: white;
+    cursor: pointer;
+}
+
+.tabs {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 200px;
+    }
+    
+    .background-image-app-main {
+            background-image: url('../media/landing-page-main-image.jpeg');
+            height: 200px;
+            background-position: 20% 90%;
+            background-size: 95%;
+    }
+    
+    .center {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+//APP
+
+    .app-page {
+        display: flex;
+        flex-direction: row;
     }
