@@ -67,10 +67,11 @@
             </div>
 
             {% comment %} IF USER IS AUTHENTICATED THEY SEE PROFILE {% endcomment %}
+            {% if user.is_authenticated %}
+            
+            <div class="right-in-div nav-profile">
 
-            {% comment %} <div class="right-in-div nav-profile">
-
-                <a href="#" class='hover-dropdown' id='hover-profile-dropdownid'>TODO USERNAME</a>
+                <a href="#" class='hover-dropdown' id='hover-profile-dropdownid'>{{ request.user }}</a>
 
                 <div class='dropdown-profile-container' id='dropdown-profile-containerid'>
     
@@ -85,37 +86,40 @@
                         </div>
                         
                         <div class="dropdown-menu-option">
-                            <a href="{% url 'index'%}">Option</a>
+                            <a href="{% url 'users:logout'%}">Log Out</a>
                         </div>
 
                     </div>
 
                 </div>
 
-            </div> {% endcomment %}
-
+            </div> 
+            
+            
+            {% else %}
             {% comment %} IF USER IS NOT AUTHENTICATED {% endcomment %}
             
             <div class="right-in-div logged-out-register">
-            
-            <div class='next-to-eachother'>
-
+                
+                <div class='next-to-eachother'>
+                    
                     <div class="try-loggedout">
                         <a href="{% url 'options' %}" class='logged-out-nav-btn'>Try Without an Account</a>
-
+                        
                     </div>
-
+                    
                     <div class="logged-out-main-btns">
-                        <a href="{% url 'login' %}" class='logged-out-nav-btn'>Log In</a>
-                        <a href="{% url 'register' %}" class='logged-out-nav-btn'>Register For Free</a>
+                        <a href="{% url 'users:login' %}" class='logged-out-nav-btn'>Log In</a>
+                        <a href="{% url 'users:register' %}" class='logged-out-nav-btn'>Register For Free</a>
                     </div>
                 </div>
+                {% endif %}
 
             </div>
 
         </div>
 
-    </div>
+    </div> 
 
     {% block body %}
     {% endblock body %}

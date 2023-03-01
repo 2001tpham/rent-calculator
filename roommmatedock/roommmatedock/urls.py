@@ -20,4 +20,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('dock.urls')),
     path('rentsplit/', include('rentsplit.urls')),
+    path('users/', include('users.urls')),
 ]

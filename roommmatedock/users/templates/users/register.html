@@ -1,0 +1,37 @@
+{% extends 'dock/layout-landing.html' %}
+
+{% block body %}
+
+    <h1 style='padding-top: 20px'>Register</h1>
+
+    <form action="" method='POST'>
+        {% csrf_token %}
+        <div>
+            {{ form.username.label }}
+            {{ form.username }}
+        </div>
+        
+        <div>
+            {{ form.email.label }}
+            {{ form.email }}
+        </div>
+
+        <div>
+            {{ form.password1.label }}
+            {{ form.password1 }}
+        </div>
+
+        <div>
+            {{ form.password2.label }}
+            {{ form.password2 }}
+        </div>
+
+        <div>
+            {{ form.errors }}
+        </div>
+
+        <input type="submit" name='create-user'>
+
+    </form>
+
+{% endblock body %}

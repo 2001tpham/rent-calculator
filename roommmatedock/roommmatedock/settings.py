@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'dock',
     'compressor',
     'rentsplit',
+    'users',
 ]
 
 MIDDLEWARE = [

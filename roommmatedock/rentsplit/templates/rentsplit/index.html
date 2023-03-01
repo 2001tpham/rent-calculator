@@ -2,7 +2,7 @@
 
 {% block head %}
 {% load static %}
-<script src="{% static 'rentsplit/rentsplitguest.js'%}"></script>
+<script src="{% static 'rentsplit/rentsplit.js'%}"></script>
 {% endblock head %}
 
 {% block body %}
@@ -10,42 +10,42 @@
     <h1 class='padding-top'>Rent Split</h1>
 </div>
 
+{% comment %} IF USER IS NOT AUTHENTICATED {% endcomment %}
+
 {% comment %} TABS {% endcomment %}
 
 <div class="content-wrapper app-page">
 
     <div class="tabs">
 
-        <div class="tab center" id='tab-guest-create-profileid'>
+        <div class="tab center" id='tab-create-profileid'>
             <h2 class='big-text'>Create a Profile</h2>
         </div>
 
-        <div class="tab center" id='tab-guest-expenseid'>
+        <div class="tab center" id='tab-expenseid'>
             <h2 class='big-text'>Expenses</h2>
         </div>
 
-        <div class="tab center" id='tab-guest-resultsid'>
+        <div class="tab center" id='tab-resultsid'>
             <h2 class='big-text'>Results</h2>
         </div>
 
     </div>
 
     {% comment %} APP CONTENT {% endcomment %}
-    <div class="content-wrapper padding-left-big" id='app-guest-create-profileid'>
+    <div class="content-wrapper padding-left-big" id='app-create-profileid'>
 
         <h1>Create Profile</h1>
 
-        <form action=""></form>
-
     </div>
     
-    <div class="content-wrapper padding-left-big" id='app-guest-expenseid'>
+    <div class="content-wrapper padding-left-big" id='app-expenseid'>
 
         <h1>Expenses</h1>
 
     </div>
     
-    <div class="content-wrapper padding-left-big" id='app-guest-resultsid'>
+    <div class="content-wrapper padding-left-big" id='app-resultsid'>
 
         <h1>Results</h1>
 

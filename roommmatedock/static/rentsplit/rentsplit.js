@@ -1,13 +1,13 @@
 document.addEventListener('DOMContentLoaded', function() {
 
     //TABS
-    const createProfileTab = document.querySelector('#tab-guest-create-profileid');
-    const expenseTab = document.querySelector('#tab-guest-expenseid');
-    const resultsTab = document.querySelector('#tab-guest-resultsid');
+    const createProfileTab = document.querySelector('#tab-create-profileid');
+    const expenseTab = document.querySelector('#tab-expenseid');
+    const resultsTab = document.querySelector('#tab-resultsid');
 
-    const createProfileApp = document.querySelector('#app-guest-create-profileid');
-    const expensesApp = document.querySelector('#app-guest-expenseid');
-    const resultsApp = document.querySelector('#app-guest-resultsid');
+    const createProfileApp = document.querySelector('#app-create-profileid');
+    const expensesApp = document.querySelector('#app-expenseid');
+    const resultsApp = document.querySelector('#app-resultsid');
 
     //Default show Create Profile
     createProfileApp.style.display = 'flex';
