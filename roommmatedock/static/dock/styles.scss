@@ -8,6 +8,36 @@ html {
     margin: 0;
 }
 
+//MODAL
+    .modal {
+        flex-direction: column;
+        display: none;
+        position: fixed;
+        z-index: 1;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0,0,0,0.4);
+    }
+
+    .modal-content {
+        background-color: white;
+        margin: 25% auto;
+        border: 2px solid black;
+        width: 70%;
+    }
+
+    .close {
+        color: black;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+    .close:hover {
+        cursor: pointer;
+        color: grey;
+    }
+
 //NAV BAR
 //COMPUTER SIZE
 
@@ -197,6 +227,13 @@ html {
     border: solid black 2px;
     background-color: white;
     cursor: pointer;
+}
+
+.tab-display-only {
+    height: 100px;
+    width: 200px;
+    border: solid black 2px;
+    background-color: white;
 }
 
 .tabs {

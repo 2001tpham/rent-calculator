@@ -1,0 +1,42 @@
+Big picture:
+    Implement algorithm to display results
+
+    Create a way to add a due date that automatically calculates results when the date is reached
+        Also have a way to manually input results
+
+    Create an online bulletin board or messaging system
+
+    Send email of results to each user on due date
+        Send email reminders of upcoming rent due date
+        Send email notifications when new things are added 
+
+----------------------------------------------------------------
+
+3 March 2023:
+    Goals:
+        New:
+            -Create a modal to add user to user-profile
+            -Create a way to see all expenses from each user
+            -Create a way to edit only your expense
+
+        Improvements:
+            -Create modal for all expenses input
+            -Create modal for 'create-profile'
+    
+    Implemented:
+        -Modal for expenses
+        -Modal to update rent
+        -See all expenses for each user
+        -PARTIAL dictionary to gather sums of user expenses
+
+    Plan
+        -Create Modal to create profile
+        -Edit/remove expenses
+        -PARTIAL Make plan for algorithm
+
+---------------------------------------------------------------------
+
+4 March 2023
+    Goals:
+        -Implement algorithm
+        -PARTIAL Display results onto results page

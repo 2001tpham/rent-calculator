@@ -1,0 +1,175 @@
+{% extends 'dock/layout-landing.html' %}
+
+{% load static %}
+
+{% block head %}
+<script src="{% static 'rentsplit/rentsplit.js'%}"></script>
+{% endblock head %}
+
+{% block body %}
+{% comment %} MODAL {% endcomment %}
+
+{% comment %} EXPENSE CARD MODAL {% endcomment %}
+    <div class="modal" id='expense-card-modalid'>
+        <div class="modal-body">
+            <div class="modal-header">
+                <div class="modal-title">
+                    <h1>Expenses</h1>
+                </div>
+
+                <div class="close-modal-button">
+                    <h3 class='close' id='expense-card-closeid'>&times</h3>
+                </div>
+            </div>
+            
+            <div class="center stack-divs">
+                <h2>{{current_user.username}}</h2>
+                {% for exp in current_user.expense_fr_user.all %}
+                    <h3>{{exp.name}}: {{exp.amount}}</h3>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+{% comment %} RENT MODAL {% endcomment %}
+    <div class="modal" id='rent-modalid'>
+        <div class="modal-body">
+            <div class="modal-header">
+                <div class="modal-title">
+                    <h1>Rent</h1>
+                </div>
+
+                <div class="close-modal-button">
+                    <h3 class='close' id='rent-closeid'>&times</h3>
+                </div>
+            </div>
+
+            <form action="{% url 'rentsplit:update-rent' profile_name=profile.name %}" method='POST'>
+                {% csrf_token %}
+                <input type="number" name='rent' placeholder='Enter your rent total'>
+
+                <input type="submit">
+            </form>
+        </div>
+    </div>
+
+{% comment %} EXPENSES MODAL {% endcomment %}
+
+        {% comment %} Modal form to add expenses {% endcomment %}
+    
+    <div class="modal" id='expense-modalid'>
+        
+        <div class='modal-body'>
+            <div class="modal-header">
+                <div class="modal-title">
+                    <h1>Expenses</h1>
+                </div>
+                
+                <div class='close-modal-button'>
+                    <h3 class='close' id='expenses-closeid'>&times</h3>
+                </div>
+            </div>
+            
+            <form action="{% url 'rentsplit:add-expense' profile_name=profile.name %}" method='POST'>
+                {% csrf_token %}
+                <div class="stack-divs">
+                    <input type="text" name='name' placeholder='Name Your Expense'>
+                    <input type="number" name='amount' placeholder='Enter the Amount'>
+                    <input type="hidden" name="expense-user" value='{{ current_user }}'>
+        
+                    <input type="submit" value='Save Expense'>
+                </div>
+            
+            </form>
+        </div>
+
+    </div>
+
+<div class="content-wrapper app-banner background-image-app-main">
+    <h1 class='padding-top'>Rent Split</h1>
+</div>
+
+<div class="content-wrapper center">
+    <h1>{{ profile.name }}</h1>
+</div>
+
+{% comment %} TABS {% endcomment %}
+
+<div class="content-wrapper app-page">
+
+    <div class="tabs">
+
+        <div class="tab center" id='tab-userid'>
+            <h2 class='big-text'>Profile</h2>
+        </div>
+
+        <div class="tab center" id='tab-expenseid'>
+            <h2 class='big-text'>Expenses</h2>
+        </div>
+
+        <div class="tab center" id='tab-resultsid'>
+            <h2 class='big-text'>Results</h2>
+        </div>
+
+    </div>
+
+    {% comment %} APP CONTENT {% endcomment %}
+    {% comment %} MAIN INFO USER TAB {% endcomment %}
+
+    <div class="content-wrapper app-content" id='app-userid'>
+
+        <div class="center stack-divs">
+            <h2>This Month's Rent: ${{profile.rent}}</h2>
+            <button class='big-btn' id='rent-buttonid'>Update Rent</button>
+        </div>
+
+        {% comment %} USERS {% endcomment %}
+        <div class='stack-divs center'>
+
+            {% for user in profile_users %}
+            <h2>{{ user.username }}</h2>
+            {% endfor %}
+        </div>
+
+    </div>
+    
+    {% comment %} EXPENSES {% endcomment %}
+
+    <div class="content-wrapper app-content" id='app-expenseid'>
+        
+        <div class="content-wrapper center flex-start">
+            {% for user in profile_users %}
+                <div class='center stack-divs app-card'>
+                    <h2>{{user.username}}</h2>
+                    {% if user.expense_fr_user.all %}
+                            {% for expense in user.expense_fr_user.all %}
+                                <h4>{{expense.name}}: {{expense.amount}}</h4>
+                            {% endfor %}
+                    {% else %}
+                        <p>No Expenses</p>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+
+        <button class='big-btn' id='expense-card'>Edit Your Expenses</button>
+        <button class='big-btn' id='expense-modal-openid'>Add an Expense</button>
+
+    </div>
+    
+    {% comment %} RESULTS {% endcomment %}
+    <div class="content-wrapper app-content" id='app-resultsid'>
+        <div class="content-wrapper center flex-start">
+            {% for key, value in calculated_rents.items %}
+                <div class="center stack-divs app-card">
+                    <h2>{{ key }}</h2>
+                    <h3>{{ value | floatformat:2 }}</h3>
+                </div>
+            {% endfor %}
+        </div>
+
+    </div>
+</div>
+
+
+{% endblock %}

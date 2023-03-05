@@ -1,0 +1,266 @@
+/* line 1, dock/static/dock/styles.scss */
+body {
+  padding: 0;
+  margin: 0; }
+
+/* line 6, dock/static/dock/styles.scss */
+html {
+  padding: 0;
+  margin: 0; }
+
+/* line 12, dock/static/dock/styles.scss */
+.modal {
+  flex-direction: column;
+  display: none;
+  position: fixed;
+  z-index: 1;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4); }
+
+/* line 24, dock/static/dock/styles.scss */
+.modal-header {
+  position: relative;
+  top: 0;
+  display: flex;
+  flex-direction: row;
+  background-color: grey;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%; }
+
+/* line 36, dock/static/dock/styles.scss */
+.modal-body {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  background-color: white;
+  margin: 2% auto;
+  border: 2px solid black;
+  width: 70%;
+  height: 100%; }
+
+/* line 47, dock/static/dock/styles.scss */
+.close {
+  color: black;
+  font-size: 28px;
+  font-weight: bold;
+  margin-left: auto; }
+
+/* line 54, dock/static/dock/styles.scss */
+.close:hover {
+  cursor: pointer;
+  color: grey; }
+
+/* line 62, dock/static/dock/styles.scss */
+.nav-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  background-color: grey; }
+
+/* line 71, dock/static/dock/styles.scss */
+.nav-contents {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%; }
+
+/* line 78, dock/static/dock/styles.scss */
+.nav-options {
+  display: flex;
+  flex-direction: row;
+  list-style: none; }
+
+/* line 84, dock/static/dock/styles.scss */
+.nav-option {
+  margin-right: 10px; }
+
+/* line 88, dock/static/dock/styles.scss */
+.right-in-div {
+  display: flex;
+  margin-left: auto;
+  margin-right: 40px; }
+
+/* line 94, dock/static/dock/styles.scss */
+.nav-profile {
+  display: flex;
+  flex-direction: column;
+  position: relative; }
+
+/* line 100, dock/static/dock/styles.scss */
+.dropdown-menu {
+  background-color: white;
+  padding: 0.75rem; }
+
+/* line 105, dock/static/dock/styles.scss */
+.dropdown-menu-container.open-menu {
+  opacity: 1;
+  transform: translateY(0); }
+
+/* line 110, dock/static/dock/styles.scss */
+.next-to-eachother {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly; }
+
+/* line 118, dock/static/dock/styles.scss */
+.dropdown-tools-container {
+  position: absolute;
+  box-shadow: 5px 5px 5px grey;
+  top: 20px;
+  left: 0;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-10px);
+  transition: opacity 0.3s, transform 0.3s; }
+
+/* line 129, dock/static/dock/styles.scss */
+.dropdown-tools-container.open-menu {
+  position: absolute;
+  box-shadow: 5px 5px 5px grey;
+  top: 20px;
+  left: 0;
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+  transition: opacity 0.3s, transform 0.3s; }
+
+/* line 140, dock/static/dock/styles.scss */
+.dropdown-profile-container {
+  position: absolute;
+  box-shadow: 5px 5px 5px grey;
+  top: 20px;
+  right: 0;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-10px);
+  transition: opacity 0.3s, transform 0.3s; }
+
+/* line 151, dock/static/dock/styles.scss */
+.dropdown-profile-container.open-menu {
+  position: absolute;
+  box-shadow: 5px 5px 5px grey;
+  top: 20px;
+  right: 0;
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+  transition: opacity 0.3s, transform 0.3s; }
+
+/* line 162, dock/static/dock/styles.scss */
+.tools-menu {
+  position: relative; }
+
+/* line 166, dock/static/dock/styles.scss */
+.logged-out-nav-btn {
+  margin-right: 10px; }
+
+/* line 173, dock/static/dock/styles.scss */
+.padding-top {
+  padding-top: 100px; }
+
+/* line 177, dock/static/dock/styles.scss */
+.left-in-div {
+  margin-left: 20px; }
+
+/* line 181, dock/static/dock/styles.scss */
+.background-image-landing-main {
+  background-image: url("/static/media/landing-page-main-image.jpeg?3e069ac38158");
+  height: 700px;
+  background-position: 20% 90%;
+  background-size: 95%; }
+
+/* line 188, dock/static/dock/styles.scss */
+.banner {
+  background-color: grey; }
+
+/* line 192, dock/static/dock/styles.scss */
+.text-center {
+  text-align: center; }
+
+/* line 196, dock/static/dock/styles.scss */
+.footer-next-to-eachother {
+  display: flex;
+  flex-direction: row;
+  align-items: center; }
+
+/* line 202, dock/static/dock/styles.scss */
+.stack-divs {
+  display: flex;
+  flex-direction: column; }
+
+/* line 207, dock/static/dock/styles.scss */
+.text-right-in-div {
+  text-align: end; }
+
+/* line 211, dock/static/dock/styles.scss */
+.text-left-in-div {
+  text-align: start; }
+
+/* line 215, dock/static/dock/styles.scss */
+.padding-left-big {
+  padding-left: 100px; }
+
+/* line 219, dock/static/dock/styles.scss */
+.padding-right-big {
+  padding-right: 100px; }
+
+/* line 223, dock/static/dock/styles.scss */
+.background-image-options-main {
+  background-image: url("/static/media/landing-page-main-image.jpeg?3e069ac38158");
+  height: 500px;
+  background-position: 20% 90%;
+  background-size: 95%; }
+
+/* line 231, dock/static/dock/styles.scss */
+.half-div {
+  width: 50%; }
+
+/* line 235, dock/static/dock/styles.scss */
+.big-text {
+  margin: 0; }
+
+/* line 242, dock/static/dock/styles.scss */
+.tab {
+  height: 100px;
+  width: 200px;
+  border: solid black 2px;
+  background-color: white;
+  cursor: pointer; }
+
+/* line 250, dock/static/dock/styles.scss */
+.tab-display-only {
+  height: 100px;
+  width: 200px;
+  border: solid black 2px;
+  background-color: white; }
+
+/* line 257, dock/static/dock/styles.scss */
+.tabs {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 200px; }
+
+/* line 264, dock/static/dock/styles.scss */
+.background-image-app-main {
+  background-image: url("/static/media/landing-page-main-image.jpeg?3e069ac38158");
+  height: 200px;
+  background-position: 20% 90%;
+  background-size: 95%; }
+
+/* line 271, dock/static/dock/styles.scss */
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+/* line 279, dock/static/dock/styles.scss */
+.app-page {
+  display: flex;
+  flex-direction: row; }

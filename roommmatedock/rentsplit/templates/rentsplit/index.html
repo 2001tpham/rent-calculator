@@ -10,47 +10,26 @@
     <h1 class='padding-top'>Rent Split</h1>
 </div>
 
-{% comment %} IF USER IS NOT AUTHENTICATED {% endcomment %}
 
-{% comment %} TABS {% endcomment %}
+    {% comment %} PROFILES {% endcomment %}
+    <div class="content-wrapper app-page" id='app-create-profileid'>
 
-<div class="content-wrapper app-page">
-
-    <div class="tabs">
-
-        <div class="tab center" id='tab-create-profileid'>
-            <h2 class='big-text'>Create a Profile</h2>
+        <div class="tabs">
+            <div class='tab-display-only'>
+                <h1 class='big-text'>Profiles</h1>
+            </div>
         </div>
 
-        <div class="tab center" id='tab-expenseid'>
-            <h2 class='big-text'>Expenses</h2>
+
+        <div>
+            <div class='stack-divs'>
+                {% for profile in user_profiles %}
+                    <a href="{% url 'rentsplit:user-profile' profile.name %}">{{ profile.name }}</a>
+                {% endfor %}
+            </div>
+                <a href="{% url 'rentsplit:create-profile'%}">Create a profile</a>
         </div>
 
-        <div class="tab center" id='tab-resultsid'>
-            <h2 class='big-text'>Results</h2>
-        </div>
-
     </div>
 
-    {% comment %} APP CONTENT {% endcomment %}
-    <div class="content-wrapper padding-left-big" id='app-create-profileid'>
-
-        <h1>Create Profile</h1>
-
-    </div>
-    
-    <div class="content-wrapper padding-left-big" id='app-expenseid'>
-
-        <h1>Expenses</h1>
-
-    </div>
-    
-    <div class="content-wrapper padding-left-big" id='app-resultsid'>
-
-        <h1>Results</h1>
-
-    </div>
-</div>
-
-
-{% endblock %}
+    {% endblock %}
