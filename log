@@ -40,3 +40,7 @@ Big picture:
     Goals:
         -Implement algorithm
         -PARTIAL Display results onto results page
+    Implemented:
+        -Algorithm
+        -Display page
+        -Modals are working

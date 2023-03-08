@@ -45,8 +45,10 @@ document.addEventListener('DOMContentLoaded', function() {
         expenseModal.style.display = 'none';
     })
 
-    expenseModal.addEventListener('click', function() {
-        expenseModal.style.display = 'none';
+    window.addEventListener('click', function(event) {
+        if (event.target == expenseModal) {
+            expenseModal.style.display = 'none';
+        }
     })
     
     //MODAL FOR RENT
@@ -62,8 +64,10 @@ document.addEventListener('DOMContentLoaded', function() {
         rentModal.style.display = 'none';
     })
 
-    rentModal.addEventListener('click', function() {
-        rentModal.style.display = 'none';
+    window.addEventListener('click', function(event) {
+        if (event.target == rentModal) {
+            rentModal.style.display = 'none';
+        }
     })
 
     //MODAL FOR EXPENSE CARD
@@ -79,7 +83,9 @@ document.addEventListener('DOMContentLoaded', function() {
         expenseCardModal.style.display = 'none';
     })
 
-    expenseCardModal.addEventListener('click', function() {
-        expenseCardModal.style.display = 'none';
+    window.addEventListener('click', function(event) {
+        if (event.target == expenseCardModal) {
+            expenseCardModal.style.display = 'none';
+        }
     })
 })
