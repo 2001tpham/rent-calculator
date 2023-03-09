@@ -47,5 +47,11 @@ Big picture:
 
 8 March 2023
     Goals:
-        - Reset all expenses
-        - Remove select expense
+        -Reset all expenses
+        -Remove select expense
+    Implemented:
+        -Remove select expenses
+        -create profile modal
+        -add user add fields for create profile
+        -added functionality if expenses = 0
+        -fixed js file structure
