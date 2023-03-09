@@ -10,4 +10,5 @@ urlpatterns = [
     path('add-expense/<str:profile_name>', views.add_expense, name='add-expense'),
     path('update-rent/<str:profile_name>', views.update_rent, name='update-rent'),
     path('remove/<str:expense_name>/<str:profile_name>', views.remove_expense, name='remove-expense'),
+    path('add-user/<str:profile_name>', views.add_user, name='add-user'),
 ]

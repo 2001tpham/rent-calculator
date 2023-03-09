@@ -130,11 +130,14 @@ def results(profile):
     user_num = 0
     rent = profile.rent
     calculated_rents = {}
+    expenses_exist = False
 
+    #IF EXPENSES IN PROFILE
     for u in profile_users:
         if u.expense_fr_user.all():
             user_expense = Expense.objects.filter(user=u)
             total_expense_dict[u.username] = sum(e.amount for e in user_expense)
+            expenses_exist = True
         else:
             user_expense = 0
             total_expense_dict[u.username] = user_expense
@@ -153,13 +156,29 @@ def results(profile):
                 other_expenses += total_expense_dict[other_user]
 
         #Calculated rent for this user
+        if expenses_exist == True:
+            calculated_rents[us] = (rent / user_num) - expense + (other_expenses / (user_num - 1)) 
+        else:
+            calculated_rents[us] = rent / user_num
 
-        calculated_rents[us] = (rent / 3) - expense + (other_expenses / (user_num - 1))
+
+
+
 
     return calculated_rents
 
 def remove_expense(request, expense_name, profile_name):
     profile = request.user.profile.get(name=profile_name)
-    expense_to_delete = Expense.objects.get(name=expense_name, profile=profile)
-    expense_to_delete.delete()
+    if profile.expense_fr_profile.all():
+        expense_to_delete = Expense.objects.get(name=expense_name, profile=profile)
+        expense_to_delete.delete()
+        return user_profile(request, profile_name)
+
+def add_user(request, profile_name):
+    profile = ProfileAuth.objects.get(name=profile_name)
+    new_user_id = request.POST['username']
+    new_user = User.objects.get(username=new_user_id)
+
+    profile.users.add(new_user)
+
     return user_profile(request, profile_name)

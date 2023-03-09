@@ -94,4 +94,25 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     })
 
+    //ADD USER FOR EXISTING PROFILE
+    
+    //MODAL FOR ADD UAER
+    const addUserModal = document.querySelector('#add-user-modal');
+    const addUserFromProfileButton = document.querySelector('#add-user-in-profile');
+    const addUserModalClose = document.querySelector('#add-user-modal-close');
+
+    addUserFromProfileButton.addEventListener('click', function() {
+        addUserModal.style.display = 'flex';
+    })
+
+    addUserModalClose.addEventListener('click', function() {
+        addUserModal.style.display = 'none';
+    })
+
+    window.addEventListener('click', function(event) {
+        if (event.target == addUserModal) {
+            addUserModal.style.display = 'none';
+        }
+    })
+
 })

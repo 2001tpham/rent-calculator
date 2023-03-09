@@ -45,6 +45,8 @@ Big picture:
         -Display page
         -Modals are working
 
+------------------------------------------------------------------
+
 8 March 2023
     Goals:
         -Reset all expenses
@@ -55,3 +57,19 @@ Big picture:
         -add user add fields for create profile
         -added functionality if expenses = 0
         -fixed js file structure
+
+----------------------------------------------------------
+
+9 March 2023
+    Goals:
+        -Remove Try without account
+        -Remove option to create account if user is already in a profile
+        -Add user to existing profile
+        -Remove a roommate from a profile
+        -PARTIAL Add a due date that is tracked
+    Implemented:
+        -Remove try without account
+        -Removed option to create account if user is already in profile
+        -Add user to exiting profile
+        -still functions when no expenses are inputted
+

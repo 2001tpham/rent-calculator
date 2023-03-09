@@ -9,6 +9,28 @@
 {% block body %}
 {% comment %} MODAL {% endcomment %}
 
+{% comment %} ADD USER MODAL {% endcomment %}
+<div class="modal" id='add-user-modal'>
+    <div class="modal-body">
+        <div class="modal-header">
+            <div class="modal-title">
+                <h1>Add a Roommate</h1>
+            </div>
+
+            <div class="close-modal-button">
+                <h3 class='close' id='add-user-modal-close'>&times</h3>
+            </div>
+        </div>
+
+        <form action="{% url 'rentsplit:add-user' profile_name=profile.name %}" method='POST'>
+            {% csrf_token %}
+            <input type="text" name='username' placeholder='Add a user by username'>
+
+            <input class='main-button' type="submit">
+        </form>
+    </div>
+</div>
+
 {% comment %} RENT MODAL {% endcomment %}
     <div class="modal" id='rent-modalid'>
         <div class="modal-body">
@@ -107,6 +129,7 @@
             {% for user in profile_users %}
             <h2>{{ user.username }}</h2>
             {% endfor %}
+            <button class='main-button' id='add-user-in-profile'>Add Another Roommate</button>
         </div>
 
     </div>
