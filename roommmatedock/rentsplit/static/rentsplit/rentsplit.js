@@ -10,23 +10,47 @@ document.addEventListener('DOMContentLoaded', function() {
     const resultsApp = document.querySelector('#app-resultsid');
 
     //Default show Create Profile
-    userApp.style.display = 'flex';
-    expensesApp.style.display = 'none';
-    resultsApp.style.display = 'none';
+    // userApp.style.display = 'flex';
+    // expensesApp.style.display = 'none';
+    // resultsApp.style.display = 'none';
 
+    //session store which tab was last open
+    var active_tab = sessionStorage.getItem('activeTab');
+
+    //Display active tab
+    if (active_tab === 'expenses') {
+        userApp.style.display = 'none';
+        expensesApp.style.display = 'flex';
+        resultsApp.style.display = 'none';
+    }
+    else if (active_tab === 'results') {
+        userApp.style.display = 'none';
+        expensesApp.style.display = 'none';
+        resultsApp.style.display = 'flex';
+    }
+    else {
+        userApp.style.display = 'flex';
+        expensesApp.style.display = 'none';
+        resultsApp.style.display = 'none';
+    }
+
+    //Tab buttons
     userTab.addEventListener('click', function() {
+        sessionStorage.setItem('activeTab', 'users');
         userApp.style.display = 'flex';
         expensesApp.style.display = 'none';
         resultsApp.style.display = 'none';
     })
 
     expenseTab.addEventListener('click', function() {
+        sessionStorage.setItem('activeTab', 'expenses');
         userApp.style.display = 'none';
         expensesApp.style.display = 'flex';
         resultsApp.style.display = 'none';
     })
 
     resultsTab.addEventListener('click', function() {
+        sessionStorage.setItem('activeTab', 'results');
         userApp.style.display = 'none';
         expensesApp.style.display = 'none';
         resultsApp.style.display = 'flex';
@@ -70,22 +94,4 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     })
 
-    //MODAL FOR EXPENSE CARD
-    const expenseCardModal = document.querySelector('#expense-card-modalid');
-    const expenseCardButton = document.querySelector('#expense-card');
-    const expenseCardClose = document.querySelector('#expense-card-closeid');
-
-    expenseCardButton.addEventListener('click', function() {
-        expenseCardModal.style.display = 'flex';
-    })
-
-    expenseCardClose.addEventListener('click', function() {
-        expenseCardModal.style.display = 'none';
-    })
-
-    window.addEventListener('click', function(event) {
-        if (event.target == expenseCardModal) {
-            expenseCardModal.style.display = 'none';
-        }
-    })
 })

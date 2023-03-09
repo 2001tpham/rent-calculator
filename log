@@ -44,3 +44,8 @@ Big picture:
         -Algorithm
         -Display page
         -Modals are working
+
+8 March 2023
+    Goals:
+        - Reset all expenses
+        - Remove select expense

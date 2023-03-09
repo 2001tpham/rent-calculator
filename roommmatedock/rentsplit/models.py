@@ -17,5 +17,7 @@ class Expense(models.Model):
     amount = models.IntegerField(default=0)
     profile = models.ForeignKey(ProfileAuth, on_delete=models.CASCADE, null=True, related_name='expense_fr_profile')
 
+    class Meta:
+        unique_together = ('name', 'profile')
     def __str__(self):
         return f'{self.name}, user:{self.user.username}, {self.amount}'

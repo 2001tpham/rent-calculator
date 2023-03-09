@@ -2,10 +2,45 @@
 
 {% block head %}
 {% load static %}
-<script src="{% static 'rentsplit/rentsplit.js'%}"></script>
+<script src="{% static 'rentsplit/index.js'%}"></script>
 {% endblock head %}
 
 {% block body %}
+{% comment %} MODALS {% endcomment %}
+{% comment %} CREATE PROFILE MODAL {% endcomment %}
+<div class="modal" id='create-profile-modal'>
+    <div class="modal-body">
+        <div class="modal-header">
+            <div class="modal-title">
+                <h1>Create Profile</h1>
+            </div>
+
+            <div class="close-modal-button">
+                <h3 class='close' id='create-profile-close'>&times</h3>
+            </div>
+        </div>
+
+        <div class="content-wrapper">
+            <form action="{% url 'rentsplit:create-profile'%}" method='POST'>
+                {% csrf_token %}
+            
+            <div id='create-profile-form-fields'>
+                <input type="text" name='room-name' placeholder='Room Name'>
+            
+                <textarea name="description" id="" cols="30" rows="10"></textarea>
+                
+                <input type="text" name='users[]' placeholder='users'>
+            </div>
+
+                <button class='small-button' id='add-user-in-form' type='button'>Add Another User</button>            
+            
+            <input type="submit">
+            </form>
+        </div>
+    </div>
+</div>
+
+
 <div class="content-wrapper app-banner background-image-app-main">
     <h1 class='padding-top'>Rent Split</h1>
 </div>
@@ -23,11 +58,17 @@
 
         <div>
             <div class='stack-divs'>
-                {% for profile in user_profiles %}
+                {% if request.user.profile.all %}
+                    {% for profile in user_profiles %}
+                    {% if profile.name %}
                     <a href="{% url 'rentsplit:user-profile' profile.name %}">{{ profile.name }}</a>
-                {% endfor %}
+                    {% endif %}
+                    {% endfor %}
+                {% else %}
+                    <h4 class='subtext'>No Profiles</h4>
+                {% endif %}
             </div>
-                <a href="{% url 'rentsplit:create-profile'%}">Create a profile</a>
+                <button class='main-button' id='create-profile-button'>Create a New Profile</button>
         </div>
 
     </div>
