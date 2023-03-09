@@ -67,9 +67,10 @@ Big picture:
         -Add user to existing profile
         -Remove a roommate from a profile
         -PARTIAL Add a due date that is tracked
+        
+        -Add Reset all expenses button
     Implemented:
         -Remove try without account
         -Removed option to create account if user is already in profile
         -Add user to exiting profile
         -still functions when no expenses are inputted
-
