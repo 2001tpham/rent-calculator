@@ -64,10 +64,6 @@ def create_profile(request):
 def add_expense(request, profile_name):
     expense_user = request.user
     profile = expense_user.profile.get(name=profile_name)
-    profile_users = profile.users.all()
-    profile_expenses = profile.expense_fr_profile.all()
-
-    calculated_rents = results(profile)
 
 
     if request.method == 'POST':
@@ -86,39 +82,18 @@ def add_expense(request, profile_name):
             profile = profile,
         )
         created_expense.save()
-        return redirect(reverse('rentsplit:add-expense', kwargs={'profile_name': profile_name}))
-
-    return render(request, 'rentsplit/user-profile.html', {
-        'room-name': profile.name,
-        'profile_users': profile_users,
-        'current_user': expense_user,
-        'profile': profile,
-        'profile_expenses': profile_expenses,
-        'calculated_rents': calculated_rents
-    })
+        # return user_profile(request, profile_name)
+        return redirect('rentsplit:user-profile', profile_name=profile_name)
 
 def update_rent(request, profile_name):
     user = request.user
     profile = user.profile.get(name=profile_name)
-    profile_users = profile.users.all()
-    profile_expenses = profile.expense_fr_profile.all()
 
     if request.method == 'POST':
-
-        calculated_rents = results(profile)
-
-
         profile.rent = request.POST['rent']
         profile.save()
 
-    return render(request, 'rentsplit/user-profile.html', {
-    'room-name': profile.name,
-    'profile_users': profile_users,
-    'current_user': user,
-    'profile': profile,
-    'profile_expenses': profile_expenses,
-    'calculated_rents': calculated_rents
-})
+        return redirect('rentsplit:user-profile', profile_name=profile_name)
 
 def results(profile):
     profile_users = profile.users.all()
@@ -141,6 +116,7 @@ def results(profile):
         else:
             user_expense = 0
             total_expense_dict[u.username] = user_expense
+            expenses_exist = False
             
 
         user_num += 1
@@ -172,7 +148,7 @@ def remove_expense(request, expense_name, profile_name):
     if profile.expense_fr_profile.all():
         expense_to_delete = Expense.objects.get(name=expense_name, profile=profile)
         expense_to_delete.delete()
-        return user_profile(request, profile_name)
+        return redirect('rentsplit:user-profile', profile_name=profile_name)
 
 def add_user(request, profile_name):
     profile = ProfileAuth.objects.get(name=profile_name)
@@ -181,4 +157,4 @@ def add_user(request, profile_name):
 
     profile.users.add(new_user)
 
-    return user_profile(request, profile_name)
+    return redirect('rentsplit:user-profile', profile_name=profile_name)
