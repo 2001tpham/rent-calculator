@@ -24,12 +24,11 @@ def user_profile(request, profile_name):
     profile_users = profile.users.all()
     profile_expenses = profile.expense_fr_profile.all()
 
-    if profile.expense_fr_profile.all():
-        calculated_rents = results(profile)
-    else:
-        calculated_rents = {}
-        for person in profile.users.all():
-            calculated_rents[person.username] = 0
+    calculated_rents = results(profile)
+    # else:
+    #     calculated_rents = {}
+    #     for person in profile.users.all():
+    #         calculated_rents[person.username] = 0
 
     return render(request, 'rentsplit/user-profile.html', {
         'profile': profile,
@@ -112,12 +111,9 @@ def results(profile):
         if u.expense_fr_user.all():
             user_expense = Expense.objects.filter(user=u)
             total_expense_dict[u.username] = sum(e.amount for e in user_expense)
-            expenses_exist = True
         else:
             user_expense = 0
-            total_expense_dict[u.username] = user_expense
-            expenses_exist = False
-            
+            total_expense_dict[u.username] = user_expense            
 
         user_num += 1
 
@@ -132,10 +128,8 @@ def results(profile):
                 other_expenses += total_expense_dict[other_user]
 
         #Calculated rent for this user
-        if expenses_exist == True:
-            calculated_rents[us] = (rent / user_num) - expense + (other_expenses / (user_num - 1)) 
-        else:
-            calculated_rents[us] = rent / user_num
+        calculated_rents[us] = (rent / user_num) - expense + (other_expenses / (user_num - 1)) 
+
 
 
 
