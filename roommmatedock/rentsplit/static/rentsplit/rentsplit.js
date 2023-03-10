@@ -115,4 +115,29 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     })
 
+    //RESET EXPENSES
+    const resetExpensesModal = document.querySelector('#reset-expenses-modal');
+    const resetExpensesButton = document.querySelector('#reset-profile-button');
+    const resetExpensesClose = document.querySelector('#reset-expenses-modal-close');
+    const resetExpensesCancel = document.querySelector('#reset-expenses-modal-cancel');
+
+    resetExpensesButton.addEventListener('click', function() {
+        resetExpensesModal.style.display = 'flex';
+    })
+    
+    resetExpensesClose.addEventListener('click', function() {
+        resetExpensesModal.style.display = 'none';
+    })
+    
+    resetExpensesCancel.addEventListener('click', function() {
+        resetExpensesModal.style.display = 'none';
+        resetExpensesModal.style.display = 'none';
+    })
+    
+    window.addEventListener('click', function(event) {
+        if (event.target == resetExpensesModal) {
+            resetExpensesModal.style.display = 'none';
+        }
+    })
+
 })

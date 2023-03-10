@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from .models import ProfileAuth, Expense
 from django.urls import reverse
 from django.db.models import Q
+from django.contrib import messages
 
 from django.contrib.auth.models import User
 
@@ -81,7 +82,8 @@ def add_expense(request, profile_name):
             profile = profile,
         )
         created_expense.save()
-        # return user_profile(request, profile_name)
+
+        messages.success(request, f'{name} added to expenses!')
         return redirect('rentsplit:user-profile', profile_name=profile_name)
 
 def update_rent(request, profile_name):
@@ -151,4 +153,12 @@ def add_user(request, profile_name):
 
     profile.users.add(new_user)
 
+    return redirect('rentsplit:user-profile', profile_name=profile_name)
+
+def reset_profile(request, profile_name):
+    profile = ProfileAuth.objects.get(name=profile_name)
+    all_expenses = profile.expense_fr_profile.all()
+
+    for expense in all_expenses:
+        expense.delete()
     return redirect('rentsplit:user-profile', profile_name=profile_name)

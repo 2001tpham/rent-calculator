@@ -31,6 +31,29 @@
     </div>
 </div>
 
+{% comment %} RESET EXPENSES CONFIRM MODAL {% endcomment %}
+<div class="modal" id='reset-expenses-modal'>
+    <div class="modal-body">
+        <div class="modal-header">
+            <div class="modal-title">
+                <h1>Add a Roommate</h1>
+            </div>
+
+            <div class="close-modal-button">
+                <h3 class='close' id='reset-expenses-modal-close'>&times</h3>
+            </div>
+        </div>
+
+        <div class="content-wrapper">
+            <h5 class='main-text'>Are you sure you want to reset all of the profile's expenses?</h5>
+
+            <a href="{% url 'rentsplit:reset-profile' profile_name=profile.name %}" class='main-button'>I'm Sure</a>
+            <button class='main-button' id='reset-expenses-modal-cancel'>Cancel</button>
+        </div>
+        </form>
+    </div>
+</div>
+
 {% comment %} RENT MODAL {% endcomment %}
     <div class="modal" id='rent-modalid'>
         <div class="modal-body">
@@ -89,6 +112,17 @@
     <h1 class='padding-top'>Rent Split</h1>
 </div>
 
+{% comment %} MESSAGES DIV {% endcomment %}
+<div class="content-wrapper message-banner">
+    {% if messages %}
+    <ul>
+        {% for message in messages %}
+            <li {% if message.tags %} class='{{ message.tags }}'{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+</div>
+
 <div class="content-wrapper center">
     <h1>{{ profile.name }}</h1>
 </div>
@@ -132,6 +166,7 @@
             <button class='main-button' id='add-user-in-profile'>Add Another Roommate</button>
         </div>
 
+        <button class='main-button' id='reset-profile-button'>Reset Profile Expenses</button>
     </div>
     
     {% comment %} EXPENSES {% endcomment %}
