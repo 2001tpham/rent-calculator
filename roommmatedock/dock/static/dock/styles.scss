@@ -1,3 +1,8 @@
+$accent: #1d3557;
+$grey: rgb(235, 219, 209);
+$textgrey: rgb(56, 56, 56);
+$accentgrey: #f1faee;
+
 body {
     padding: 0;
     margin: 0;
@@ -6,6 +11,23 @@ body {
 html {
     padding: 0;
     margin: 0;
+}
+
+a:link {
+    color: $accent;
+    text-decoration: none;
+}
+a:visited {
+    color: $accent;
+    text-decoration: none;
+}
+a:hover {
+    color: $accent;
+    text-decoration: none;
+}
+a:active {
+    color: $accent;
+    text-decoration: none;
 }
 
 //MODAL
@@ -77,7 +99,84 @@ html {
         color: grey;
     }
 
-//NAV BAR
+//GENERAL
+    .main-text {
+        font-family: Poppins;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .big-text {
+        font-size: 45px !important;
+    }
+
+    .sub-text {
+        font-family: Poppins;
+        color: $textgrey;
+    }
+
+    .white-text {
+        color: white;
+    }
+
+    .vertical-center {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .margin-left {
+        margin-left: 150px;
+    }
+    .margin-left-small {
+        margin-left: 10px;
+    }
+    
+
+    .margin-top {
+        margin-top: 50px;
+    }
+    .margin-top-med {
+        margin-top: 25px;
+    }
+    .margin-top-small {
+        margin-top: 10px;
+    }
+
+    .main-button-white {
+        background-color: white;
+        padding: 15px;
+        font-family: Poppins;
+        border-radius: 2px;
+        font-weight: bold;
+        transition: 0.3s;
+    }
+    .main-button-white.active {
+        background-color: rgb(134, 134, 134);
+        padding: 15px;
+        font-family: Poppins;
+        border-radius: 2px;
+        font-weight: bold;
+    }
+    
+    .main-button {
+        background-color: $accent;
+        color: white !important;
+        padding: 15px;
+        font-family: Poppins;
+        width: fit-content;
+        border-radius: 2px;
+        transition: 0.3s;
+    }
+    .main-button.active {
+        background-color: rgb(134, 134, 134);
+        color: $accent !important;
+        padding: 15px;
+        font-family: Poppins;
+        width: fit-content;
+        border-radius: 2px;
+    }
+    //NAV BAR
 //COMPUTER SIZE
 
     .nav-container {
@@ -86,7 +185,28 @@ html {
         width: 100%;
         position: fixed;
         top: 0;
-        background-color: grey;
+        background-color: white;
+        font-family: Poppins;
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+
+    .nav-brand {
+        font-family: 'Secular One';
+        font-size: 25px;
+        margin-top: 0;
+        margin-bottom: 0;
+        color: $accent;
+        transition: 0.5s;
+    }
+    .nav-brand.active {
+        font-family: 'Secular One';
+        font-size: 25px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        color: $accent;
+        transform: translate(-5px, -5px);
+        text-shadow: 5px 5px $grey;
     }
 
     .nav-contents {
@@ -100,10 +220,18 @@ html {
         display: flex;
         flex-direction: row;
         list-style: none;
+        font-weight: bold;
     }
 
     .nav-option {
-        margin-right: 10px;
+        margin-right: 30px;
+        text-decoration: underline;
+        transition: 0.4s;
+    }
+    .nav-option.active {
+        margin-right: 30px;
+        transform: scale(0.9);
+        text-decoration: none;
     }
 
     .right-in-div {
@@ -122,6 +250,13 @@ html {
         background-color: white;
         padding: 0.75rem;
     }
+    
+    #hover-profile-dropdownid {
+        transition: 0.4s;
+    }
+    #hover-profile-dropdownid.active {
+        transform: scale(0.9);
+    }
 
     .dropdown-menu-container.open-menu {
         opacity: 1;
@@ -138,7 +273,7 @@ html {
 
     .dropdown-tools-container {
         position: absolute;
-        box-shadow: 5px 5px 5px grey;
+        border: $grey 2px solid;
         top: 20px;
         left: 0;
         opacity: 0;
@@ -149,7 +284,7 @@ html {
 
     .dropdown-tools-container.open-menu {
         position: absolute;
-        box-shadow: 5px 5px 5px grey;
+        border: $grey 2px solid;
         top: 20px;
         left: 0;
         opacity: 1;
@@ -160,7 +295,7 @@ html {
 
     .dropdown-profile-container {
         position: absolute;
-        box-shadow: 5px 5px 5px grey;
+        border: $grey 2px solid;
         top: 20px;
         right: 0;
         opacity: 0;
@@ -171,7 +306,7 @@ html {
 
     .dropdown-profile-container.open-menu {
         position: absolute;
-        box-shadow: 5px 5px 5px grey;
+        border: $grey 2px solid;
         top: 20px;
         right: 0;
         opacity: 1;
@@ -195,8 +330,20 @@ html {
         padding-top: 100px;
     }
 
-    .left-in-div {
-        margin-left: 20px;
+    .padding-top-small {
+        padding-top: 25px;
+    }
+
+    .padding-bottom-small {
+        padding-bottom: 25px;
+    }
+
+    .padding-bottom {
+        padding-bottom: 100px;
+    }
+
+    .padding-top-small {
+        padding-top: 15px;
     }
 
     .background-image-landing-main {
@@ -207,7 +354,7 @@ html {
     }
 
     .banner {
-        background-color: grey;
+        background-color: $grey;
     }
 
     .text-center {
@@ -235,6 +382,10 @@ html {
 
     .padding-left-big {
         padding-left: 100px;
+    }
+
+    .padding-left-med {
+        padding-left: 50px;
     }
     
     .padding-right-big {

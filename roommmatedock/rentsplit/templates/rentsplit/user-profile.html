@@ -113,11 +113,12 @@
 </div>
 
 {% comment %} MESSAGES DIV {% endcomment %}
-<div class="content-wrapper message-banner">
+<div class="content-wrapper message-container">
     {% if messages %}
-    <ul>
         {% for message in messages %}
-            <li {% if message.tags %} class='{{ message.tags }}'{% endif %}>{{ message }}</li>
+            <div class="message-banner">
+                <h3 {% if message.tags %} class='{{ message.tags }} subtext' {% else %} class='main-text'{% endif %}>{{message}}</h3>
+            </div>
         {% endfor %}
     </ul>
     {% endif %}

@@ -1,36 +1,36 @@
 {% extends 'dock/layout-landing.html' %}
 
+{% block head %}
+{% load static %}
+<script src="{% static 'dock/landing.js' %}"></script>
+{% endblock head %}
+
 {% block body %}
 
 
     {% comment %} MAIN PART OF PAGE {% endcomment %}
-    <div class="content-wrapper background-image-landing-main">
-        <div class="main-title">
+    <div class="content-wrapper background-image-landing-main vertical-center">
+        <div class="main-title margin-left white-text margin-left margin-top">
 
-            <h1 class='main-title-text top-of-title left-in-div padding-top'>Make Living With Roommates</h1>
-            <h1 class='main-title-text left-in-div bottom-of-title'>Easier Than Ever</h1>
+            <h1 class='main-text top-of-title padding-top big-text'>Make Living With Roommates</h1>
+            <h1 class='main-text left-in-div bottom-of-title big-text'>Easier Than Ever</h1>
 
-        </div>
-        
-        <div class="content-wrapper left-in-div">
-    
-            <a href="{% url 'options' %}" class='main-big-btn'>Get Started</a>
-    
+            <div class='margin-top-med'>
+                <a href="{% url 'options' %}" class='main-button-white'>Get Started</a>
+            </div>
         </div>
     </div>
-    
-    {% comment %} BUTTON TO GET STARTED {% endcomment %}
-    
+
     {% comment %} SNIPPET OF QUICK INFO {% endcomment %}
     <div class="content-wrapper">
-        <div class="next-to-eachother banner">
+        <div class="next-to-eachother banner padding-top-small padding-bottom-small">
 
-            <div class='half-div'>
-                <h2 class='big-text'>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Placeat consequatur sunt sint nemo odit odio?</h2>
+            <div class='half-div padding-left-med'>
+                <h2 class='main-text'>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Placeat consequatur sunt sint nemo odit odio?</h2>
             </div>
             
-            <div class='half-div small-text'>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur, corporis cupiditate soluta consectetur architecto quae!</p>
+            <div class='half-div sub-text padding-left-med'>
+                <h3 class='sub-text'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tempora, asperiores.</h3>
             </div>
 
         </div>
@@ -39,75 +39,87 @@
     {% comment %} SECTIONS THAT LIST APPS {% endcomment %}
     <div class="content-wrapper next-to-eachother">
 
-        <div class="half-div">
+        <div class="half-div padding-left-big">
 
-            <h2 class='big-text'>Lorem ipsum dolor sit amet.</h2>
-            <div class="small-text">
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deleniti excepturi aut dolores in debitis sit?</p>
+            <h2 class='main-text'>Lorem ipsum dolor sit amet.</h2>
+            <div class="sub-text">
+                <h3 class='sub-text'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam tenetur assumenda, maiores consectetur illo placeat?</h3>
             </div>
-
-            <a href="{% url 'index' %}">Try it Now</a>
+            <div class="padding-top-small">
+                <a href="{% url 'index' %}" class='main-button'>Try it Now</a>
+            </div>
 
         </div>
 
-        <div class="half-div">
+        <div class="half-div padding-top">
             {% load static %}
             <img src="{% static 'media/landing-page-main-image.jpeg' %}" alt="Roommate Dock" width='500px'>
         </div>
 
     </div>
-
+    
     <div class="content-wrapper next-to-eachother">
 
-        <div class="half-div">
+        
+        <div class="half-div padding-top padding-left-big padding-bottom">
             {% load static %}
             <img src="{% static 'media/landing-page-main-image.jpeg' %}" alt="Roommate Dock" width='500px'>
         </div>
-
         <div class="half-div">
 
-            <h2 class='big-text'>Lorem ipsum dolor sit amet.</h2>
-            <div class="small-text">
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deleniti excepturi aut dolores in debitis sit?</p>
+            <h2 class='main-text'>Lorem ipsum dolor sit amet.</h2>
+            <div class="sub-text">
+                <h3 class='sub-text'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam tenetur assumenda, maiores consectetur illo placeat?</h3>
+            </div>
+            <div class="padding-top-small">
+                <a href="{% url 'index' %}" class='main-button'>Try it Now</a>
             </div>
 
-            <a href="{% url 'index' %}">Try it Now</a>
-
         </div>
-
+        
     </div>
 
+
+
     {% comment %} CREATE AN ACCOUNT DIV OR LOG IN {% endcomment %}
-    <div class="content-wrapper banner next-to-eachother">
+    <div class="content-wrapper banner next-to-eachother padding-top-small padding-bottom-small">
 
-        <div class="half-div">
-            <h2 class='big-text'>Features Include:</h2>
-            <h3 class='med-text'>Lorem, ipsum.</h3>
-            <h3 class='med-text'>Lorem, ipsum.</h3>
-            <h3 class='med-text'>Lorem, ipsum.</h3>
+        <div class="half-div stack-divs center">
+            <h1 class='main-text'>Gain access to all of them for free</h1>
+            <div class="margin-top-med">
+                <a href="{% url 'users:register'%}" class='main-button'>Create an account</a>
+                <a href="{% url 'users:login'%}" class='main-button margin-left-small'>Log in</a>
+            </div>
         </div>
-
-        <div class="half-div">
-            <h1 class='big-text'>Gain access to all of them for free</h1>
-            <a href="{% url 'users:login'%}">Create an account or Log in</a>
+        
+        <div class="half-div center stack-divs">
+            <h2 class='main-text'>Features Include:</h2>
+            <div class="padding-left-med">
+                <h3 class='sub-text'>Lorem, ipsum.</h3>
+                <h3 class='sub-text'>Lorem, ipsum.</h3>
+                <h3 class='sub-text'>Lorem, ipsum.</h3>
+            </div>
         </div>
-
     </div>
 
     {% comment %} TRY WITHOUT AN ACCOUNT SECTION SECTION {% endcomment %}
     <div class='content-wrapper next-to-eachother'>
-
-        <div class="half-div">
-            <h2 class='big-text'>Try it before creating an account</h2>
-            <a href="{% url 'options'%}">Check it Out</a>
+        <div class="half-div center stack-divs">
+            <h2 class='main-text'>Let us handle the stress:</h2>
+            <div class='padding-left-med'>
+                <h3 class='sub-text'>Lorem, ipsum.</h3>
+                <h3 class='sub-text'>Lorem, ipsum.</h3>
+                <h3 class='sub-text'>Lorem, ipsum.</h3>
+            </div>
         </div>
 
-        <div class="half-div">
-            <h1 class='big-text text-center'>Access our tools without an account</h1>
-            <h3 class='med-text text-center'>Lorem, ipsum.</h3>
-            <h3 class='med-text text-center'>Lorem, ipsum.</h3>
-            <h3 class='med-text text-center'>Lorem, ipsum.</h3>
+        <div class="half-div center stack-divs">
+            <h2 class='main-text'>Check out our features before making an account</h2>
+            <div class="margin-top-med">
+                <a href="{% url 'options'%}" class='main-button'>See More</a>
+            </div>
         </div>
+
 
     </div>
 

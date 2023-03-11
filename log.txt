@@ -76,3 +76,38 @@ Big picture:
         -Added Reset Expenses
         -Added expense message after added
 
+--------------------------------------------------------------------------------------------
+
+10 March 2023
+    Goals:
+        -Handle Errors for update rent
+            -Value Error if not numberr
+            -negative numbers 
+        -Handle errors for add another roommate
+            -No users matching the username
+            -User already in profile 
+        -Message for reset profile expenses 
+        -Handle Errors for add expense
+            -Not a number
+            -negative number
+            -expense already exists
+        
+        -Stylize Landing page
+        -Stylize Nav Bar
+    Implemented:
+        -Handle Errors for update rent
+            -Value Error if not numberr
+            -negative numbers 
+        -Handle errors for add another roommate
+            -No users matching the username
+            -User already in profile 
+        -Message for reset profile expenses 
+        -Handle Errors for add expense
+            -Not a number
+            -negative number
+            -expense already exists
+        
+        -Stylized Nav Bar
+        -Stylized Landing page
+
+

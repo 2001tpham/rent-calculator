@@ -9,6 +9,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="{% static 'dock/script.js' %}"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Vollkorn">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Secular+One">
+
 
     {% compress css %}
     <link href="{% static 'dock/styles.scss' %}" rel="stylesheet" type="text/x-scss">
@@ -29,7 +33,7 @@
         <div class="nav-contents">
 
             <div class="left-in-div">
-                <h3 class='nav-brand'>Roommate Dock</h3>
+                <a href="{% url 'index' %}"><h3 class='nav-brand padding-left-med'>Roommate Dock</h3></a>
             </div>
             <div class="nav-options-container">
 
@@ -71,7 +75,7 @@
             
             <div class="right-in-div nav-profile">
 
-                <a href="#" class='hover-dropdown' id='hover-profile-dropdownid'>{{ request.user }}</a>
+                <a href="{% url 'rentsplit:index' %}" class='hover-dropdown' id='hover-profile-dropdownid'>Welcome Back, {{ request.user }}!</a>
 
                 <div class='dropdown-profile-container' id='dropdown-profile-containerid'>
     

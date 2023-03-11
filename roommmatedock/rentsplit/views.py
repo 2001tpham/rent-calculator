@@ -4,6 +4,7 @@ from .models import ProfileAuth, Expense
 from django.urls import reverse
 from django.db.models import Q
 from django.contrib import messages
+from django.db import IntegrityError
 
 from django.contrib.auth.models import User
 
@@ -26,10 +27,6 @@ def user_profile(request, profile_name):
     profile_expenses = profile.expense_fr_profile.all()
 
     calculated_rents = results(profile)
-    # else:
-    #     calculated_rents = {}
-    #     for person in profile.users.all():
-    #         calculated_rents[person.username] = 0
 
     return render(request, 'rentsplit/user-profile.html', {
         'profile': profile,
@@ -70,31 +67,54 @@ def add_expense(request, profile_name):
 
         
         name = request.POST['name']
-        amount = request.POST['amount']
+        amount = float(request.POST['amount'])
         expense_user = request.POST['expense-user']
 
         current_user = User.objects.get(username=expense_user)
 
-        created_expense = Expense.objects.create(
-            name = name,
-            amount = amount,
-            user = current_user,
-            profile = profile,
-        )
-        created_expense.save()
+        if amount <= 0:
+            messages.warning(request, 'Your expense has to be greater than 0')
+            return redirect('rentsplit:user-profile', profile_name=profile_name)
 
-        messages.success(request, f'{name} added to expenses!')
-        return redirect('rentsplit:user-profile', profile_name=profile_name)
+        try:
+            created_expense = Expense.objects.create(
+                name = name,
+                amount = amount,
+                user = current_user,
+                profile = profile,
+            )
+            created_expense.save()
+
+            messages.success(request, f'{name} added to expenses')
+            return redirect('rentsplit:user-profile', profile_name=profile_name)
+        
+        except ValueError:
+            messages.warning(request, 'Your expense has to be a number')
+            return redirect('rentsplit:user-profile', profile_name=profile_name)
+        except IntegrityError:
+            messages.warning(request, 'This expense already exists')
+            return redirect('rentsplit:user-profile', profile_name=profile_name)
 
 def update_rent(request, profile_name):
     user = request.user
     profile = user.profile.get(name=profile_name)
 
     if request.method == 'POST':
-        profile.rent = request.POST['rent']
-        profile.save()
+        new_rent = float(request.POST['rent'])
+        
+        #If rent is negative
+        if new_rent <= 0:
+            messages.warning(request, 'Your rent has to be greater than 0')
+            return redirect('rentsplit:user-profile', profile_name=profile_name)
+        else:
+            try:
+                profile.rent = new_rent
+                profile.save()
+                return redirect('rentsplit:user-profile', profile_name=profile_name)
+            except ValueError:
+                messages.warning(request, 'Your rent has to be a number')
+                return redirect('rentsplit:user-profile', profile_name=profile_name)
 
-        return redirect('rentsplit:user-profile', profile_name=profile_name)
 
 def results(profile):
     profile_users = profile.users.all()
@@ -106,7 +126,6 @@ def results(profile):
     user_num = 0
     rent = profile.rent
     calculated_rents = {}
-    expenses_exist = False
 
     #IF EXPENSES IN PROFILE
     for u in profile_users:
@@ -149,11 +168,21 @@ def remove_expense(request, expense_name, profile_name):
 def add_user(request, profile_name):
     profile = ProfileAuth.objects.get(name=profile_name)
     new_user_id = request.POST['username']
-    new_user = User.objects.get(username=new_user_id)
+    profile_users = profile.users.all()
 
-    profile.users.add(new_user)
+    try:
+        new_user = User.objects.get(username=new_user_id)
 
-    return redirect('rentsplit:user-profile', profile_name=profile_name)
+        if new_user in profile_users:
+            messages.warning(request, f'{new_user_id} is already in {profile.name}')
+
+        profile.users.add(new_user)
+
+        return redirect('rentsplit:user-profile', profile_name=profile_name)
+    
+    except:
+        messages.warning(request, 'There is no user that has this username')
+        return redirect('rentsplit:user-profile', profile_name=profile_name)
 
 def reset_profile(request, profile_name):
     profile = ProfileAuth.objects.get(name=profile_name)
@@ -161,4 +190,6 @@ def reset_profile(request, profile_name):
 
     for expense in all_expenses:
         expense.delete()
+    
+    messages.success(request, f'{profile.name}\'s expenses have been reset')
     return redirect('rentsplit:user-profile', profile_name=profile_name)
