@@ -1,22 +1,47 @@
 {% extends 'dock/layout-landing.html' %}
 
+{% block head %}
+{% load static %}
+    <script src="{% static 'dock/buttons.js' %}"></script>
+{% endblock head %}
+
 {% block body %}
 
-    <h1 style='padding-top: 20px'>Log in</h1>
 
-    <form action="" method='POST'>
-        {% csrf_token %}
+<div class="content-wrapper center nav-margin">
+    <div class="big-card center stack-divs margin-bottom">
+        <h2 class='main-text'>Log In</h2>
 
-        <input type="text" name="username" placeholder='username'>
-
-        <input type="password" name="password" placeholder='password'>
-
-        <input type="submit" value='login'>
+        <form action="" method='POST'>
+            {% csrf_token %}
+            
+            <div class="form-fields stack-divs center">
+                <input type="text" name="username" placeholder='Username' class='form-field'>
         
-        {% for message in messages %}
-            <p>{{ message }}</p>
-        {% endfor %}
+                <input type="password" name="password" placeholder='Password' class='form-field'>
+        
+                <input type="submit" value='Log In' class='main-button'>
 
-    </form>
+            </div>
+
+                <h5 class='sub-text'>
+                    <div class="next-to-eachother">
+                        New to Roommate Dock?
+                        <div class="link padding-left-small">
+                            <a href="{% url 'users:register' %}">Create An Account!</a>
+                        </div>
+                    </div>
+                </h5>
+            
+            {% for message in messages %}
+                <p>{{ message }}</p>
+            {% endfor %}
+    
+        </form>
+
+
+
+    </div>
+</div>
 
 {% endblock body %}

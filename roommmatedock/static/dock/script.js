@@ -1,11 +1,17 @@
 document.addEventListener('DOMContentLoaded', function() {
 
-    //Dropdown menu button
-    // const dropdownButton = document.querySelector('#dropdown-main-btnid');
-    // const dropdownMenu = document.querySelector('#dropdown-menu-containerid');
-    // dropdownButton.addEventListener('click', function() {
-    //     dropdownMenu.classList.toggle('open-menu');
-    // })
+    //DROPDOWN MENU OPTIONS
+    const dropdownOption = document.querySelectorAll('.dropdown-menu-option');
+
+    dropdownOption.forEach(dropdownOption => {
+        dropdownOption.addEventListener('mouseover', function() {
+            dropdownOption.classList.add('active');
+        })
+        
+        dropdownOption.addEventListener('mouseout', function() {
+            dropdownOption.classList.remove('active');
+        })
+    })
 
     //Dropdown for Tools
     const dropDownToolsButton = document.querySelector('#hover-tools-dropdownid');
@@ -28,28 +34,6 @@ document.addEventListener('DOMContentLoaded', function() {
         dropDownToolsMenu.classList.remove('open-menu');
     })
     
-    //Dropdown for profile
-    const dropDownProfileButton = document.querySelector('#hover-profile-dropdownid');
-    const dropDownProfileMenu = document.querySelector('#dropdown-profile-containerid');
-
-    dropDownProfileButton.addEventListener('mouseover', function() {
-        dropDownProfileMenu.classList.add('open-menu');
-
-    })
-
-    dropDownProfileButton.addEventListener('mouseout', function() {
-        dropDownProfileMenu.classList.remove('open-menu');
-        
-    })
-    
-    dropDownProfileMenu.addEventListener('mouseover', function() {
-        dropDownProfileMenu.classList.add('open-menu');
-    })
-
-    dropDownProfileMenu.addEventListener('mouseout', function() {
-        dropDownProfileMenu.classList.remove('open-menu');
-    })
-
     //NAV BAR
     //BRAND
     const brand = document.querySelector('.nav-brand');
@@ -75,16 +59,4 @@ document.addEventListener('DOMContentLoaded', function() {
         })
     })
     
-    const profileOption = document.querySelector('#hover-profile-dropdownid');
-
-        profileOption.addEventListener('mouseover', function() {
-            profileOption.classList.add('active');
-        })
-        
-        profileOption.addEventListener('mouseout', function() {
-            profileOption.classList.remove('active');
-        })
-
-        
-
 })

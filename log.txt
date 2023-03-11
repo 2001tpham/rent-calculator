@@ -110,4 +110,12 @@ Big picture:
         -Stylized Nav Bar
         -Stylized Landing page
 
+------------------------------------------------------------------
+
+11 March 2023
+    Goals:
+        -Stylize login page
+        -Stylize register page
+    Implemented:
+        -Stylized Dropdown menu
 

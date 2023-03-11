@@ -8,17 +8,5 @@ document.addEventListener('DOMContentLoaded', function() {
 
     landingButtonMain.addEventListener('mouseout', function() {
         landingButtonMain.classList.remove('active');
-    })
-    
-    const landingButtonBlue = document.querySelectorAll('.main-button');
-
-    landingButtonBlue.forEach(function(landingButtonBlue) {
-        landingButtonBlue.addEventListener('mouseover', function() {
-            landingButtonBlue.classList.add('active');
-        })
-    
-        landingButtonBlue.addEventListener('mouseout', function() {
-            landingButtonBlue.classList.remove('active');
-        })
-    })
+    })  
 })

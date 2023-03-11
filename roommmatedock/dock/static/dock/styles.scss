@@ -100,6 +100,22 @@ a:active {
     }
 
 //GENERAL
+    .form-field {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        width: 90%;
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px grey solid;
+    }
+
+    .link {
+        transition: 0.3s;
+    }
+    .link:hover {
+        transform: scale(0.9);
+    }
+
     .main-text {
         font-family: Poppins;
         margin-left: 0;
@@ -123,6 +139,10 @@ a:active {
         display: flex;
         flex-direction: column;
         justify-content: center;
+    }
+
+    .margin-bottom {
+        margin-bottom: 20px;
     }
 
     .margin-left {
@@ -153,7 +173,7 @@ a:active {
     }
     .main-button-white.active {
         background-color: rgb(134, 134, 134);
-        padding: 15px;
+        padding: 12px;
         font-family: Poppins;
         border-radius: 2px;
         font-weight: bold;
@@ -167,17 +187,31 @@ a:active {
         width: fit-content;
         border-radius: 2px;
         transition: 0.3s;
+        border: none;
+        cursor: pointer;
     }
     .main-button.active {
         background-color: rgb(134, 134, 134);
         color: $accent !important;
-        padding: 15px;
+        padding: 12px;
         font-family: Poppins;
         width: fit-content;
         border-radius: 2px;
+        border: none;
+        cursor: pointer;
+    }
+
+//USERS
+    .big-card {
+        padding: 20px;
+        box-shadow: 5px 5px 5px 5px $grey;
     }
     //NAV BAR
 //COMPUTER SIZE
+
+    .nav-margin {
+        margin-top: 90px;
+    }
 
     .nav-container {
         display: flex;
@@ -248,8 +282,27 @@ a:active {
         
     .dropdown-menu {
         background-color: white;
-        padding: 0.75rem;
+        padding: 0;
     }
+
+    .dropdown-menu-option {
+        border: 1px solid $grey;
+        padding-right: 20px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        padding-left: 20px;
+        transition: 0.3s;
+    }
+    
+    .dropdown-menu-option.active {
+        border: 1px solid $grey;
+        padding-right: 20px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        padding-left: 20px;
+        background-color: $grey;
+    }
+
     
     #hover-profile-dropdownid {
         transition: 0.4s;
@@ -321,6 +374,11 @@ a:active {
 
     .logged-out-nav-btn {
         margin-right: 10px;
+        transition: 0.3s;
+    }
+    .logged-out-nav-btn.active {
+        margin-right: 10px;
+        transform: scale(0.9);
     }
 
 // LANDING PAGE
@@ -383,9 +441,11 @@ a:active {
     .padding-left-big {
         padding-left: 100px;
     }
-
     .padding-left-med {
         padding-left: 50px;
+    }
+    .padding-left-small {
+        padding-left: 10px;
     }
     
     .padding-right-big {

@@ -9,6 +9,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="{% static 'dock/script.js' %}"></script>
+    {% if user.is_authenticated %}
+        <script src="{% static 'dock/authenticated.js' %}"></script>
+    {% else %}
+        <script src="{% static 'dock/notauth.js' %}"></script>
+    {% endif %}
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Vollkorn">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Secular+One">
@@ -106,9 +111,13 @@
             <div class="right-in-div logged-out-register">
                 
                 <div class='next-to-eachother'>
-                    <div class="logged-out-main-btns">
-                        <a href="{% url 'users:login' %}" class='logged-out-nav-btn'>Log In</a>
-                        <a href="{% url 'users:register' %}" class='logged-out-nav-btn'>Register For Free</a>
+                    <div class="logged-out-main-btns next-to-eachother">
+                        <div class='logged-out-nav-btn'>
+                            <a href="{% url 'users:login' %}" class='logged-out-nav-btn'>Log In</a>
+                        </div>
+                        <div class='logged-out-nav-btn'>
+                            <a href="{% url 'users:register' %}" class='logged-out-nav-btn'>Register For Free</a>
+                        </div>
                     </div>
                 </div>
                 {% endif %}
