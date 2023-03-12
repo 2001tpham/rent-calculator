@@ -1,20 +1,26 @@
 {% extends 'dock/layout-landing.html' %}
 
+{% load static %}
+{% block head %}
+    <script src="{% static 'dock/buttons.js' %}"></script>
+{% endblock head %}
 
 {% block body %}
 
     {% comment %} MAIN PART OF PAGE {% endcomment %}
 
-    <div class="content-wrapper background-image-options-main padding-top">
+    <div class="content-wrapper background-image-options-main padding-top padding-left-big vertical-center">
 
-        <h1 class='big-text left-in-div'>Use our tools to make rental management manageable</h1>
+        <h1 class='main-text white-text big-text nav-margin'>Use our tools to make</h1>
+        <h1 class='main-text white-text big-text'> rental management manageable</h1>
 
     </div>
 
     {% comment %} BANNER {% endcomment %}
-    <div class="content-wrapper banner">
+    <div class="content-wrapper banner next-to-eachother padding-top-small padding-bottom-small">
 
-        <h1 class='big-text text-center'>Check out our tools</h1>
+        <h2 class='main-text'>With so many things in life to worry about</h2>
+        <h3 class='sub-text'>This is your chance to take control of the stress of renting</h3>
 
     </div>
 
@@ -26,43 +32,31 @@
             <img src={% static 'media/landing-page-main-image.jpeg'%} alt="Rent Split" width='500px' class='padding-top'>
         </div>
 
-        <div class="half-div">
-            <h1 class='big-text'>Let us help you keep track of you and your roommates expenses</h1>
-            <a href="{% url 'rentsplit:index'%}">Check It Out</a>
+        <div class="half-div center stack-divs">
+            <h2 class='main-text'>We're here to handle the financial stress</h2>
+            <h3 class='sub-text'>No more confusing calculations</h3>
+            <h3 class='sub-text'>Just type in some numbers and we'll do the rest</h3>
+            <a href="{% url 'rentsplit:index'%}" class='main-button'>Check It Out</a>
 
         </div>
 
     </div>
 
-    {% comment %} Other {% endcomment %}
-    <div class="content-wrapper next-to-eachother">
+    {% comment %} Rent Splitter {% endcomment %}
+    <div class="content-wrapper next-to-eachother padding-left-big">
+        <div class="half-div center stack-divs">
+            <h2 class='main-text'>Let us help you organize important messages</h2>
+            <h3 class='sub-text'>Stop losing critical information in group chats</h3>
+            <h3 class='sub-text'>Post your essential communications on your rental's message board</h3>
+            <a href="{% url 'rentsplit:index'%}" class='main-button'>Check It Out</a>
 
-        <div class="half-div padding-left-big">
+        </div>
+
+        <div class="half-div margin-bottom">
             {% load static %}
             <img src={% static 'media/landing-page-main-image.jpeg'%} alt="Rent Split" width='500px' class='padding-top'>
         </div>
 
-        <div class="half-div">
-            <h1 class='big-text'>Let us help you keep track of you and your roommates expenses</h1>
-            <a href="{% url 'index'%}">Check It Out</a>
-
-        </div>
-
-    </div>
-
-        {% comment %} Other {% endcomment %}
-    <div class="content-wrapper next-to-eachother">
-
-        <div class="half-div padding-left-big">
-            {% load static %}
-            <img src={% static 'media/landing-page-main-image.jpeg'%} alt="Rent Split" width='500px' class='padding-top'>
-        </div>
-
-        <div class="half-div">
-            <h1 class='big-text'>Let us help you keep track of you and your roommates expenses</h1>
-            <a href="{% url 'index'%}">Check It Out</a>
-
-        </div>
 
     </div>
 

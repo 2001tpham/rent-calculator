@@ -118,4 +118,9 @@ Big picture:
         -Stylize register page
     Implemented:
         -Stylized Dropdown menu
+        -Stylized register page
+        -stylized tools page
+        -restructured js files
+        -stylized dropdown menus
+        -stylized rent divider index
 

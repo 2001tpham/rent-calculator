@@ -10,7 +10,8 @@ document.addEventListener('DOMContentLoaded', function() {
             var userField = document.createElement('input');
             userField.setAttribute('type', 'text');
             userField.setAttribute('name', 'users[]');
-            userField.classList.add('input-field');
+            userField.setAttribute('placeholder', 'Add a Roommate by Username');
+            userField.classList.add('form-field');
     
             var createProfileFields = document.querySelector('#create-profile-form-fields');
             createProfileFields.appendChild(userField);

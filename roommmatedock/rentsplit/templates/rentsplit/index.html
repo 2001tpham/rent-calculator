@@ -3,6 +3,7 @@
 {% block head %}
 {% load static %}
 <script src="{% static 'rentsplit/index.js'%}"></script>
+<script src="{% static 'dock/buttons.js' %}"></script>
 {% endblock head %}
 
 {% block body %}
@@ -12,7 +13,7 @@
     <div class="modal-body">
         <div class="modal-header">
             <div class="modal-title">
-                <h1>Create Profile</h1>
+                <h2 class='main-text white-text'>Create Profile</h2>
             </div>
 
             <div class="close-modal-button">
@@ -20,53 +21,59 @@
             </div>
         </div>
 
-        <div class="content-wrapper">
-            <form action="{% url 'rentsplit:create-profile'%}" method='POST'>
+        <div class="content-wrapper center stack-divs padding">
+            <form action="{% url 'rentsplit:create-profile'%}" method='POST' class='stack-divs'>
+            <div id='create-profile-form-fields' class='center stack-divs'>
                 {% csrf_token %}
             
-            <div id='create-profile-form-fields'>
-                <input type="text" name='room-name' placeholder='Room Name'>
+                <input type="text" name='room-name' placeholder='Room Name' class='form-field'>
             
-                <textarea name="description" id="" cols="30" rows="10"></textarea>
+                <textarea name="description" id="" cols="30" rows="10" class='form-field' placeholder='Give Your Profile a Description'></textarea>
                 
-                <input type="text" name='users[]' placeholder='users'>
+                <input type="text" name='users[]' placeholder='Add a Roommate by Username' class='form-field'>
             </div>
-
-                <button class='small-button' id='add-user-in-form' type='button'>Add Another User</button>            
-            
-            <input type="submit">
+                <div class="center stack-divs">
+                    <button class='main-button' id='add-user-in-form' type='button'>Add Another User</button>            
+                
+                <input type="submit" class='main-button margin-top-small'>
+                </div>
             </form>
         </div>
     </div>
 </div>
 
 
-<div class="content-wrapper app-banner background-image-app-main">
-    <h1 class='padding-top'>Rent Split</h1>
+<div class="content-wrapper app-banner background-image-divider-main center">
+    <h1 class='padding-top white-text main-text big-text'>Rent Split</h1>
+</div>
+
+<div class="banner next-to-eachother padding-top-small padding-bottom-small">
+    <h2 class='main-text'>Financial planning can take hours</h2>
+    <h3 class='sub-text'>Here it only takes a few minutes</h3>
 </div>
 
 
     {% comment %} PROFILES {% endcomment %}
-    <div class="content-wrapper app-page" id='app-create-profileid'>
-
-        <div class="tabs">
-            <div class='tab-display-only'>
-                <h1 class='big-text'>Profiles</h1>
-            </div>
-        </div>
-
+    <div class="content-wrapper app-page">
 
         <div>
             <div class='stack-divs'>
                 {% if request.user.profile.all %}
                     {% for profile in user_profiles %}
                     {% if profile.name %}
-                    <a href="{% url 'rentsplit:user-profile' profile.name %}">{{ profile.name }}</a>
+                    <div class="big-card margin-top margin-bottom">
+                        <h3 class='main-text'>{{profile.name}}</h3>
+                        <a href="{% url 'rentsplit:user-profile' profile.name %}">See Details</a>
+                    </div>
                     {% endif %}
                     {% endfor %}
                 {% else %}
-                    <h4 class='subtext'>No Profiles</h4>
-                    <button class='main-button' id='create-profile-button'>Create a New Profile</button>
+                    <div class="big-card margin-top margin-bottom center stack-divs">
+                        <h3 class='main-text'>Oh no!</h3>
+                        <h4 class='sub-text'>Your rental doesn't have a profile yet</h4>
+                        <h4 class='sub-text'>Good thing making one is easy!</h4>
+                        <button class='main-button' id='create-profile-button'>Create a New Profile</button>
+                    </div>
                 {% endif %}
             </div>
         </div>
