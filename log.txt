@@ -123,4 +123,5 @@ Big picture:
         -restructured js files
         -stylized dropdown menus
         -stylized rent divider index
+        -added info card for rent index
 

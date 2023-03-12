@@ -13,11 +13,13 @@ from django.contrib.auth.models import User
 @login_required(login_url = 'users:login')
 def index(request):
     user = request.user
-
+    profile = ProfileAuth.objects.get(users=user)
     user_profiles = user.profile.all()
+    calculated_rents = results(profile)
 
     return render(request, 'rentsplit/index.html', {
         'user_profiles': user_profiles,
+        'calculated_rents': calculated_rents,
     })
 
 def user_profile(request, profile_name):
@@ -40,6 +42,7 @@ def create_profile(request):
     if request.method == 'POST':
         profile_name = request.POST['room-name']
         user_ids = request.POST.getlist('users[]')
+        description = request.POST['description']
         users = User.objects.filter(username__in=user_ids)
         current_user = request.user
 
@@ -50,7 +53,8 @@ def create_profile(request):
         all_users_qs = user_qs | User.objects.filter(pk=current_user.pk)
 
         created_profile = ProfileAuth.objects.create(
-            name = profile_name
+            name = profile_name,
+            description = description
         )
         created_profile.save()
         created_profile.users.set(all_users_qs)
