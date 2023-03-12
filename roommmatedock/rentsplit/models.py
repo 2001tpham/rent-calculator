@@ -15,7 +15,7 @@ class ProfileAuth(models.Model):
 class Expense(models.Model):
     name = models.CharField(max_length=64)
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='expense_fr_user', null=True)
-    amount = models.IntegerField(default=0)
+    amount = models.FloatField(default=0)
     profile = models.ForeignKey(ProfileAuth, on_delete=models.CASCADE, null=True, related_name='expense_fr_profile')
 
     class Meta:

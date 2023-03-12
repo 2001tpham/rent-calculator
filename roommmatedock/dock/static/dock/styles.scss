@@ -145,6 +145,10 @@ a:active {
         margin-bottom: 20px;
     }
 
+    .margin-right {
+        margin-right: 25px;
+    }
+
     .margin-left {
         margin-left: 150px;
     }
@@ -493,6 +497,7 @@ a:active {
     cursor: pointer;
     font-family: Poppins;
     transition: 0.4s;
+    color: $textgrey;
 }
 .tab.active {
     height: 100px;
@@ -503,6 +508,7 @@ a:active {
     font-family: Poppins;
     color: $accent;
     transform: scale(1.3);
+    text-decoration: underline;
 }
 
 .tab-display-only {

@@ -15,7 +15,7 @@
     <div class="modal-body">
         <div class="modal-header">
             <div class="modal-title">
-                <h1>Add a Roommate</h1>
+                <h1 class='main-text white-text padding-right-small padding-left-small'>Add a Roommate</h1>
             </div>
 
             <div class="close-modal-button">
@@ -23,11 +23,12 @@
             </div>
         </div>
 
-        <form action="{% url 'rentsplit:add-user' profile_name=profile.name %}" method='POST'>
+        <form action="{% url 'rentsplit:add-user' profile_name=profile.name %}" method='POST' class='stack-divs center padding'>
             {% csrf_token %}
-            <input type="text" name='username' placeholder='Add a user by username'>
-
-            <input class='main-button' type="submit">
+            <input type="text" name='username' placeholder='Add a user by username' class='form-field'>
+            <div class='center'>
+                <input class='main-button' type="submit" value='Add'>
+            </div>
         </form>
     </div>
 </div>
@@ -37,7 +38,7 @@
     <div class="modal-body">
         <div class="modal-header">
             <div class="modal-title">
-                <h1>Add a Roommate</h1>
+                <h1 class='main-text white-text'>Reset Profile Expenses</h1>
             </div>
 
             <div class="close-modal-button">
@@ -45,11 +46,13 @@
             </div>
         </div>
 
-        <div class="content-wrapper">
+        <div class="content-wrapper padding center stack-divs">
             <h5 class='main-text'>Are you sure you want to reset all of the profile's expenses?</h5>
 
-            <a href="{% url 'rentsplit:reset-profile' profile_name=profile.name %}" class='main-button'>I'm Sure</a>
-            <button class='main-button' id='reset-expenses-modal-cancel'>Cancel</button>
+            <div class="center">
+                <a href="{% url 'rentsplit:reset-profile' profile_name=profile.name %}" class='main-button margin-right'>I'm Sure</a>
+                <button class='main-button' id='reset-expenses-modal-cancel'>Cancel</button>
+            </div>
         </div>
         </form>
     </div>
@@ -60,7 +63,7 @@
         <div class="modal-body">
             <div class="modal-header">
                 <div class="modal-title">
-                    <h1>Rent</h1>
+                    <h1 class='main-text white-text'>Rent</h1>
                 </div>
 
                 <div class="close-modal-button">
@@ -68,11 +71,11 @@
                 </div>
             </div>
 
-            <form action="{% url 'rentsplit:update-rent' profile_name=profile.name %}" method='POST'>
+            <form action="{% url 'rentsplit:update-rent' profile_name=profile.name %}" method='POST' class='center stack-divs padding'>
                 {% csrf_token %}
-                <input type="number" name='rent' placeholder='Enter your rent total'>
+                <input type="number" step='0.01' name='rent' placeholder='Enter your rent total' class='form-field'>
 
-                <input type="submit">
+                <input type="submit" class='main-button'>
             </form>
         </div>
     </div>
@@ -86,7 +89,7 @@
         <div class='modal-body'>
             <div class="modal-header">
                 <div class="modal-title">
-                    <h1>Expenses</h1>
+                    <h1 class='main-text white-text padding-right-small padding-left-small'>Expenses</h1>
                 </div>
                 
                 <div class='close-modal-button'>
@@ -94,14 +97,15 @@
                 </div>
             </div>
             
-            <form action="{% url 'rentsplit:add-expense' profile_name=profile.name %}" method='POST'>
+            <form action="{% url 'rentsplit:add-expense' profile_name=profile.name %}" method='POST' class='padding stack-divs center'>
                 {% csrf_token %}
                 <div class="stack-divs">
-                    <input type="text" name='name' placeholder='Name Your Expense'>
-                    <input type="number" name='amount' placeholder='Enter the Amount'>
+                    <input type="text" name='name' placeholder='Name Your Expense' class='form-field'>
+                    <input type="number" step='0.01' name='amount' placeholder='Enter the Amount' class='form-field'>
                     <input type="hidden" name="expense-user" value='{{ current_user }}'>
-        
-                    <input type="submit" value='Save Expense'>
+                    <div class="center">
+                        <input type="submit" value='Save Expense' class='main-button'>
+                    </div>
                 </div>
             
             </form>
@@ -181,25 +185,26 @@
     {% comment %} EXPENSES {% endcomment %}
 
     <div class="content-wrapper app-content center half-div" id='app-expenseid'>
-        
-        <div class="content-wrapper center flex-start">
-            {% for user in profile_users %}
-                <div class='center stack-divs app-card'>
-                    <h2>{{user.username}}</h2>
-                    {% if user.expense_fr_user.all %}
-                            {% for expense in user.expense_fr_user.all %}
-                                <h4>{{expense.name}}: {{expense.amount}}</h4>
-                                {% if user == request.user %}
-                                <a href="{% url 'rentsplit:remove-expense' expense_name=expense.name profile_name=profile.name%}">Remove</a>
-                                {% endif %}
-                            {% endfor %}
-                    {% else %}
-                        <p>No Expenses</p>
-                    {% endif %}
-                </div>
-            {% endfor %}
+        <div class="stack-divs center">
+            <div class="content-wrapper center flex-start">
+                {% for user in profile_users %}
+                    <div class='center stack-divs big-card margin-right'>
+                        <h2 class='main-text'>{{user.username}}</h2>
+                        {% if user.expense_fr_user.all %}
+                                {% for expense in user.expense_fr_user.all %}
+                                    <h4 class='sub-text'>{{expense.name}}: ${{expense.amount|floatformat:2}}</h4>
+                                    {% if user == request.user %}
+                                    <a href="{% url 'rentsplit:remove-expense' expense_name=expense.name profile_name=profile.name%}" class='link'>Remove</a>
+                                    {% endif %}
+                                {% endfor %}
+                        {% else %}
+                            <h3 class='sub-text'>No Expenses</h3>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            </div>
+            <button class='main-button margin-top' id='expense-modal-openid'>Add an Expense</button>
         </div>
-        <button class='main-button' id='expense-modal-openid'>Add an Expense</button>
 
     </div>
     
@@ -207,9 +212,9 @@
     <div class="content-wrapper app-content center half-div" id='app-resultsid'>
         <div class="content-wrapper center flex-start">
             {% for key, value in calculated_rents.items %}
-                <div class="center stack-divs app-card">
-                    <h2>{{ key }}</h2>
-                    <h3>{{ value | floatformat:2 }}</h3>
+                <div class="center stack-divs big-card margin-right">
+                    <h2 class='main-text'>{{ key }}</h2>
+                    <h3 class='sub-text'>${{ value | floatformat:2 }}</h3>
                 </div>
             {% endfor %}
         </div>

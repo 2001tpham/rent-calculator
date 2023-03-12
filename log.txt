@@ -130,7 +130,9 @@ Big picture:
 12 March 2023
     Goals:
         -Stylized Rent divider
+        -Fix results when someone's calculated_rents is negative 
         -PARTIAL Implement message board
     Implemented:
-        -
+        - Stylized Rent divider
+        -added dropdown options
 
