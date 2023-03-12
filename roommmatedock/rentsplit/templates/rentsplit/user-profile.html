@@ -4,6 +4,7 @@
 
 {% block head %}
 <script src="{% static 'rentsplit/rentsplit.js'%}"></script>
+<script src="{% static 'dock/buttons.js' %}"></script>
 {% endblock head %}
 
 {% block body %}
@@ -108,8 +109,8 @@
 
     </div>
 
-<div class="content-wrapper app-banner background-image-app-main">
-    <h1 class='padding-top'>Rent Split</h1>
+<div class="content-wrapper app-banner background-image-app-main center">
+    <h1 class='main-text white-text big-text padding-top'>Rent Divider</h1>
 </div>
 
 {% comment %} MESSAGES DIV {% endcomment %}
@@ -124,26 +125,27 @@
     {% endif %}
 </div>
 
-<div class="content-wrapper center">
-    <h1>{{ profile.name }}</h1>
+<div class="content-wrapper banner padding-top-small padding-bottom-small next-to-eachother">
+    <h2 class='main-text'>{{ profile.name }}</h2>
+    <h4 class='sub-text'>{{profile.description}}</h4>
 </div>
 
 {% comment %} TABS {% endcomment %}
 
-<div class="content-wrapper app-page">
+<div class="content-wrapper app-page next-to-eachother">
 
-    <div class="tabs">
+    <div class="tabs quarter-div">
 
         <div class="tab center" id='tab-userid'>
-            <h2 class='big-text'>Profile</h2>
+            <h2 class='main-text'>Profile</h2>
         </div>
 
         <div class="tab center" id='tab-expenseid'>
-            <h2 class='big-text'>Expenses</h2>
+            <h2 class='main-text'>Expenses</h2>
         </div>
 
         <div class="tab center" id='tab-resultsid'>
-            <h2 class='big-text'>Results</h2>
+            <h2 class='main-text'>Results</h2>
         </div>
 
     </div>
@@ -151,28 +153,34 @@
     {% comment %} APP CONTENT {% endcomment %}
     {% comment %} MAIN INFO USER TAB {% endcomment %}
 
-    <div class="content-wrapper app-content" id='app-userid'>
+    <div class="content-wrapper app-content half-div next-to-eachother" id='app-userid'>
 
-        <div class="center stack-divs">
-            <h2>This Month's Rent: ${{profile.rent}}</h2>
-            <button class='main-button' id='rent-buttonid'>Update Rent</button>
+        <div class="center stack-divs big-card">
+            <h2 class='main-text'>This Month's Rent: ${{profile.rent}}</h2>
+            {% for key, value in calculated_rents.items %}
+                {% if key == request.user.username %}
+                    <h3 class='sub-text'>Your Split: ${{ value|floatformat:2 }}</h3>
+                {% endif %}
+            {% endfor %}
+            <button class='main-button margin-bottom' id='rent-buttonid'>Update Rent</button>
+            <button class='main-button' id='reset-profile-button'>Reset Profile Expenses</button>
         </div>
 
         {% comment %} USERS {% endcomment %}
-        <div class='stack-divs center'>
+        <div class='stack-divs center big-card margin-left-med'>
+            <h2 class='main-text'>Roommates</h2>
 
             {% for user in profile_users %}
-            <h2>{{ user.username }}</h2>
+            <h4 class='sub-text'>{{ user.username }}</h4>
             {% endfor %}
-            <button class='main-button' id='add-user-in-profile'>Add Another Roommate</button>
+            <button class='main-button margin-bottom' id='add-user-in-profile'>Add Another Roommate</button>
         </div>
 
-        <button class='main-button' id='reset-profile-button'>Reset Profile Expenses</button>
     </div>
     
     {% comment %} EXPENSES {% endcomment %}
 
-    <div class="content-wrapper app-content" id='app-expenseid'>
+    <div class="content-wrapper app-content center half-div" id='app-expenseid'>
         
         <div class="content-wrapper center flex-start">
             {% for user in profile_users %}
@@ -191,12 +199,12 @@
                 </div>
             {% endfor %}
         </div>
-        <button class='big-btn' id='expense-modal-openid'>Add an Expense</button>
+        <button class='main-button' id='expense-modal-openid'>Add an Expense</button>
 
     </div>
     
     {% comment %} RESULTS {% endcomment %}
-    <div class="content-wrapper app-content" id='app-resultsid'>
+    <div class="content-wrapper app-content center half-div" id='app-resultsid'>
         <div class="content-wrapper center flex-start">
             {% for key, value in calculated_rents.items %}
                 <div class="center stack-divs app-card">

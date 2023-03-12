@@ -22,16 +22,19 @@ document.addEventListener('DOMContentLoaded', function() {
         userApp.style.display = 'none';
         expensesApp.style.display = 'flex';
         resultsApp.style.display = 'none';
+        expenseTab.classList.add('active');
     }
     else if (active_tab === 'results') {
         userApp.style.display = 'none';
         expensesApp.style.display = 'none';
         resultsApp.style.display = 'flex';
+        resultsTab.classList.add('active');
     }
     else {
         userApp.style.display = 'flex';
         expensesApp.style.display = 'none';
         resultsApp.style.display = 'none';
+        userTab.classList.add('active');
     }
 
     //Tab buttons
@@ -40,6 +43,9 @@ document.addEventListener('DOMContentLoaded', function() {
         userApp.style.display = 'flex';
         expensesApp.style.display = 'none';
         resultsApp.style.display = 'none';
+        userTab.classList.add('active');
+        expenseTab.classList.remove('active');
+        resultsTab.classList.remove('active');
     })
 
     expenseTab.addEventListener('click', function() {
@@ -47,6 +53,9 @@ document.addEventListener('DOMContentLoaded', function() {
         userApp.style.display = 'none';
         expensesApp.style.display = 'flex';
         resultsApp.style.display = 'none';
+        expenseTab.classList.add('active');
+        userTab.classList.remove('active');
+        resultsTab.classList.remove('active');
     })
 
     resultsTab.addEventListener('click', function() {
@@ -54,6 +63,9 @@ document.addEventListener('DOMContentLoaded', function() {
         userApp.style.display = 'none';
         expensesApp.style.display = 'none';
         resultsApp.style.display = 'flex';
+        resultsTab.classList.add('active');
+        expenseTab.classList.remove('active');
+        userTab.classList.remove('active');
     })
 
     //MODAL FOR EXPENSES

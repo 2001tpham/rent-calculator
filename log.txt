@@ -125,3 +125,12 @@ Big picture:
         -stylized rent divider index
         -added info card for rent index
 
+---------------------------------------------------------------------
+
+12 March 2023
+    Goals:
+        -Stylized Rent divider
+        -PARTIAL Implement message board
+    Implemented:
+        -
+
