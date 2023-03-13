@@ -212,10 +212,28 @@
     <div class="content-wrapper app-content center half-div" id='app-resultsid'>
         <div class="content-wrapper center flex-start">
             {% for key, value in calculated_rents.items %}
+                {% if owed_user.all %}
+                    {% for other_key, other_value in owed_user.items %}
+                        {% if key == other_key %}
+                            <div class="center stack-divs big-card margin-right">
+                                <h2 class='main-text'>{{ key }}</h2>
+                                <h3 class='sub-text'>${{ value | floatformat:2 }}</h3>
+                            </div>
+                        {% else %}
+                        <div class="center stack-divs big-card margin-right">
+                            <h2 class='main-text'>{{ key }}</h2>
+                            <h3 class='sub-text'>${{ value | floatformat:2 }}</h3>
+                            <h4 class='sub-text'>Owes {{other_key}} ${{other_value|floatformat:2}}</h4>
+                        </div>
+                        {% endif %}
+                    {% endfor %}
+                {% else %}
                 <div class="center stack-divs big-card margin-right">
                     <h2 class='main-text'>{{ key }}</h2>
                     <h3 class='sub-text'>${{ value | floatformat:2 }}</h3>
                 </div>
+                {% endif %}
+
             {% endfor %}
         </div>
 

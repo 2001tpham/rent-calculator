@@ -28,7 +28,7 @@ def user_profile(request, profile_name):
     profile_users = profile.users.all()
     profile_expenses = profile.expense_fr_profile.all()
 
-    calculated_rents = results(profile)
+    calculated_rents, owed_user = results(profile)
 
     return render(request, 'rentsplit/user-profile.html', {
         'profile': profile,
@@ -36,6 +36,7 @@ def user_profile(request, profile_name):
         'current_user': user,
         'profile_expenses': profile_expenses,
         'calculated_rents': calculated_rents,
+        'owed_user': owed_user,
     })
 
 def create_profile(request):
@@ -155,12 +156,30 @@ def results(profile):
         #Calculated rent for this user
         calculated_rents[us] = (rent / user_num) - expense + (other_expenses / (user_num - 1)) 
 
+    user_owed = 0
+    owed_user = {}
+    for count, amount in calculated_rents.items():
+        if amount < 0:
+            user_owed += 1
+    not_owed_user = user_owed - user_num
+    if not_owed_user == 0:
+        not_owed_user = user_owed
+    for key, value in calculated_rents.items():
+        if value < 0:
+            print(f'{key} {value}')
+            amount_owed = (value) / not_owed_user
+            owed_user[key] = amount_owed
+            # calculated_rents[key] = 0
+            for oother_user, other_value in calculated_rents.items():
+                if oother_user != key:
+                    calculated_rents[oother_user] = other_value + (value / (user_num - 1))
+    print(f'not owed user: {not_owed_user}')
+    print({f'calc rents {calculated_rents}'})
+    print(f'owed user {owed_user}')
+    print(f'total expense dict {total_expense_dict}')
 
 
-
-
-
-    return calculated_rents
+    return calculated_rents, owed_user
 
 def remove_expense(request, expense_name, profile_name):
     profile = request.user.profile.get(name=profile_name)
