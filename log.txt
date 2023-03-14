@@ -136,3 +136,10 @@ Big picture:
         - Stylized Rent divider
         -added dropdown options
 
+--------------------------------------------------------------------------
+
+14 March 2023
+    Goals:
+        -Fix Algorithm
+    Implemented:
+        -Fixed Algorithm

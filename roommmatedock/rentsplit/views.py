@@ -154,7 +154,7 @@ def results(profile):
                 other_expenses += total_expense_dict[other_user]
 
         #Calculated rent for this user
-        calculated_rents[us] = (rent / user_num) - expense + (other_expenses / (user_num - 1)) 
+        calculated_rents[us] = (rent / user_num) - ( 2 * (expense / user_num)) + (other_expenses / (user_num)) 
 
     user_owed = 0
     owed_user = {}
@@ -167,7 +167,7 @@ def results(profile):
     for key, value in calculated_rents.items():
         if value < 0:
             print(f'{key} {value}')
-            amount_owed = (value) / not_owed_user
+            amount_owed = (value) / (not_owed_user)
             owed_user[key] = amount_owed
             # calculated_rents[key] = 0
             for oother_user, other_value in calculated_rents.items():
