@@ -68,17 +68,33 @@ document.addEventListener('DOMContentLoaded', function() {
         userTab.classList.remove('active');
     })
 
+    const ModalBody = document.querySelectorAll('.modal-body')
+    
     //MODAL FOR EXPENSES
     const expenseModal = document.querySelector('#expense-modalid');
     const expenseModalButton = document.querySelector('#expense-modal-openid');
     const expenseClose = document.querySelector('#expenses-closeid');
 
     expenseModalButton.addEventListener('click', function(){
+        ModalBody.forEach(ModalBody => {
+            ModalBody.classList.remove('active');
+        })
         expenseModal.style.display = 'flex';
     })
 
     expenseClose.addEventListener('click', function() {
-        expenseModal.style.display = 'none';
+        ModalBody.forEach(ModalBody => {
+            ModalBody.classList.add('active');
+        })
+        
+        expenseModal.addEventListener('animationend', function() {
+            ModalBody.forEach(ModalBody => {
+                if (ModalBody.classList.contains('active')) {
+                    expenseModal.style.display = 'none';
+                }
+            })
+        })
+        
     })
 
     window.addEventListener('click', function(event) {
@@ -93,11 +109,24 @@ document.addEventListener('DOMContentLoaded', function() {
     const rentModalClose = document.querySelector('#rent-closeid');
 
     rentModalButton.addEventListener('click', function() {
+        ModalBody.forEach(ModalBody => {
+            ModalBody.classList.remove('active');
+        })
         rentModal.style.display = 'flex';
     })
 
     rentModalClose.addEventListener('click', function() {
-        rentModal.style.display = 'none';
+        ModalBody.forEach(ModalBody => {
+            ModalBody.classList.add('active');
+        })
+        
+        rentModal.addEventListener('animationend', function() {
+            ModalBody.forEach(ModalBody => {
+                if (ModalBody.classList.contains('active')) {
+                    rentModal.style.display = 'none';
+                }
+            })        })
+        
     })
 
     window.addEventListener('click', function(event) {
@@ -114,11 +143,23 @@ document.addEventListener('DOMContentLoaded', function() {
     const addUserModalClose = document.querySelector('#add-user-modal-close');
 
     addUserFromProfileButton.addEventListener('click', function() {
+        ModalBody.forEach(ModalBody => {
+            ModalBody.classList.remove('active');
+        })
         addUserModal.style.display = 'flex';
     })
 
     addUserModalClose.addEventListener('click', function() {
-        addUserModal.style.display = 'none';
+        ModalBody.forEach(ModalBody => {
+            ModalBody.classList.add('active');
+        })
+        
+        addUserModal.addEventListener('animationend', function() {
+            ModalBody.forEach(ModalBody => {
+                if (ModalBody.classList.contains('active')) {
+                    addUserModal.style.display = 'none';
+                }
+            })        })
     })
 
     window.addEventListener('click', function(event) {
@@ -134,16 +175,33 @@ document.addEventListener('DOMContentLoaded', function() {
     const resetExpensesCancel = document.querySelector('#reset-expenses-modal-cancel');
 
     resetExpensesButton.addEventListener('click', function() {
+        ModalBody.forEach(ModalBody => {
+            ModalBody.classList.remove('active');
+        })
         resetExpensesModal.style.display = 'flex';
     })
     
     resetExpensesClose.addEventListener('click', function() {
-        resetExpensesModal.style.display = 'none';
+        ModalBody.forEach(ModalBody => {
+            ModalBody.classList.add('active');
+        })
+        
+        resetExpensesModal.addEventListener('animationend', function() {
+            resetExpensesModal.style.display = 'none';
+        })
     })
     
     resetExpensesCancel.addEventListener('click', function() {
-        resetExpensesModal.style.display = 'none';
-        resetExpensesModal.style.display = 'none';
+        ModalBody.forEach(ModalBody => {
+            ModalBody.classList.add('active');
+        })
+        
+        resetExpensesModal.addEventListener('animationend', function() {
+            ModalBody.forEach(ModalBody => {
+                if (ModalBody.classList.contains('active')) {
+                    resetExpensesModal.style.display = 'none';
+                }
+            })        })
     })
     
     window.addEventListener('click', function(event) {
@@ -151,5 +209,5 @@ document.addEventListener('DOMContentLoaded', function() {
             resetExpensesModal.style.display = 'none';
         }
     })
-
+    
 })

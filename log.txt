@@ -141,5 +141,11 @@ Big picture:
 14 March 2023
     Goals:
         -Fix Algorithm
+        -Stylize messages div
     Implemented:
         -Fixed Algorithm
+        -Animated Close modals and messages
+        -Stylized messages div
+        -Fixed bug when a user logs in and has no profiles
+
+--------------------------------------------------------------------------------------

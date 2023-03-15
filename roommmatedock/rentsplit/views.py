@@ -13,14 +13,23 @@ from django.contrib.auth.models import User
 @login_required(login_url = 'users:login')
 def index(request):
     user = request.user
-    profile = ProfileAuth.objects.get(users=user)
-    user_profiles = user.profile.all()
-    calculated_rents = results(profile)
+    try:
+        profile = ProfileAuth.objects.get(users=user)
+        user_profiles = user.profile.all()
+        calculated_rents = results(profile)
 
-    return render(request, 'rentsplit/index.html', {
-        'user_profiles': user_profiles,
-        'calculated_rents': calculated_rents,
-    })
+        return render(request, 'rentsplit/index.html', {
+            'user_profiles': user_profiles,
+            'calculated_rents': calculated_rents,
+        })
+    except:
+        user_profiles = None
+        calculated_rents = None
+
+        return render(request, 'rentsplit/index.html', {
+            'user_profiles': user_profiles,
+            'calculated_rents': calculated_rents,
+        })
 
 def user_profile(request, profile_name):
     user = request.user
@@ -115,6 +124,7 @@ def update_rent(request, profile_name):
             try:
                 profile.rent = new_rent
                 profile.save()
+                messages.success(request, 'Your rent was updated')
                 return redirect('rentsplit:user-profile', profile_name=profile_name)
             except ValueError:
                 messages.warning(request, 'Your rent has to be a number')
@@ -166,17 +176,12 @@ def results(profile):
         not_owed_user = user_owed
     for key, value in calculated_rents.items():
         if value < 0:
-            print(f'{key} {value}')
             amount_owed = (value) / (not_owed_user)
             owed_user[key] = amount_owed
-            # calculated_rents[key] = 0
+            calculated_rents[key] = 0
             for oother_user, other_value in calculated_rents.items():
                 if oother_user != key:
                     calculated_rents[oother_user] = other_value + (value / (user_num - 1))
-    print(f'not owed user: {not_owed_user}')
-    print({f'calc rents {calculated_rents}'})
-    print(f'owed user {owed_user}')
-    print(f'total expense dict {total_expense_dict}')
 
 
     return calculated_rents, owed_user
@@ -186,6 +191,7 @@ def remove_expense(request, expense_name, profile_name):
     if profile.expense_fr_profile.all():
         expense_to_delete = Expense.objects.get(name=expense_name, profile=profile)
         expense_to_delete.delete()
+        messages.success(request, f'{expense_to_delete.name} was removed')
         return redirect('rentsplit:user-profile', profile_name=profile_name)
 
 def add_user(request, profile_name):

@@ -12,4 +12,5 @@ document.addEventListener('DOMContentLoaded', function() {
             landingButtonBlue.classList.remove('active');
         })
     })
+
 })

@@ -61,9 +61,13 @@
                                     
                                     <div class="dropdown-menu-option">
                                         {% if user.is_authenticated %}
-                                        <a href="{% url 'rentsplit:user-profile' request.user.profile.get.name %}">Rent Divider</a>
+                                            {% if request.user.profile.all %}
+                                                <a href="{% url 'rentsplit:user-profile' request.user.profile.get.name %}">Rent Divider</a>
+                                            {% else %}
+                                                    <a href="{% url 'rentsplit:index'%}">Your Rent Divider</a>
+                                            {% endif %}
                                         {% else %}
-                                        <a href="{% url 'rentsplit:index' %}">Rent Divider</a>
+                                            <a href="{% url 'rentsplit:index' %}">Rent Divider</a>
                                         {% endif %}
                                     </div>
                                     
@@ -98,13 +102,25 @@
                             <a href="{% url 'rentsplit:index'%}">Dashboard</a>
                         </div>
                         
-                        <div class="dropdown-menu-option">
-                            <a href="{% url 'rentsplit:user-profile' request.user.profile.get.name%}">Your Rent Divider</a>
-                        </div>
+                        {% if request.user.profile.all %}
+                            <div class="dropdown-menu-option">
+                                <a href="{% url 'rentsplit:user-profile' request.user.profile.get.name%}">Your Rent Divider</a>
+                            </div>
+                        {% else %}
+                            <div class="dropdown-menu-option">
+                                <a href="{% url 'rentsplit:index'%}">Your Rent Divider</a>
+                            </div>
+                        {% endif %}
                         
-                        <div class="dropdown-menu-option">
-                            <a href="{% url 'rentsplit:user-profile' request.user.profile.get.name%}">Your Message Board</a>
-                        </div>
+                        {% if request.user.profile.all %}
+                            <div class="dropdown-menu-option">
+                                <a href="{% url 'rentsplit:user-profile' request.user.profile.get.name%}">Your Message Board</a>
+                            </div>
+                        {% else %}
+                            <div class="dropdown-menu-option">
+                                <a href="{% url 'rentsplit:index'%}">Your Rent Divider</a>
+                            </div>
+                        {% endif %}
                         
                         <div class="dropdown-menu-option">
                             <a href="{% url 'users:logout'%}">Log Out</a>

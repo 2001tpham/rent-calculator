@@ -5,6 +5,7 @@
 {% block head %}
 <script src="{% static 'rentsplit/rentsplit.js'%}"></script>
 <script src="{% static 'dock/buttons.js' %}"></script>
+<script src="{% static 'dock/messages.js' %}"></script>
 {% endblock head %}
 
 {% block body %}
@@ -117,24 +118,32 @@
     <h1 class='main-text white-text big-text padding-top'>Rent Divider</h1>
 </div>
 
-{% comment %} MESSAGES DIV {% endcomment %}
-<div class="content-wrapper message-container">
-    {% if messages %}
-        {% for message in messages %}
-            <div class="message-banner">
-                <h3 {% if message.tags %} class='{{ message.tags }} subtext' {% else %} class='main-text'{% endif %}>{{message}}</h3>
-            </div>
-        {% endfor %}
-    </ul>
-    {% endif %}
-</div>
-
 <div class="content-wrapper banner padding-top-small padding-bottom-small next-to-eachother">
     <h2 class='main-text'>{{ profile.name }}</h2>
     <h4 class='sub-text'>{{profile.description}}</h4>
 </div>
 
 {% comment %} TABS {% endcomment %}
+
+    {% comment %} MESSAGES DIV {% endcomment %}
+    <div class="content-wrapper margin-top" id='message-container'>
+        {% if messages %}
+        <div class="message-container">
+        {% for message in messages %}
+                <div class="message-banner {{message.tags}}">
+                    <div class='message-message'>
+                        <h4 class='main-text'>{{message}}</h4>
+                    </div>
+                    
+                    <div class='close-modal-button'>
+                        <h3 class='close' id='close-messages'>&times</h3>
+                    </div>
+                </div>
+                
+            </div>
+            {% endfor %}
+        {% endif %}
+    </div>
 
 <div class="content-wrapper app-page next-to-eachother">
 
@@ -212,28 +221,27 @@
     <div class="content-wrapper app-content center half-div" id='app-resultsid'>
         <div class="content-wrapper center flex-start">
             {% for key, value in calculated_rents.items %}
-                {% if owed_user.all %}
+                {% if owed_user.items %}
                     {% for other_key, other_value in owed_user.items %}
                         {% if key == other_key %}
-                            <div class="center stack-divs big-card margin-right">
+                            <div class="center stack-divs big-card margin-right owed">
                                 <h2 class='main-text'>{{ key }}</h2>
                                 <h3 class='sub-text'>${{ value | floatformat:2 }}</h3>
                             </div>
                         {% else %}
-                        <div class="center stack-divs big-card margin-right">
-                            <h2 class='main-text'>{{ key }}</h2>
-                            <h3 class='sub-text'>${{ value | floatformat:2 }}</h3>
-                            <h4 class='sub-text'>Owes {{other_key}} ${{other_value|floatformat:2}}</h4>
-                        </div>
+                            <div class="center stack-divs big-card margin-right">
+                                <h2 class='main-text'>{{ key }}</h2>
+                                <h3 class='sub-text'>${{ value | floatformat:2 }}</h3>
+                                <h4 class='sub-text'>Owes {{other_key}} ${{other_value|floatformat:2}}</h4>
+                            </div>
                         {% endif %}
                     {% endfor %}
                 {% else %}
-                <div class="center stack-divs big-card margin-right">
-                    <h2 class='main-text'>{{ key }}</h2>
-                    <h3 class='sub-text'>${{ value | floatformat:2 }}</h3>
-                </div>
+                    <div class="center stack-divs big-card margin-right">
+                        <h2 class='main-text'>{{ key }}</h2>
+                        <h3 class='sub-text'>${{ value | floatformat:2 }}</h3>
+                    </div>
                 {% endif %}
-
             {% endfor %}
         </div>
 
