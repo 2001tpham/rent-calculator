@@ -277,6 +277,7 @@ a:active {
     }
 
     .nav-container {
+        height: 57px;
         display: flex;
         justify-content: center;
         width: 100%;
@@ -287,6 +288,7 @@ a:active {
         padding-top: 15px;
         padding-bottom: 15px;
         z-index: 1;
+        transition: 0.4s;
     }
 
     .nav-brand {
@@ -625,3 +627,124 @@ a:active {
         box-shadow: 3px 3px 5px 1px grey;
         margin: 10px;
     }
+
+//MOBILE
+@media only screen and (max-width: 450px) {
+
+    .nav-container {
+        height: 149px;
+    }
+    .image {
+        display: flex;
+        justify-content: center;
+    }
+
+    .padding-bottom {
+        padding-bottom: 20px;
+    }
+
+    .logged-out-main-btns {
+        display: flex;
+        flex-direction: row !important;
+    }
+    .logged-out-register {
+        margin: 0;
+    }
+    .nav-profile {
+        margin: 0;
+    }
+
+    .nav-brand {
+        padding: 0 !important;
+    }
+
+    .nav-contents {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    img{
+        width: 300px;
+    }
+
+    .background-image-landing-main {
+        background-image: none;
+        height: 550px;
+        display: flex;
+        flex-direction: column;
+        padding-top: 30px;
+        div {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        a {
+            background-color: $accent;
+            color: white;
+        }
+    }
+
+    .white-text {
+        color: black;
+    }
+
+    .next-to-eachother {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .padding-left-big {
+        padding-left: 0;
+    }
+
+    .mobile-flip {
+        flex-direction: column-reverse;
+    }
+
+    .mobile-center {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .margin-left-small {
+        margin-left: 0px;
+        margin-top: 10px;
+    }
+
+    .margin-left {
+        margin-left: 0px;
+    }
+
+    .mobile-padding {
+        padding: 5px;
+    }
+
+    .padding-top {
+        padding-top: 20px;
+    }
+    
+    .margin-top {
+        margin-top: 5px;
+    }
+
+    .padding-left-med {
+        padding-left: 0px;
+    }
+
+    .mobile-fit-content {
+        padding-top: 30px;
+        padding-bottom: 30px;
+    }
+
+    .background-image-options-main {
+        background-image: none;
+        background-image: none;
+        height: 550px;
+        display: flex;
+        flex-direction: column;
+        padding-top: 60px;
+    }
+}

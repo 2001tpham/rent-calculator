@@ -58,5 +58,27 @@ document.addEventListener('DOMContentLoaded', function() {
             navOption.classList.remove('active');
         })
     })
+
+    //SHINK ON SCROLL NAVBAR FOR MOBILE
+    var previousScrollPos = window.pageYOffset
+    const navBar = document.querySelector('.nav-container'); 
+
+    window.onscroll = function() {
+        var currentScrollPos = window.pageYOffset
+        
+        if (previousScrollPos < currentScrollPos) {
+            navBar.style.height = '35px';
+            navBar.style.overflow = 'hidden';
+        }
+        else {
+            setTimeout(function()  {
+                navBar.style.height = '';
+                navBar.style.overflow = '';
+            }, 50)
+        }
+
+        previousScrollPos = currentScrollPos;
+
+    }
     
 })

@@ -149,3 +149,12 @@ Big picture:
         -Fixed bug when a user logs in and has no profiles
 
 --------------------------------------------------------------------------------------
+
+15 March 2023
+    Goals:
+        -Responsive to mobile
+    Implemented:
+        -Navbar changes size on scroll
+        -Landing Page responsive to mobile
+        -Navbar responsive to mobile
+        -Tools Page responsive to mobile

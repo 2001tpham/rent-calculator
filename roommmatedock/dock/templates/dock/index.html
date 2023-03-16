@@ -11,7 +11,7 @@
 
     {% comment %} MAIN PART OF PAGE {% endcomment %}
     <div class="content-wrapper background-image-landing-main vertical-center">
-        <div class="main-title margin-left white-text margin-left margin-top">
+        <div class="main-title margin-left white-text margin-left margin-top mobile-padding">
 
             <h1 class='main-text top-of-title padding-top big-text'>Make Living With Roommates</h1>
             <h1 class='main-text left-in-div bottom-of-title big-text'>Easier Than Ever</h1>
@@ -23,22 +23,15 @@
     </div>
 
     {% comment %} SNIPPET OF QUICK INFO {% endcomment %}
-    <div class="content-wrapper">
-        <div class="next-to-eachother banner padding-top-small padding-bottom-small">
+    <div class="content-wrapper banner next-to-eachother padding-top-small padding-bottom-small">
 
-            <div class='half-div padding-left-med'>
                 <h2 class='main-text'>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Placeat consequatur sunt sint nemo odit odio?</h2>
-            </div>
             
-            <div class='half-div sub-text padding-left-med'>
                 <h3 class='sub-text'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tempora, asperiores.</h3>
-            </div>
-
-        </div>
     </div>
 
     {% comment %} SECTIONS THAT LIST APPS {% endcomment %}
-    <div class="content-wrapper next-to-eachother">
+    <div class="content-wrapper next-to-eachother mobile-flip mobile-fit-content">
 
         <div class="half-div padding-left-big">
 
@@ -52,17 +45,17 @@
 
         </div>
 
-        <div class="half-div padding-top">
+        <div class="half-div padding-top image">
             {% load static %}
             <img src="{% static 'media/sharing-money.jpg' %}" alt="Roommate Dock" width='500px'>
         </div>
 
     </div>
     
-    <div class="content-wrapper next-to-eachother">
+    <div class="content-wrapper next-to-eachother mobile-fit-content">
 
         
-        <div class="half-div padding-top padding-left-big padding-bottom">
+        <div class="half-div padding-top padding-left-big padding-bottom image">
             {% load static %}
             <img src="{% static 'media/message-board.jpg' %}" alt="Roommate Dock" width='500px'>
         </div>
@@ -87,7 +80,7 @@
 
         <div class="half-div stack-divs center">
             <h1 class='main-text'>Gain access to all of them for free</h1>
-            <div class="margin-top-med">
+            <div class="margin-top-med mobile-center">
                 <a href="{% url 'users:register'%}" class='main-button'>Create an account</a>
                 <a href="{% url 'users:login'%}" class='main-button margin-left-small'>Log in</a>
             </div>
@@ -104,7 +97,7 @@
     </div>
 
     {% comment %} TRY WITHOUT AN ACCOUNT SECTION SECTION {% endcomment %}
-    <div class='content-wrapper next-to-eachother'>
+    <div class='content-wrapper next-to-eachother mobile-fit-content'>
         <div class="half-div center stack-divs">
             <h2 class='main-text'>Let us handle the stress:</h2>
             <div class='padding-left-med'>
