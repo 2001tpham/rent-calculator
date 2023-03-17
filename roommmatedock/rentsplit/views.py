@@ -51,25 +51,38 @@ def user_profile(request, profile_name):
 def create_profile(request):
     if request.method == 'POST':
         profile_name = request.POST['room-name']
-        user_ids = request.POST.getlist('users[]')
-        description = request.POST['description']
-        users = User.objects.filter(username__in=user_ids)
-        current_user = request.user
+        try:
+            user_ids = request.POST.getlist('users[]')
+            description = request.POST['description']
+            users = User.objects.filter(username__in=user_ids)
+            current_user = request.user
+            
+            #TEST TEST ETSETLKSDJFLKJSDFKJ
+            print(users)
 
-        user_list = users
+            if not users :
+                messages.warning(request, 'One of the usernames you entered does not exist')
+                return index(request)
 
-        user_qs = User.objects.filter(id__in = [u.id for u in user_list])
 
-        all_users_qs = user_qs | User.objects.filter(pk=current_user.pk)
+            user_list = users
 
-        created_profile = ProfileAuth.objects.create(
-            name = profile_name,
-            description = description
-        )
-        created_profile.save()
-        created_profile.users.set(all_users_qs)
+            user_qs = User.objects.filter(id__in = [u.id for u in user_list])
 
-        return user_profile(request, profile_name)
+            all_users_qs = user_qs | User.objects.filter(pk=current_user.pk)
+
+            created_profile = ProfileAuth.objects.create(
+                name = profile_name,
+                description = description
+            )
+            created_profile.save()
+            created_profile.users.set(all_users_qs)
+
+
+            return user_profile(request, profile_name)
+        except:
+            messages.warning(request, 'Uh Oh, something went wrong')
+            return user_profile(request, profile_name)
 
 
 def add_expense(request, profile_name):

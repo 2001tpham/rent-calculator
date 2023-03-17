@@ -4,6 +4,7 @@
 {% load static %}
 <script src="{% static 'rentsplit/index.js'%}"></script>
 <script src="{% static 'dock/buttons.js' %}"></script>
+<script src="{% static 'dock/messages.js' %}"></script>
 {% endblock head %}
 
 {% block body %}
@@ -26,9 +27,9 @@
             <div id='create-profile-form-fields' class='center stack-divs'>
                 {% csrf_token %}
             
-                <input type="text" name='room-name' placeholder='Room Name' class='form-field'>
+                <input type="text" name='room-name' placeholder='Room Name' class='form-field' required>
             
-                <textarea name="description" id="" cols="30" rows="10" class='form-field' placeholder='Give Your Profile a Description'></textarea>
+                <textarea name="description" id="" cols="30" rows="10" class='form-field' placeholder='Give Your Profile a Description' required></textarea>
                 
                 <input type="text" name='users[]' placeholder='Add a Roommate by Username' class='form-field'>
             </div>
@@ -52,16 +53,38 @@
     <h3 class='sub-text'>Here it only takes a few minutes</h3>
 </div>
 
+{% comment %} MESSAGES DIV {% endcomment %}
+
+    {% comment %} MESSAGES DIV {% endcomment %}
+    <div class="content-wrapper margin-top" id='message-container'>
+        {% if messages %}
+        <div class="message-container">
+        {% for message in messages %}
+                <div class="message-banner {{message.tags}}">
+                    <div class='message-message'>
+                        <h4 class='main-text'>{{message}}</h4>
+                    </div>
+                    
+                    <div class='close-modal-button'>
+                        <h3 class='close' id='close-messages'>&times</h3>
+                    </div>
+                </div>
+                
+            </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+
 
     {% comment %} PROFILES {% endcomment %}
-    <div class="content-wrapper center">
+    <div class="content-wrapper center mobile-fit-content">
 
         <div>
-            <div class='stack-divs'>
+            <div class='stack-divs center'>
                 {% if request.user.profile.all %}
                     {% for profile in user_profiles %}
                     {% if profile.name %}
-                    <div class="big-card margin-top margin-bottom stack-divs">
+                    <div class="big-card margin-top margin-bottom stack-divs mobile-width">
                         <h3 class='main-text'>{{profile.name}}</h3>
                         <h5 class='sub-text'>{{profile.description}}</h5>
                         <h4 class='sub-text'>Rent: ${{profile.rent|floatformat:2}}</h4>
@@ -75,7 +98,7 @@
                     {% endif %}
                     {% endfor %}
                 {% else %}
-                    <div class="big-card margin-top margin-bottom center stack-divs">
+                    <div class="big-card margin-top margin-bottom center stack-divs mobile-width">
                         <h3 class='main-text'>Oh no!</h3>
                         <h4 class='sub-text'>Your rental doesn't have a profile yet</h4>
                         <h4 class='sub-text'>Good thing making one is easy!</h4>

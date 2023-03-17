@@ -145,7 +145,7 @@
         {% endif %}
     </div>
 
-<div class="content-wrapper app-page next-to-eachother">
+<div class="content-wrapper app-page next-to-eachother mobile-fit-content mobile-fit-height mobile-no-center">
 
     <div class="tabs quarter-div">
 
@@ -168,7 +168,7 @@
 
     <div class="content-wrapper app-content half-div next-to-eachother" id='app-userid'>
 
-        <div class="center stack-divs big-card">
+        <div class="center stack-divs big-card mobile-margin-top">
             <h2 class='main-text'>This Month's Rent: ${{profile.rent}}</h2>
             {% for key, value in calculated_rents.items %}
                 {% if key == request.user.username %}
@@ -195,7 +195,7 @@
 
     <div class="content-wrapper app-content center half-div" id='app-expenseid'>
         <div class="stack-divs center">
-            <div class="content-wrapper center flex-start">
+            <div class="content-wrapper center flex-start mobile-stack mobile-margin-top">
                 {% for user in profile_users %}
                     <div class='center stack-divs big-card margin-right'>
                         <h2 class='main-text'>{{user.username}}</h2>
@@ -219,7 +219,7 @@
     
     {% comment %} RESULTS {% endcomment %}
     <div class="content-wrapper app-content center half-div" id='app-resultsid'>
-        <div class="content-wrapper center flex-start">
+        <div class="content-wrapper center flex-start mobile-stack mobile-margin-top">
             {% for key, value in calculated_rents.items %}
                 {% if owed_user.items %}
                     {% for other_key, other_value in owed_user.items %}

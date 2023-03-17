@@ -346,12 +346,15 @@ a:active {
     }
         
     .dropdown-menu {
+        z-index: 2;
+        position: relative;
         background-color: white;
         padding: 0;
         width: max-content;
     }
 
     .dropdown-menu-option {
+        z-index: 2;
         display: flex;
         flex-wrap: nowrap;
         border: 1px solid $grey;
@@ -363,6 +366,8 @@ a:active {
     }
     
     .dropdown-menu-option.active {
+        position: relative;
+        z-index: 2;
         border: 1px solid $grey;
         padding-right: 20px;
         padding-top: 10px;
@@ -374,6 +379,7 @@ a:active {
     
     #hover-profile-dropdownid {
         transition: 0.4s;
+        z-index: 1;
     }
     #hover-profile-dropdownid.active {
         transform: scale(0.9);
@@ -395,6 +401,7 @@ a:active {
     .dropdown-tools-container {
         position: absolute;
         border: $grey 2px solid;
+        z-index: 2;
         top: 20px;
         left: 0;
         opacity: 0;
@@ -583,10 +590,10 @@ a:active {
     }
     
     .background-image-divider-main {
-            background-image: url('../media/rent-divider.jpeg');
-            height: 500px;
-            background-position: 20% 50%;
-            background-size: 95%;
+        background-image: url('../media/rent-divider.jpeg');
+        height: 500px;
+        background-position: 20% 50%;
+        background-size: 95%;
     }
 
     .background-image-app-main {
@@ -667,26 +674,27 @@ a:active {
         width: 300px;
     }
 
+    .background-image-divider-main{
+        margin-top: 190px;
+        height: 200px;
+    }
+
     .background-image-landing-main {
-        background-image: none;
-        height: 550px;
+        h1 {
+            text-align: center;
+            font-size: 30px !important;
+        }
+        margin-top: 190px;
+        height: 250px;
         display: flex;
         flex-direction: column;
-        padding-top: 30px;
         div {
             display: flex;
             flex-direction: column;
             align-items: center;
         }
-        a {
-            background-color: $accent;
-            color: white;
-        }
     }
 
-    .white-text {
-        color: black;
-    }
 
     .next-to-eachother {
         display: flex;
@@ -739,12 +747,79 @@ a:active {
         padding-bottom: 30px;
     }
 
+    .background-image-app-main{
+        margin-top: 190px;
+        height: 200px;
+    }
+
     .background-image-options-main {
-        background-image: none;
-        background-image: none;
-        height: 550px;
+        h1 {
+            font-size: 29px !important;
+            margin-top: 0px;
+            text-align: center;
+        }
+        margin-top: 190px;
+        height: 200px;
         display: flex;
         flex-direction: column;
-        padding-top: 60px;
+
+    }
+
+    .nav-margin {
+        margin-top: 240px;
+    }
+
+    .mobile-width {
+        width: 80%;
+    }
+
+    .mobile-fit-height {
+        height: 1000px;
+    }
+
+    .mobile-no-center {
+        justify-content: start;
+    }
+    
+    .tabs {
+        flex-direction: row;
+        width: 80%;
+    }
+
+    .tab {
+        font-size: 12px;
+        height: 50px;
+        width: 130px;
+    }
+    .tab.active {
+        height: 50px;
+        width: 100px;
+    }
+
+    .mobile-margin-top {
+        margin-top: 250px;
+    }
+
+    .mobile-stack {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .margin-right {
+        margin-top: 20px;
+        margin-right: 0px;
+    }
+
+    .app-content {
+        justify-content: center;
+    }
+
+    .margin-left-med {
+        margin-top: 20px;
+        margin-left: 0px;
+    }
+
+    .margin-top {
+        margin-top: 20px;
     }
 }

@@ -158,3 +158,12 @@ Big picture:
         -Landing Page responsive to mobile
         -Navbar responsive to mobile
         -Tools Page responsive to mobile
+
+------------------------------------------------------------------------------------------
+
+16 March 2023
+    Goals:
+        -Make responsive to mobile
+    Implemented:
+        -Website responsive to mobile
+        -Functional when username doens't exist when creating a profile
