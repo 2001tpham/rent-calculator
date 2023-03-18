@@ -167,3 +167,21 @@ Big picture:
     Implemented:
         -Website responsive to mobile
         -Functional when username doens't exist when creating a profile
+
+-------------------------------------------------------------------------------------------
+
+17 March 2023
+    Goals:
+        -Create Message Board
+    Implemented:
+        -Message and Reply models created
+        -Add message functional
+        -Displays message thumbnail
+    Plan:
+        -Open message button
+        -Delete message button
+        -Stylize message board
+        -Make messageboard responsive to mobile
+        -Make site responsive to breakpoints
+        -Stylize footer
+        

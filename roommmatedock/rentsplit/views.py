@@ -56,9 +56,6 @@ def create_profile(request):
             description = request.POST['description']
             users = User.objects.filter(username__in=user_ids)
             current_user = request.user
-            
-            #TEST TEST ETSETLKSDJFLKJSDFKJ
-            print(users)
 
             if not users :
                 messages.warning(request, 'One of the usernames you entered does not exist')

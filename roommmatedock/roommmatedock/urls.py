@@ -21,4 +21,5 @@ urlpatterns = [
     path('', include('dock.urls')),
     path('rentsplit/', include('rentsplit.urls')),
     path('users/', include('users.urls')),
+    path('messageboard/', include('messageboard.urls')),
 ]

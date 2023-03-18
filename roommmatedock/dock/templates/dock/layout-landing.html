@@ -72,7 +72,7 @@
                                     </div>
                                     
                                     <div class="dropdown-menu-option">
-                                        <a href="{% url 'index'%}">Message Board</a>
+                                        <a href="{% url 'messageboard:index' request.user.profile.get.name%}">Message Board</a>
                                     </div>
     
                                 </div>
@@ -114,7 +114,7 @@
                         
                         {% if request.user.profile.all %}
                             <div class="dropdown-menu-option">
-                                <a href="{% url 'rentsplit:user-profile' request.user.profile.get.name%}">Your Message Board</a>
+                                <a href="{% url 'messageboard:index' request.user.profile.get.name%}">Your Message Board</a>
                             </div>
                         {% else %}
                             <div class="dropdown-menu-option">

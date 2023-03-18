@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'compressor',
     'rentsplit',
     'users',
+    'messageboard',
 ]
 
 MIDDLEWARE = [

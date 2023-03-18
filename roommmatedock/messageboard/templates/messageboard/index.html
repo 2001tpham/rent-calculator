@@ -1,0 +1,72 @@
+{% extends 'dock/layout-landing.html' %}
+
+{% block head %}
+{% load static %}
+<script src="{% static 'messageboard/messboard.js' %}"></script>
+<script src="{% static 'dock/buttons.js' %}"></script>
+{% endblock head %}
+{% block body %}
+
+    <h1 class='nav-margin'>MESSAGES</h1>
+
+    {% comment %} ADD MESSAGE MODAL {% endcomment %}
+    <div class="modal" id='messageboard-modalid'>
+        <div class="modal-body">
+            <div class="modal-header">
+                <div class="modal-title">
+                    <h1 class='main-text white-text'>Rent</h1>
+                </div>
+
+                <div class="close-modal-button">
+                    <h3 class='close' id='messageboard-closeid'>&times</h3>
+                </div>
+
+            </div>
+            <form action="{% url 'messageboard:add-message' profile.name %}" class='center stack-divs padding' method='POST'>
+                {% csrf_token %}
+                <input type="text" placeholder='Subject' class='form-field' name='form-subject'>
+                <input type="text" placeholder='Type your message' class='form-field' name='form-body'>
+                <input type="submit" value='Post' class='main-button'>
+            </form>
+
+        </div>
+    </div>
+
+    <div class="center next-to-eachother flex-wrap">
+        {% if all_messages %}
+            {% for mes in all_messages %}
+                {% if mes.sender == request.user %}
+                    <div class="big-card center stack-divs margin-bottom margin-top margin-right">
+                        <h2 class='main-text'>{{mes.subject}}</h2>
+                        <h3 class='sub-text'>{{mes.sender}}</h3>
+                        <h5 class='sub-text'>{{mes.created_date}}</h5>
+                        <div>
+                            <button class='main-button' id='open-message-button'>Open</button>
+                            <button class='main-button' id='delete-message-button'>Delete</button>
+                        </div>
+                    </div>
+                {% else %}
+                <div class="big-card center stack-divs margin-bottom margin-top margin-right">
+                    <h2 class='main-text'>{{mes.subject}}</h2>
+                    <h3 class='sub-text'>{{mes.sender}}</h3>
+                    <h5 class='sub-text'>{{mes.created_date}}</h5>
+                    <button class='main-button' id='open-message-button'>Open</button>
+                </div>
+                {% endif %}
+            {% endfor %}
+        {% else %}
+            <div class="big-card center stack-divs margin-bottom margin-top">
+                <h2 class='main-text'>Oh no!</h2>
+                <h3 class='sub-text'>There aren't any messages yet</h3>
+            </div>
+        {% endif %}
+    </div>
+
+    <div class="center margin-bottom">
+        <button class='main-button' id='messageboard-button'>Add a Message</button>
+    </div>
+
+{% endblock body %}
+
+
+
