@@ -1,0 +1,106 @@
+{% extends 'dock/layout-landing.html' %}
+{% load static %}
+{% block head %}
+<script src="{%static 'dock/buttons.js'%}"></script>
+<script src="{%static 'dock/messages.js'%}"></script>
+<script src="{% static 'rentsplit/settings.js'%}"></script>
+{% endblock head %}
+
+{% block body %}
+
+<div class="content-wrapper app-banner background-image-divider-main center">
+    <h1 class='padding-top white-text main-text big-text'>Settings</h1>
+</div>
+
+<div class="banner next-to-eachother padding-top-small padding-bottom-small center">
+    <div class="half-div center">
+        <h2 class='main-text' style='text-align:center;'>Make you profile yours</h2>
+    </div>
+    
+    <div class="half-div center">
+        <h3 class='sub-text'>Make Roommmate Dock feel like home</h3>
+    </div>
+</div>
+
+{% comment %} DELETE CONFIRM MODAL {% endcomment %}
+<div class="modal" id='delete-modal'>
+    <div class="modal-body">
+        <div class="modal-header">
+            <div class="modal-title">
+                <h1 class='main-text white-text'>Delete Profile</h1>
+            </div>
+
+            <div class="close-modal-button">
+                <h3 class='close' id='delete-modal-close'>&times</h3>
+            </div>
+        </div>
+
+        <div class="content-wrapper padding center stack-divs">
+            <h5 class='main-text'>Are you sure you want to delete {{profile.name}}</h5>
+
+            <div class="center">
+                <a href="{% url 'rentsplit:delete-profile' profile_name=profile.name %}" class='main-button margin-right'>I'm Sure</a>
+                <button class='main-button' id='delete-modal-cancel'>Cancel</button>
+            </div>
+        </div>
+        </form>
+    </div>
+</div>
+
+{% comment %} MESSAGES DIV {% endcomment %}
+
+    {% comment %} MESSAGES DIV {% endcomment %}
+    <div class="content-wrapper margin-top" id='message-container'>
+        {% if messages %}
+        <div class="message-container">
+        {% for message in messages %}
+                <div class="message-banner {{message.tags}}">
+                    <div class='message-message'>
+                        <h4 class='main-text'>{{message}}</h4>
+                    </div>
+                    
+                    <div class='close-modal-button'>
+                        <h3 class='close' id='close-messages'>&times</h3>
+                    </div>
+                </div>
+                
+            </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+    <div class="center next-to-eachother mobile-fit-content">
+        {% comment %} PROFILE NAME {% endcomment %}
+        <div class="big-card margin-top margin-bottom stack-divs mobile-width margin-right">
+            <h3 class='main-text'>Profile Name: {{profile.name}}</h3>
+            <h5 class='link main-text' id='settings-change-name'>Change</h5>
+
+            <div class="hidden settings-form" id='settings-form-name'>
+                <form action="{% url 'rentsplit:profile-settings' profile.name%}" class='center stack-divs padding' method='POST'>
+                    {% csrf_token %}
+                    <input type="text" value='{{profile.name}}' class='form-field' name='settings-name' required>
+                    <input type="submit" class='main-button' id='name-submit'>
+                </form>
+            </div>
+        </div>
+        
+        {% comment %} PROFILE DESCRIPTION {% endcomment %}
+        <div class="big-card margin-top margin-bottom stack-divs mobile-width margin-right">
+            <h3 class='main-text'>Profile Description: {{profile.description}}</h3>
+            <h5 class='link main-text' id='settings-change-description'>Change</h5>
+
+            <div class="hidden settings-form" id='settings-form-description'>
+                <form action="{% url 'rentsplit:profile-settings' profile.name%}" class='center stack-divs padding' id='setting-form-description' method='POST'>
+                    {% csrf_token %}
+                    <textarea name="settings-description" cols="30" rows="10"  class='form-field' required>{{profile.description}}</textarea>
+                    <input type="submit" class='main-button' id='description-submit'>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="center margin-bottom">
+        <button class='main-button' id='delete-profile-button'>Delete Profile</button>
+    </div>
+
+
+{% endblock body %}

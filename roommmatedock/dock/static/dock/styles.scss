@@ -166,6 +166,8 @@ a:active {
 
     .link {
         transition: 0.3s;
+        cursor: pointer;
+        color: $accent;
     }
     .link:hover {
         transform: scale(0.9);
@@ -261,6 +263,10 @@ a:active {
         border-radius: 2px;
         border: none;
         cursor: pointer;
+    }
+
+    .hidden {
+        display: none;
     }
 
 //USERS
@@ -494,14 +500,36 @@ a:active {
         background-color: $grey;
     }
 
+    .row {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .padding-footer {
+        padding-top: 20px;
+        padding-left: 100px;
+        padding-right: 100px;
+    }
+
+    .text-align-start {
+        text-align: start;
+    }
+    .text-align-end {
+        text-align: end;
+    }
+
     .text-center {
         text-align: center;
     }
 
-    .footer-next-to-eachother {
+    .footer {
+        height: 200px;
+    }
+    
+    .flex-end {
         display: flex;
-        flex-direction: row;
-        align-items: center;
+        justify-content: end;
+        margin-right: 10px;
     }
 
     .stack-divs {
@@ -635,9 +663,60 @@ a:active {
         margin: 10px;
     }
 
-//MOBILE
-@media only screen and (max-width: 450px) {
+    .message-card {
+        padding: 20px;
+        box-shadow: 5px 5px 5px 5px $grey;
+        width: 90%;
+        margin-bottom: 20px;
+        margin-top: 20px;
+        padding-left: 40px;
+    }
 
+    .reply-card {
+        padding: 20px;
+        box-shadow: 5px 5px 5px 5px $grey;
+        width: 70%;
+        margin-bottom: 20px;
+        margin-top: 20px;
+        padding-left: 40px;
+        margin-left: 20px;
+    }
+
+    .notop-margin {
+        margin-top: 0px;
+    }
+
+    .reverse {
+        display: flex;
+        flex-direction: row-reverse;
+    }
+
+    .big-card.read {
+        background-color: rgb(209, 209, 209);
+    }
+
+//MOBILE
+@media only screen and (max-width: 900px) {
+
+
+    .padding-footer {
+        padding-top: 20px;
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+
+    .message-card {
+        width: 70%;
+    }
+    .reply-card {
+        margin-left: 0px;
+        width: 50%;
+    }
+
+    .reverse {
+        display: flex;
+        flex-direction: column-reverse;
+    }
     .nav-container {
         height: 149px;
     }

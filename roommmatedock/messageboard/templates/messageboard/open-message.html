@@ -1,0 +1,62 @@
+{% extends 'dock/layout-landing.html' %}
+
+{% load static %}
+{% block head %}
+<script src="{% static 'dock/buttons.js' %}"></script>
+<script src="{% static 'messageboard/open-message.js' %}"></script>
+
+{% endblock head %}
+
+{% block body %}
+
+    {% comment %} REPLY MODAL {% endcomment %}
+    <div class="modal" id='reply-modalid'>
+        <div class="modal-body">
+            <div class="modal-header">
+                <div class="modal-title">
+                    <h1 class='main-text white-text'>Rent</h1>
+                </div>
+
+                <div class="close-modal-button">
+                    <h3 class='close' id='reply-closeid'>&times</h3>
+                </div>
+
+            </div>
+            <form action="{% url 'messageboard:message-reply' profile_name=mes.profile.name date=mes.created_date sender=mes.sender subject=mes.subject %}" class='center stack-divs padding' method='POST'>
+                {% csrf_token %}
+                <input type="text" placeholder='Type your reply' class='form-field' name='form-reply'>
+                <input type="submit" value='Post' class='main-button'>
+            </form>
+
+        </div>
+    </div>
+
+
+    <div class="content-wrapper app-banner background-image-app-main center">
+        <h1 class='main-text white-text big-text padding-top'>Message Board</h1>
+    </div>
+    
+    <div class="content-wrapper banner padding-top-small padding-bottom-small next-to-eachother">
+        <h2 class='main-text'>{{ profile.name }}</h2>
+        <h4 class='sub-text'>{{profile.description}}</h4>
+    </div>
+    <div class="center stack-divs flex-wrap">
+        <div class="message-card stack-divs">
+            <h2 class='main-text'>{{mes.subject}}</h2>
+            <h3 class='sub-text'>From: {{mes.sender}}</h3>
+            <h5 class='sub-text notop-margin'>{{mes.created_date}}</h5>
+            <p class='main-text'>{{mes.body}}</p>
+            <button class='main-button' id='reply-buttonid'>Reply</button>
+        </div>
+
+        {% if replies %}
+            {% for reply in replies %}
+            <div class="reply-card stack-divs">
+                <h4 class='main-text'>{{reply.user}}</h3>
+                <h5 class='sub-text notop-margin'>{{reply.created_time}}</h5>
+                <p class='main-text'>{{reply.body}}</p>
+            </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+{% endblock body %}

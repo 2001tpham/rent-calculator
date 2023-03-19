@@ -22,7 +22,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (modalBody.classList.contains('active')) {
                     addMessageModal.style.display = 'none';
                 }
-            })        })
-        
+            })        
+        })        
     })
+
+    window.onclick = function(event) {
+        if (event.target == addMessageModal) {
+            addMessageModal.style.display = 'none';
+        }
+    }
+
 })

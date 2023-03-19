@@ -62,9 +62,9 @@
                                     <div class="dropdown-menu-option">
                                         {% if user.is_authenticated %}
                                             {% if request.user.profile.all %}
-                                                <a href="{% url 'rentsplit:user-profile' request.user.profile.get.name %}">Rent Divider</a>
+                                                <a href="{% url 'rentsplit:user-profile' request.user.profile.get.name %}">Your Rent Divider</a>
                                             {% else %}
-                                                    <a href="{% url 'rentsplit:index'%}">Your Rent Divider</a>
+                                                    <a href="{% url 'rentsplit:index'%}">Rent Divider</a>
                                             {% endif %}
                                         {% else %}
                                             <a href="{% url 'rentsplit:index' %}">Rent Divider</a>
@@ -72,7 +72,11 @@
                                     </div>
                                     
                                     <div class="dropdown-menu-option">
-                                        <a href="{% url 'messageboard:index' request.user.profile.get.name%}">Message Board</a>
+                                        {% if request.user.profile.all %}
+                                            <a href="{% url 'messageboard:index' request.user.profile.get.name%}">Your Message Board</a>
+                                        {% else %}
+                                            <a href="{% url 'rentsplit:index' %}">Message Board</a>
+                                        {% endif %}
                                     </div>
     
                                 </div>
@@ -80,8 +84,7 @@
                             </div>
                         </div>
 
-                        <li class='nav-option'><a href="{% url 'index' %}">Option</a></li>
-                        <li class='nav-option'><a href="{% url 'index' %}">Option</a></li>
+                        <li class='nav-option'><a href="{% url 'index' %}">About Us</a></li>
                     </ul>
 
 
@@ -118,7 +121,7 @@
                             </div>
                         {% else %}
                             <div class="dropdown-menu-option">
-                                <a href="{% url 'rentsplit:index'%}">Your Rent Divider</a>
+                                <a href="{% url 'rentsplit:index'%}">Your Message Board</a>
                             </div>
                         {% endif %}
                         
@@ -159,32 +162,19 @@
     {% block body %}
     {% endblock body %}
 
-    <footer class='footer footer-next-to-eachother banner'>
+    <footer class='footer banner'>
 
-        <div class="half-div left-in-div stack-divs padding-left-big">
-            <div>
-                <h3 class='med-text bottom-padding-small'>Roommate Dock</h3>
+        <div class="padding-footer row">
+            <div class="half-div">
+                <h3 class='main-text text-align-start'>Roommate Dock</h3>
             </div>
             
-            <div>
-                <h4 class='med-text'>Get in Touch</h4>
-                <h5 class='small-text bottom-padding-small'>Email</h5>
+            <div class="half-div">
+                <h3 class='main-text text-align-end'>Meet Our Team</h3>
+                <h4 class='sub-text text-align-end link'><a href="http://tommy-pham.netlify.app/" target='blank'>Click Here</a></h4>
             </div>
         </div>
-
-        <div class="half-div right-in-div stack-divs padding-right-big">
-            <div class='right-in-div' style='margin-right: 0px'>
-                <h3 class='med-text bottom-padding-small'>
-                    Follow Us For News and Updates
-                </h3>
-            </div>
-            <div>
-                <h4 class='small-text text-right-in-div'>Social Media</h4>
-                <h4 class='small-text text-right-in-div'>Social Media</h4>
-                <h4 class='small-text text-right-in-div'>Social Media</h4>
-            </div>
-
-        </div>
+        
 
     </footer>
 </body>

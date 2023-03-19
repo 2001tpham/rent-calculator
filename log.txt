@@ -184,4 +184,21 @@ Big picture:
         -Make messageboard responsive to mobile
         -Make site responsive to breakpoints
         -Stylize footer
-        
+
+------------------------------------------------------------------------------------------------
+
+18 March 2023
+    Goals:
+        -Open message button
+        -Delete message button
+        -Stylize message board
+        -Make messageboard responsive to mobile
+        -Make site responsive to breakpoints
+        -Stylize footer
+    Implemented:
+        -Open message button
+        -Delete message button
+        -Stylize message board
+        -Make messageboard responsive to mobile
+        -Stylized footer
+        -Responsive to breakpoints        

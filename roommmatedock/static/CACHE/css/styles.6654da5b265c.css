@@ -1,0 +1,846 @@
+/* line 6, dock/static/dock/styles.scss */
+body {
+  padding: 0;
+  margin: 0; }
+
+/* line 11, dock/static/dock/styles.scss */
+html {
+  padding: 0;
+  margin: 0; }
+
+/* line 16, dock/static/dock/styles.scss */
+a:link {
+  color: #1d3557;
+  text-decoration: none; }
+
+/* line 20, dock/static/dock/styles.scss */
+a:visited {
+  color: #1d3557;
+  text-decoration: none; }
+
+/* line 24, dock/static/dock/styles.scss */
+a:hover {
+  color: #1d3557;
+  text-decoration: none; }
+
+/* line 28, dock/static/dock/styles.scss */
+a:active {
+  color: #1d3557;
+  text-decoration: none; }
+
+@keyframes animatetop {
+  from {
+    transform: translateY(-400px);
+    opacity: 0; }
+  to {
+    transform: translateY(0);
+    opacity: 1; } }
+
+@keyframes animatebottom {
+  from {
+    transform: translateY(0);
+    opacity: 1; }
+  70% {
+    height: 0; }
+  to {
+    transform: translateY(-400px);
+    opacivty: 0;
+    height: 0; } }
+
+/* line 45, dock/static/dock/styles.scss */
+.modal {
+  flex-direction: column;
+  display: none;
+  position: fixed;
+  top: 0;
+  z-index: 1;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4); }
+
+/* line 59, dock/static/dock/styles.scss */
+.modal-header {
+  position: relative;
+  top: 0;
+  display: flex;
+  flex-direction: row;
+  background-color: #1d3557;
+  align-items: center;
+  justify-content: center;
+  width: 100%; }
+
+/* line 70, dock/static/dock/styles.scss */
+.close-modal-button {
+  display: flex;
+  align-items: first baseline;
+  margin-right: 20px; }
+
+/* line 76, dock/static/dock/styles.scss */
+.modal-title {
+  display: flex;
+  justify-content: center;
+  width: 100%; }
+
+/* line 82, dock/static/dock/styles.scss */
+.modal-body {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  background-color: white;
+  margin: 2% auto;
+  border: 2px solid black;
+  width: fit-content;
+  height: fit-content;
+  animation-name: animatetop;
+  animation-duration: 0.4s; }
+
+/* line 94, dock/static/dock/styles.scss */
+.modal-body.active {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  background-color: white;
+  margin: 2% auto;
+  border: 2px solid black;
+  width: fit-content;
+  height: fit-content;
+  animation-name: animatebottom;
+  animation-duration: 0.4s; }
+
+/* line 107, dock/static/dock/styles.scss */
+.close {
+  color: black;
+  font-size: 28px;
+  font-weight: bold;
+  right: 0%;
+  margin-top: auto; }
+
+/* line 115, dock/static/dock/styles.scss */
+.close:hover {
+  cursor: pointer;
+  color: grey; }
+
+/* line 121, dock/static/dock/styles.scss */
+.message-container {
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+/* line 126, dock/static/dock/styles.scss */
+.message-container.active {
+  animation-name: animatebottom;
+  animation-duration: 0.4s; }
+
+/* line 131, dock/static/dock/styles.scss */
+.message-message {
+  display: flex;
+  justify-content: start;
+  width: 100%; }
+
+/* line 137, dock/static/dock/styles.scss */
+.message-banner {
+  position: relative;
+  width: 85%;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  padding-left: 20px;
+  border-radius: 5px;
+  animation: animatetop;
+  animation-duration: 0.4s; }
+
+/* line 148, dock/static/dock/styles.scss */
+.message-banner.success {
+  background-color: #ddffdd;
+  border: 2px #1d3557 solid; }
+
+/* line 152, dock/static/dock/styles.scss */
+.message-banner.warning {
+  background-color: #ffaeae;
+  border: 2px #1d3557 solid; }
+
+/* line 158, dock/static/dock/styles.scss */
+.form-field {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 90%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px grey solid; }
+
+/* line 167, dock/static/dock/styles.scss */
+.link {
+  transition: 0.3s;
+  cursor: pointer;
+  color: #1d3557; }
+
+/* line 172, dock/static/dock/styles.scss */
+.link:hover {
+  transform: scale(0.9); }
+
+/* line 176, dock/static/dock/styles.scss */
+.main-text {
+  font-family: Poppins;
+  margin-left: 0;
+  margin-right: 0; }
+
+/* line 182, dock/static/dock/styles.scss */
+.big-text {
+  font-size: 45px !important; }
+
+/* line 186, dock/static/dock/styles.scss */
+.sub-text {
+  font-family: Poppins;
+  color: #383838; }
+
+/* line 191, dock/static/dock/styles.scss */
+.white-text {
+  color: white; }
+
+/* line 195, dock/static/dock/styles.scss */
+.vertical-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; }
+
+/* line 201, dock/static/dock/styles.scss */
+.margin-bottom {
+  margin-bottom: 20px; }
+
+/* line 205, dock/static/dock/styles.scss */
+.margin-right {
+  margin-right: 25px; }
+
+/* line 209, dock/static/dock/styles.scss */
+.margin-left {
+  margin-left: 150px; }
+
+/* line 212, dock/static/dock/styles.scss */
+.margin-left-small {
+  margin-left: 10px; }
+
+/* line 215, dock/static/dock/styles.scss */
+.margin-left-med {
+  margin-left: 25px; }
+
+/* line 220, dock/static/dock/styles.scss */
+.margin-top {
+  margin-top: 50px; }
+
+/* line 223, dock/static/dock/styles.scss */
+.margin-top-med {
+  margin-top: 25px; }
+
+/* line 226, dock/static/dock/styles.scss */
+.margin-top-small {
+  margin-top: 10px; }
+
+/* line 230, dock/static/dock/styles.scss */
+.main-button-white {
+  background-color: white;
+  padding: 15px;
+  font-family: Poppins;
+  border-radius: 2px;
+  font-weight: bold;
+  transition: 0.3s; }
+
+/* line 238, dock/static/dock/styles.scss */
+.main-button-white.active {
+  background-color: #868686;
+  padding: 12px;
+  font-family: Poppins;
+  border-radius: 2px;
+  font-weight: bold; }
+
+/* line 246, dock/static/dock/styles.scss */
+.main-button {
+  background-color: #1d3557;
+  color: white !important;
+  padding: 15px;
+  font-family: Poppins;
+  width: fit-content;
+  border-radius: 2px;
+  transition: 0.3s;
+  border: none;
+  cursor: pointer; }
+
+/* line 257, dock/static/dock/styles.scss */
+.main-button.active {
+  background-color: #868686;
+  color: #1d3557 !important;
+  padding: 12px;
+  font-family: Poppins;
+  width: fit-content;
+  border-radius: 2px;
+  border: none;
+  cursor: pointer; }
+
+/* line 268, dock/static/dock/styles.scss */
+.hidden {
+  display: none; }
+
+/* line 273, dock/static/dock/styles.scss */
+.big-card {
+  padding: 20px;
+  box-shadow: 5px 5px 5px 5px #ebdbd1;
+  width: fit-content; }
+
+/* line 281, dock/static/dock/styles.scss */
+.nav-margin {
+  margin-top: 90px; }
+
+/* line 285, dock/static/dock/styles.scss */
+.nav-container {
+  height: 57px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  background-color: white;
+  font-family: Poppins;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  z-index: 1;
+  transition: 0.4s; }
+
+/* line 300, dock/static/dock/styles.scss */
+.nav-brand {
+  font-family: 'Secular One';
+  font-size: 25px;
+  margin-top: 0;
+  margin-bottom: 0;
+  color: #1d3557;
+  transition: 0.5s; }
+
+/* line 308, dock/static/dock/styles.scss */
+.nav-brand.active {
+  font-family: 'Secular One';
+  font-size: 25px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  color: #1d3557;
+  transform: translate(-5px, -5px);
+  text-shadow: 5px 5px #ebdbd1; }
+
+/* line 318, dock/static/dock/styles.scss */
+.nav-contents {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%; }
+
+/* line 325, dock/static/dock/styles.scss */
+.nav-options {
+  display: flex;
+  flex-direction: row;
+  list-style: none; }
+
+/* line 331, dock/static/dock/styles.scss */
+.nav-option {
+  margin-right: 30px;
+  text-decoration: underline;
+  transition: 0.4s; }
+
+/* line 336, dock/static/dock/styles.scss */
+.nav-option.active {
+  margin-right: 30px;
+  transform: scale(0.9);
+  text-decoration: none; }
+
+/* line 342, dock/static/dock/styles.scss */
+.right-in-div {
+  display: flex;
+  margin-left: auto;
+  margin-right: 40px; }
+
+/* line 348, dock/static/dock/styles.scss */
+.nav-profile {
+  display: flex;
+  flex-direction: column;
+  position: relative; }
+
+/* line 354, dock/static/dock/styles.scss */
+.dropdown-menu {
+  z-index: 2;
+  position: relative;
+  background-color: white;
+  padding: 0;
+  width: max-content; }
+
+/* line 362, dock/static/dock/styles.scss */
+.dropdown-menu-option {
+  z-index: 2;
+  display: flex;
+  flex-wrap: nowrap;
+  border: 1px solid #ebdbd1;
+  padding-right: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 20px;
+  transition: 0.3s; }
+
+/* line 374, dock/static/dock/styles.scss */
+.dropdown-menu-option.active {
+  position: relative;
+  z-index: 2;
+  border: 1px solid #ebdbd1;
+  padding-right: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 20px;
+  background-color: #ebdbd1; }
+
+/* line 386, dock/static/dock/styles.scss */
+#hover-profile-dropdownid {
+  transition: 0.4s;
+  z-index: 1; }
+
+/* line 390, dock/static/dock/styles.scss */
+#hover-profile-dropdownid.active {
+  transform: scale(0.9); }
+
+/* line 394, dock/static/dock/styles.scss */
+.dropdown-menu-container.open-menu {
+  opacity: 1;
+  transform: translateY(0); }
+
+/* line 399, dock/static/dock/styles.scss */
+.next-to-eachother {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly; }
+
+/* line 407, dock/static/dock/styles.scss */
+.dropdown-tools-container {
+  position: absolute;
+  border: #ebdbd1 2px solid;
+  z-index: 2;
+  top: 20px;
+  left: 0;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-10px);
+  transition: opacity 0.3s, transform 0.3s; }
+
+/* line 419, dock/static/dock/styles.scss */
+.dropdown-tools-container.open-menu {
+  position: absolute;
+  border: #ebdbd1 2px solid;
+  top: 20px;
+  left: 0;
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+  transition: opacity 0.3s, transform 0.3s; }
+
+/* line 430, dock/static/dock/styles.scss */
+.dropdown-profile-container {
+  position: absolute;
+  border: #ebdbd1 2px solid;
+  top: 20px;
+  right: 0;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-10px);
+  transition: opacity 0.3s, transform 0.3s; }
+
+/* line 441, dock/static/dock/styles.scss */
+.dropdown-profile-container.open-menu {
+  position: absolute;
+  border: #ebdbd1 2px solid;
+  top: 20px;
+  right: 0;
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+  transition: opacity 0.3s, transform 0.3s; }
+
+/* line 452, dock/static/dock/styles.scss */
+.tools-menu {
+  position: relative; }
+
+/* line 456, dock/static/dock/styles.scss */
+.logged-out-nav-btn {
+  margin-right: 10px;
+  transition: 0.3s; }
+
+/* line 460, dock/static/dock/styles.scss */
+.logged-out-nav-btn.active {
+  margin-right: 10px;
+  transform: scale(0.9); }
+
+/* line 468, dock/static/dock/styles.scss */
+.padding {
+  padding: 10px; }
+
+/* line 472, dock/static/dock/styles.scss */
+.padding-top {
+  padding-top: 100px; }
+
+/* line 476, dock/static/dock/styles.scss */
+.padding-top-small {
+  padding-top: 25px; }
+
+/* line 480, dock/static/dock/styles.scss */
+.padding-bottom-small {
+  padding-bottom: 25px; }
+
+/* line 484, dock/static/dock/styles.scss */
+.padding-bottom {
+  padding-bottom: 100px; }
+
+/* line 488, dock/static/dock/styles.scss */
+.padding-top-small {
+  padding-top: 15px; }
+
+/* line 492, dock/static/dock/styles.scss */
+.background-image-landing-main {
+  background-image: url("/static/media/landing-page-main-image.jpeg?3f01c6093c87");
+  height: 700px;
+  background-position: 20% 90%;
+  background-size: 95%; }
+
+/* line 499, dock/static/dock/styles.scss */
+.banner {
+  background-color: #ebdbd1; }
+
+/* line 503, dock/static/dock/styles.scss */
+.text-center {
+  text-align: center; }
+
+/* line 507, dock/static/dock/styles.scss */
+.footer {
+  height: 200px; }
+
+/* line 511, dock/static/dock/styles.scss */
+.flex-end {
+  display: flex;
+  justify-content: end;
+  margin-right: 10px; }
+
+/* line 517, dock/static/dock/styles.scss */
+.stack-divs {
+  display: flex;
+  flex-direction: column; }
+
+/* line 522, dock/static/dock/styles.scss */
+.text-right-in-div {
+  text-align: end; }
+
+/* line 526, dock/static/dock/styles.scss */
+.text-left-in-div {
+  text-align: start; }
+
+/* line 530, dock/static/dock/styles.scss */
+.padding-left-big {
+  padding-left: 100px; }
+
+/* line 533, dock/static/dock/styles.scss */
+.padding-left-med {
+  padding-left: 50px; }
+
+/* line 536, dock/static/dock/styles.scss */
+.padding-left-small {
+  padding-left: 10px; }
+
+/* line 540, dock/static/dock/styles.scss */
+.padding-right-big {
+  padding-right: 100px; }
+
+/* line 544, dock/static/dock/styles.scss */
+.background-image-options-main {
+  background-image: url("/static/media/tools-main.jpeg?b281d055ad2a");
+  height: 500px;
+  background-position: 20% 90%;
+  background-size: 95%; }
+
+/* line 552, dock/static/dock/styles.scss */
+.half-div {
+  width: 50%; }
+
+/* line 555, dock/static/dock/styles.scss */
+.quarter-div {
+  width: 25%; }
+
+/* line 559, dock/static/dock/styles.scss */
+.big-text {
+  margin: 0; }
+
+/* line 566, dock/static/dock/styles.scss */
+.tab {
+  height: 100px;
+  width: 200px;
+  background-color: white;
+  margin-bottom: 20px;
+  cursor: pointer;
+  font-family: Poppins;
+  transition: 0.4s;
+  color: #383838; }
+
+/* line 576, dock/static/dock/styles.scss */
+.tab.active {
+  height: 100px;
+  width: 200px;
+  background-color: white;
+  margin-bottom: 20px;
+  cursor: pointer;
+  font-family: Poppins;
+  color: #1d3557;
+  transform: scale(1.3);
+  text-decoration: underline; }
+
+/* line 588, dock/static/dock/styles.scss */
+.tab-display-only {
+  height: 100px;
+  width: 200px;
+  border: solid black 2px;
+  background-color: white; }
+
+/* line 595, dock/static/dock/styles.scss */
+.tabs {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }
+
+/* line 602, dock/static/dock/styles.scss */
+.background-image-divider-main {
+  background-image: url("/static/media/rent-divider.jpeg?27cef660dfba");
+  height: 500px;
+  background-position: 20% 50%;
+  background-size: 95%; }
+
+/* line 609, dock/static/dock/styles.scss */
+.background-image-app-main {
+  background-image: url("/static/media/app-main-image.jpeg?f695ed0f852c");
+  height: 300px;
+  background-position: 20% 55%;
+  background-size: 100%; }
+
+/* line 617, dock/static/dock/styles.scss */
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+/* line 625, dock/static/dock/styles.scss */
+.app-page {
+  display: flex;
+  flex-direction: row;
+  justify-content: start; }
+
+/* line 631, dock/static/dock/styles.scss */
+.app-content {
+  display: flex;
+  height: 500px;
+  justify-content: start;
+  align-items: center; }
+
+/* line 638, dock/static/dock/styles.scss */
+.flex-start {
+  align-items: flex-start; }
+
+/* line 642, dock/static/dock/styles.scss */
+.app-card {
+  padding: 20px;
+  box-shadow: 3px 3px 5px 1px grey;
+  margin: 10px; }
+
+/* line 648, dock/static/dock/styles.scss */
+.message-card {
+  padding: 20px;
+  box-shadow: 5px 5px 5px 5px #ebdbd1;
+  width: 90%;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  padding-left: 40px; }
+
+/* line 657, dock/static/dock/styles.scss */
+.reply-card {
+  padding: 20px;
+  box-shadow: 5px 5px 5px 5px #ebdbd1;
+  width: 70%;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  padding-left: 40px;
+  margin-left: 20px; }
+
+/* line 667, dock/static/dock/styles.scss */
+.notop-margin {
+  margin-top: 0px; }
+
+/* line 671, dock/static/dock/styles.scss */
+.reverse {
+  display: flex;
+  flex-direction: row-reverse; }
+
+/* line 676, dock/static/dock/styles.scss */
+.big-card.read {
+  background-color: #d1d1d1; }
+
+@media only screen and (max-width: 900px) {
+  /* line 683, dock/static/dock/styles.scss */
+  .message-card {
+    width: 70%; }
+  /* line 686, dock/static/dock/styles.scss */
+  .reply-card {
+    margin-left: 0px;
+    width: 50%; }
+  /* line 691, dock/static/dock/styles.scss */
+  .reverse {
+    display: flex;
+    flex-direction: column-reverse; }
+  /* line 695, dock/static/dock/styles.scss */
+  .nav-container {
+    height: 149px; }
+  /* line 698, dock/static/dock/styles.scss */
+  .image {
+    display: flex;
+    justify-content: center; }
+  /* line 703, dock/static/dock/styles.scss */
+  .padding-bottom {
+    padding-bottom: 20px; }
+  /* line 707, dock/static/dock/styles.scss */
+  .logged-out-main-btns {
+    display: flex;
+    flex-direction: row !important; }
+  /* line 711, dock/static/dock/styles.scss */
+  .logged-out-register {
+    margin: 0; }
+  /* line 714, dock/static/dock/styles.scss */
+  .nav-profile {
+    margin: 0; }
+  /* line 718, dock/static/dock/styles.scss */
+  .nav-brand {
+    padding: 0 !important; }
+  /* line 722, dock/static/dock/styles.scss */
+  .nav-contents {
+    flex-wrap: wrap;
+    justify-content: center; }
+  /* line 727, dock/static/dock/styles.scss */
+  img {
+    width: 300px; }
+  /* line 731, dock/static/dock/styles.scss */
+  .background-image-divider-main {
+    margin-top: 190px;
+    height: 200px; }
+  /* line 736, dock/static/dock/styles.scss */
+  .background-image-landing-main {
+    margin-top: 190px;
+    height: 250px;
+    display: flex;
+    flex-direction: column; }
+    /* line 737, dock/static/dock/styles.scss */
+    .background-image-landing-main h1 {
+      text-align: center;
+      font-size: 30px !important; }
+    /* line 745, dock/static/dock/styles.scss */
+    .background-image-landing-main div {
+      display: flex;
+      flex-direction: column;
+      align-items: center; }
+  /* line 753, dock/static/dock/styles.scss */
+  .next-to-eachother {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; }
+  /* line 759, dock/static/dock/styles.scss */
+  .padding-left-big {
+    padding-left: 0; }
+  /* line 763, dock/static/dock/styles.scss */
+  .mobile-flip {
+    flex-direction: column-reverse; }
+  /* line 767, dock/static/dock/styles.scss */
+  .mobile-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; }
+  /* line 774, dock/static/dock/styles.scss */
+  .margin-left-small {
+    margin-left: 0px;
+    margin-top: 10px; }
+  /* line 779, dock/static/dock/styles.scss */
+  .margin-left {
+    margin-left: 0px; }
+  /* line 783, dock/static/dock/styles.scss */
+  .mobile-padding {
+    padding: 5px; }
+  /* line 787, dock/static/dock/styles.scss */
+  .padding-top {
+    padding-top: 20px; }
+  /* line 791, dock/static/dock/styles.scss */
+  .margin-top {
+    margin-top: 5px; }
+  /* line 795, dock/static/dock/styles.scss */
+  .padding-left-med {
+    padding-left: 0px; }
+  /* line 799, dock/static/dock/styles.scss */
+  .mobile-fit-content {
+    padding-top: 30px;
+    padding-bottom: 30px; }
+  /* line 804, dock/static/dock/styles.scss */
+  .background-image-app-main {
+    margin-top: 190px;
+    height: 200px; }
+  /* line 809, dock/static/dock/styles.scss */
+  .background-image-options-main {
+    margin-top: 190px;
+    height: 200px;
+    display: flex;
+    flex-direction: column; }
+    /* line 810, dock/static/dock/styles.scss */
+    .background-image-options-main h1 {
+      font-size: 29px !important;
+      margin-top: 0px;
+      text-align: center; }
+  /* line 822, dock/static/dock/styles.scss */
+  .nav-margin {
+    margin-top: 240px; }
+  /* line 826, dock/static/dock/styles.scss */
+  .mobile-width {
+    width: 80%; }
+  /* line 830, dock/static/dock/styles.scss */
+  .mobile-fit-height {
+    height: 1000px; }
+  /* line 834, dock/static/dock/styles.scss */
+  .mobile-no-center {
+    justify-content: start; }
+  /* line 838, dock/static/dock/styles.scss */
+  .tabs {
+    flex-direction: row;
+    width: 80%; }
+  /* line 843, dock/static/dock/styles.scss */
+  .tab {
+    font-size: 12px;
+    height: 50px;
+    width: 130px; }
+  /* line 848, dock/static/dock/styles.scss */
+  .tab.active {
+    height: 50px;
+    width: 100px; }
+  /* line 853, dock/static/dock/styles.scss */
+  .mobile-margin-top {
+    margin-top: 250px; }
+  /* line 857, dock/static/dock/styles.scss */
+  .mobile-stack {
+    display: flex;
+    flex-direction: column; }
+  /* line 862, dock/static/dock/styles.scss */
+  .margin-right {
+    margin-top: 20px;
+    margin-right: 0px; }
+  /* line 867, dock/static/dock/styles.scss */
+  .app-content {
+    justify-content: center; }
+  /* line 871, dock/static/dock/styles.scss */
+  .margin-left-med {
+    margin-top: 20px;
+    margin-left: 0px; }
+  /* line 876, dock/static/dock/styles.scss */
+  .margin-top {
+    margin-top: 20px; } }

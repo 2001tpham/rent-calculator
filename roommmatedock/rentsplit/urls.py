@@ -12,4 +12,6 @@ urlpatterns = [
     path('remove/<str:expense_name>/<str:profile_name>', views.remove_expense, name='remove-expense'),
     path('add-user/<str:profile_name>', views.add_user, name='add-user'),
     path('reset-profile/:<str:profile_name>', views.reset_profile, name='reset-profile'),
+    path('setting/<str:profile_name>', views.profile_settings, name='profile-settings'),
+    path('delete-profile/<str:profile_name>', views.delete_profile, name='delete-profile'),
 ]

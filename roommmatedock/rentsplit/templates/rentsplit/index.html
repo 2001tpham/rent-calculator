@@ -48,9 +48,14 @@
     <h1 class='padding-top white-text main-text big-text'>Dashboard</h1>
 </div>
 
-<div class="banner next-to-eachother padding-top-small padding-bottom-small">
-    <h2 class='main-text'>Financial planning can take hours</h2>
-    <h3 class='sub-text'>Here it only takes a few minutes</h3>
+<div class="banner next-to-eachother padding-top-small padding-bottom-small center">
+    <div class="half-div center">
+        <h2 class='main-text' style='text-align:center;'>There are so many things to keep track of when living with roommates</h2>
+    </div>
+    
+    <div class="half-div center">
+        <h3 class='sub-text'>This is the place to make all of it simple</h3>
+    </div>
 </div>
 
 {% comment %} MESSAGES DIV {% endcomment %}
@@ -80,23 +85,40 @@
     <div class="content-wrapper center mobile-fit-content">
 
         <div>
-            <div class='stack-divs center'>
+            <div class='next-to-eachother center'>
                 {% if request.user.profile.all %}
                     {% for profile in user_profiles %}
                     {% if profile.name %}
-                    <div class="big-card margin-top margin-bottom stack-divs mobile-width">
-                        <h3 class='main-text'>{{profile.name}}</h3>
-                        <h5 class='sub-text'>{{profile.description}}</h5>
-                        <h4 class='sub-text'>Rent: ${{profile.rent|floatformat:2}}</h4>
+
+                    <div class="big-card margin-top margin-bottom stack-divs mobile-width margin-right">
+                        <h3 class='main-text'>test</h3>
+                        <h4 class='sub-text'>test</h4>
+                        <a href="{% url 'rentsplit:profile-settings' profile.name%}" class='main-button'>Settings</a>
+                    </div>
+
+                    <div class="big-card margin-top margin-bottom stack-divs mobile-width margin-right">
+                        <h3 class='main-text'>Expenses</h3>
+                        {% if profile.rent == 0 %}
+                            <h4 class='sub-text'>Update this month's rent</h4>
+                        {% else %}
+                            <h4 class='sub-text'>Rent: ${{profile.rent|floatformat:2}}</h4>
+                        {% endif %}
                         {% for calc,value in calculated_rents.items %}
                             {% if calc == request.user.username %}
-                            <h4 class='sub-text'>Your Split: ${{value|floatformat:2}}</h4>
+                                <h4 class='sub-text'>Your Split: ${{value|floatformat:2}}</h4>
                             {% endif %}
                         {% endfor %}
                         <a href="{% url 'rentsplit:user-profile' profile.name %}" class='main-button'>See Details</a>
                     </div>
+
                     {% endif %}
                     {% endfor %}
+                        <div class="big-card stack-divs mobile-width margin-top margin-bottom center">
+                            <h3 class='main-text'>Messages</h3>
+                            <h4 class='sub-text'>{{unread_count}} unread messages</h4>
+                            <a href="{% url 'messageboard:index' request.user.profile.get.name%}" class='main-button'>See Messages</a>
+                        </div>
+
                 {% else %}
                     <div class="big-card margin-top margin-bottom center stack-divs mobile-width">
                         <h3 class='main-text'>Oh no!</h3>

@@ -4,10 +4,9 @@
 {% load static %}
 <script src="{% static 'messageboard/messboard.js' %}"></script>
 <script src="{% static 'dock/buttons.js' %}"></script>
+<script src="{% static 'dock/messages.js'%}"></script>
 {% endblock head %}
 {% block body %}
-
-    <h1 class='nav-margin'>MESSAGES</h1>
 
     {% comment %} ADD MESSAGE MODAL {% endcomment %}
     <div class="modal" id='messageboard-modalid'>
@@ -32,25 +31,59 @@
         </div>
     </div>
 
-    <div class="center next-to-eachother flex-wrap">
+    <div class="content-wrapper app-banner background-image-divider-main center">
+        <h1 class='padding-top white-text main-text big-text'>Messages</h1>
+    </div>
+    
+    <div class="banner next-to-eachother padding-top-small padding-bottom-small">
+        <h2 class='main-text'>Life gives us so many things to juggle at once</h2>
+        <h3 class='sub-text'>Let us help you communicate and coordinate with your roommates</h3>
+    </div>
+
+        {% comment %} MESSAGES DIV {% endcomment %}
+        <div class="content-wrapper margin-top" id='message-container'>
+            {% if messages %}
+            <div class="message-container">
+            {% for message in messages %}
+                    <div class="message-banner {{message.tags}}">
+                        <div class='message-message'>
+                            <h4 class='main-text'>{{message}}</h4>
+                        </div>
+                        
+                        <div class='close-modal-button'>
+                            <h3 class='close' id='close-messages'>&times</h3>
+                        </div>
+                    </div>
+                    
+                </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+
+    <div class="center next-to-eachother flex-wrap reverse">
         {% if all_messages %}
             {% for mes in all_messages %}
                 {% if mes.sender == request.user %}
-                    <div class="big-card center stack-divs margin-bottom margin-top margin-right">
+                    <div class=
+                    {% if request.user in mes.users_read.all %}
+                        "big-card center stack-divs margin-bottom margin-top margin-right padding-bottom-small read"
+                    {% else %}
+                        "big-card center stack-divs margin-bottom margin-top margin-right padding-bottom-small"
+                    {% endif %}>
                         <h2 class='main-text'>{{mes.subject}}</h2>
                         <h3 class='sub-text'>{{mes.sender}}</h3>
                         <h5 class='sub-text'>{{mes.created_date}}</h5>
                         <div>
-                            <button class='main-button' id='open-message-button'>Open</button>
-                            <button class='main-button' id='delete-message-button'>Delete</button>
+                            <a href="{% url 'messageboard:open-message' profile_name=mes.profile date=mes.created_date sender=mes.sender subject=mes.subject %}" class='main-button'>Open</a>
+                            <a href="{% url 'messageboard:delete-message' profile_name=mes.profile date=mes.created_date sender=mes.sender subject=mes.subject%}" class='main-button'>Delete</a>
                         </div>
                     </div>
                 {% else %}
-                <div class="big-card center stack-divs margin-bottom margin-top margin-right">
+                <div class="big-card center stack-divs margin-bottom margin-top margin-right padding-bottom-small">
                     <h2 class='main-text'>{{mes.subject}}</h2>
                     <h3 class='sub-text'>{{mes.sender}}</h3>
                     <h5 class='sub-text'>{{mes.created_date}}</h5>
-                    <button class='main-button' id='open-message-button'>Open</button>
+                    <a href="{% url 'messageboard:open-message' profile_name=mes.profile date=mes.created_date sender=mes.sender subject=mes.subject %}" class='main-button'>Open</a>
                 </div>
                 {% endif %}
             {% endfor %}

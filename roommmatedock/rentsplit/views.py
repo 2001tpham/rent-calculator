@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from .models import ProfileAuth, Expense
+from messageboard.models import Message
 from django.urls import reverse
 from django.db.models import Q
 from django.contrib import messages
@@ -17,10 +18,15 @@ def index(request):
         profile = ProfileAuth.objects.get(users=user)
         user_profiles = user.profile.all()
         calculated_rents = results(profile)
+        all_mes = Message.objects.filter(profile=profile)
+        
+        unread_count = all_mes.exclude(users_read=user).count()
 
         return render(request, 'rentsplit/index.html', {
             'user_profiles': user_profiles,
             'calculated_rents': calculated_rents,
+            'all_mes': all_mes,
+            'unread_count': unread_count
         })
     except:
         user_profiles = None
@@ -232,3 +238,28 @@ def reset_profile(request, profile_name):
     
     messages.success(request, f'{profile.name}\'s expenses have been reset')
     return redirect('rentsplit:user-profile', profile_name=profile_name)
+
+def profile_settings(request, profile_name):
+    profile = ProfileAuth.objects.get(name=profile_name)
+    if request.method == 'POST':
+        if profile.name == 'Tommy\'s intern office':
+            messages.warning(request, 'Guest profile settings can\'t be edited')
+        elif 'settings-name' in request.POST:
+            profile.name = request.POST['settings-name']
+        elif 'settings-description' in request.POST:
+            profile.description = request.POST['settings-description']
+        profile.save()
+
+    context ={
+        'profile': profile,
+    }
+    return render(request, 'rentsplit/settings.html', context)
+
+def delete_profile(request, profile_name):
+    profile = ProfileAuth.objects.get(name=profile_name)
+    if profile.name == 'Tommy\'s intern office':
+        messages.warning(request, 'Guest profile can\'t be deleted')
+        return redirect('rentsplit:profile-settings', profile_name)
+
+    profile.delete()
+    return redirect('index')
