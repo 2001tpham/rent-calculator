@@ -134,7 +134,7 @@ COMPRESS_PRECOMPILERS = (
 )
 
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 
 
 # Default primary key field type
