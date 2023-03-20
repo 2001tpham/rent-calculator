@@ -79,7 +79,12 @@
                         </div>
                     </div>
                 {% else %}
-                <div class="big-card center stack-divs margin-bottom margin-top margin-right padding-bottom-small">
+                <div class=
+                {% if request.user in mes.users_read.all %}
+                    "big-card center stack-divs margin-bottom margin-top margin-right padding-bottom-small read"
+                {% else %}
+                    "big-card center stack-divs margin-bottom margin-top margin-right padding-bottom-small"
+                {% endif %}>
                     <h2 class='main-text'>{{mes.subject}}</h2>
                     <h3 class='sub-text'>{{mes.sender}}</h3>
                     <h5 class='sub-text'>{{mes.created_date}}</h5>
