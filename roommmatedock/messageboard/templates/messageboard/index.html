@@ -34,7 +34,7 @@
     <div class="content-wrapper app-banner background-image-divider-main center">
         <h1 class='padding-top white-text main-text big-text'>Messages</h1>
     </div>
-    
+
     <div class="banner next-to-eachother padding-top-small padding-bottom-small">
         <h2 class='main-text'>Life gives us so many things to juggle at once</h2>
         <h3 class='sub-text'>Let us help you communicate and coordinate with your roommates</h3>
@@ -49,12 +49,12 @@
                         <div class='message-message'>
                             <h4 class='main-text'>{{message}}</h4>
                         </div>
-                        
+
                         <div class='close-modal-button'>
                             <h3 class='close' id='close-messages'>&times</h3>
                         </div>
                     </div>
-                    
+
                 </div>
                 {% endfor %}
             {% endif %}
@@ -73,9 +73,9 @@
                         <h2 class='main-text'>{{mes.subject}}</h2>
                         <h3 class='sub-text'>{{mes.sender}}</h3>
                         <h5 class='sub-text'>{{mes.created_date}}</h5>
-                        <div>
-                            <a href="{% url 'messageboard:open-message' profile_name=mes.profile date=mes.created_date sender=mes.sender subject=mes.subject %}" class='main-button margin-top-small'>Open</a>
-                            <a href="{% url 'messageboard:delete-message' profile_name=mes.profile date=mes.created_date sender=mes.sender subject=mes.subject%}" class='main-button margin-top-small'>Delete</a>
+                        <div class='center next-to-eachother'>
+                            <a href="{% url 'messageboard:open-message' profile_name=mes.profile date=mes.created_date sender=mes.sender subject=mes.subject %}" class='main-button margin-right'>Open</a>
+                            <a href="{% url 'messageboard:delete-message' profile_name=mes.profile date=mes.created_date sender=mes.sender subject=mes.subject%}" class='main-button margin-right'>Delete</a>
                         </div>
                     </div>
                 {% else %}

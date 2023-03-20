@@ -546,6 +546,11 @@ a:active {
   margin-right: 10px;
 }
 
+.flex-wrap {
+    display: flex;
+    flex-wrap: wrap;
+}
+
 .stack-divs {
   display: flex;
   flex-direction: column;
