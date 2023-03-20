@@ -74,16 +74,16 @@
                         <h3 class='sub-text'>{{mes.sender}}</h3>
                         <h5 class='sub-text'>{{mes.created_date}}</h5>
                         <div>
-                            <a href="{% url 'messageboard:open-message' profile_name=mes.profile date=mes.created_date sender=mes.sender subject=mes.subject %}" class='main-button'>Open</a>
-                            <a href="{% url 'messageboard:delete-message' profile_name=mes.profile date=mes.created_date sender=mes.sender subject=mes.subject%}" class='main-button'>Delete</a>
+                            <a href="{% url 'messageboard:open-message' profile_name=mes.profile date=mes.created_date sender=mes.sender subject=mes.subject %}" class='main-button margin-top-small'>Open</a>
+                            <a href="{% url 'messageboard:delete-message' profile_name=mes.profile date=mes.created_date sender=mes.sender subject=mes.subject%}" class='main-button margin-top-small'>Delete</a>
                         </div>
                     </div>
                 {% else %}
                 <div class=
                 {% if request.user in mes.users_read.all %}
-                    "big-card center stack-divs margin-bottom margin-top margin-right padding-bottom-small read"
+                    "center big-card center stack-divs margin-bottom margin-top margin-right padding-bottom-small read"
                 {% else %}
-                    "big-card center stack-divs margin-bottom margin-top margin-right padding-bottom-small"
+                    "center big-card center stack-divs margin-bottom margin-top margin-right padding-bottom-small"
                 {% endif %} style='height:max-content;'>
                     <h2 class='main-text'>{{mes.subject}}</h2>
                     <h3 class='sub-text'>{{mes.sender}}</h3>
