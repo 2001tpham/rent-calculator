@@ -100,7 +100,6 @@ def delete_message(request, profile_name, date, sender, subject):
     
     if reply_profile.name == 'Tommy\'s intern office':
         messages.warning(request, 'Guest account messages can\'t be deleted')
-        return re
         return redirect('messageboard:index', profile_name=profile_name)
     else:    
         mes.delete()
