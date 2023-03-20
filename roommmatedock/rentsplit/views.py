@@ -14,28 +14,19 @@ from django.contrib.auth.models import User
 @login_required(login_url = 'users:login')
 def index(request):
     user = request.user
-    try:
-        profile = ProfileAuth.objects.get(users=user)
-        user_profiles = user.profile.all()
-        calculated_rents = results(profile)
-        all_mes = Message.objects.filter(profile=profile)
-        
-        unread_count = all_mes.exclude(users_read=user).count()
+    profile = ProfileAuth.objects.get(users=user)
+    user_profiles = user.profile.all()
+    calculated_rents, owed_user = results(profile)
+    all_mes = Message.objects.filter(profile=profile)
+    
+    unread_count = all_mes.exclude(users_read=user).count()
 
-        return render(request, 'rentsplit/index.html', {
-            'user_profiles': user_profiles,
-            'calculated_rents': calculated_rents,
-            'all_mes': all_mes,
-            'unread_count': unread_count
-        })
-    except:
-        user_profiles = None
-        calculated_rents = None
-
-        return render(request, 'rentsplit/index.html', {
-            'user_profiles': user_profiles,
-            'calculated_rents': calculated_rents,
-        })
+    return render(request, 'rentsplit/index.html', {
+        'user_profiles': user_profiles,
+        'calculated_rents': calculated_rents,
+        'all_mes': all_mes,
+        'unread_count': unread_count
+    })
 
 def user_profile(request, profile_name):
     user = request.user

@@ -88,7 +88,6 @@
             <div class='next-to-eachother center'>
                 {% if request.user.profile.all %}
                     {% for profile in user_profiles %}
-                    {% if profile.name %}
 
                     <div class="big-card margin-top margin-bottom stack-divs mobile-width margin-right">
                         <h3 class='main-text'>{{profile.name}}</h3>
@@ -103,15 +102,16 @@
                         {% else %}
                             <h4 class='sub-text'>Rent: ${{profile.rent|floatformat:2}}</h4>
                         {% endif %}
-                        {% for calc,value in calculated_rents.items %}
-                            {% if calc == request.user.username %}
-                                <h4 class='sub-text'>Your Split: ${{value|floatformat:2}}</h4>
-                            {% endif %}
-                        {% endfor %}
+                        {% if calculated_rents %}
+                            {% for calckey, value in calculated_rents.items %}
+                                    {% if calckey == request.user.username %}
+                                        <h4 class='sub-text'>Your Split: ${{value|floatformat:2}}</h4>
+                                    {% endif %}
+                            {% endfor %}
+                        {% endif %}
                         <a href="{% url 'rentsplit:user-profile' profile.name %}" class='main-button'>See Details</a>
                     </div>
 
-                    {% endif %}
                     {% endfor %}
                         <div class="big-card stack-divs mobile-width margin-top margin-bottom center">
                             <h3 class='main-text'>Messages</h3>
