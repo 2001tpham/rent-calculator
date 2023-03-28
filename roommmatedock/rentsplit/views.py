@@ -278,6 +278,7 @@ def delete_profile(request, profile_name):
     if profile.name == 'Tommy\'s intern office':
         messages.warning(request, 'Guest profile can\'t be deleted')
         return redirect('rentsplit:profile-settings', profile_name)
+    else:
 
-    profile.delete()
-    return redirect('index')
+        profile.delete()
+        return redirect('index')
