@@ -132,21 +132,26 @@ def update_rent(request, profile_name):
     profile = user.profile.get(name=profile_name)
 
     if request.method == 'POST':
-        new_rent = float(request.POST['rent'])
-        
-        #If rent is negative
-        if new_rent <= 0:
-            messages.warning(request, 'Your rent has to be greater than 0')
+        if profile.name == 'Tommy\'s intern office':
+            messages.warning(request, 'Guest profile rent can\'t be edited')
             return redirect('rentsplit:user-profile', profile_name=profile_name)
         else:
-            try:
-                profile.rent = new_rent
-                profile.save()
-                messages.success(request, 'Your rent was updated')
+
+            new_rent = float(request.POST['rent'])
+            
+            #If rent is negative
+            if new_rent <= 0:
+                messages.warning(request, 'Your rent has to be greater than 0')
                 return redirect('rentsplit:user-profile', profile_name=profile_name)
-            except ValueError:
-                messages.warning(request, 'Your rent has to be a number')
-                return redirect('rentsplit:user-profile', profile_name=profile_name)
+            else:
+                try:
+                    profile.rent = new_rent
+                    profile.save()
+                    messages.success(request, 'Your rent was updated')
+                    return redirect('rentsplit:user-profile', profile_name=profile_name)
+                except ValueError:
+                    messages.warning(request, 'Your rent has to be a number')
+                    return redirect('rentsplit:user-profile', profile_name=profile_name)
 
 
 def results(profile):
@@ -206,11 +211,17 @@ def results(profile):
 
 def remove_expense(request, expense_name, profile_name):
     profile = request.user.profile.get(name=profile_name)
-    if profile.expense_fr_profile.all():
-        expense_to_delete = Expense.objects.get(name=expense_name, profile=profile)
-        expense_to_delete.delete()
-        messages.success(request, f'{expense_to_delete.name} was removed')
+
+    if profile.name == 'Tommy\'s intern office' and (expense_name == 'Electric' or expense_name == 'New Doorknob'):
+        messages.warning(request, 'Example expenses can\'t be removed')
         return redirect('rentsplit:user-profile', profile_name=profile_name)
+    else:
+
+        if profile.expense_fr_profile.all():
+            expense_to_delete = Expense.objects.get(name=expense_name, profile=profile)
+            expense_to_delete.delete()
+            messages.success(request, f'{expense_to_delete.name} was removed')
+            return redirect('rentsplit:user-profile', profile_name=profile_name)
 
 def add_user(request, profile_name):
     profile = ProfileAuth.objects.get(name=profile_name)
@@ -235,11 +246,16 @@ def reset_profile(request, profile_name):
     profile = ProfileAuth.objects.get(name=profile_name)
     all_expenses = profile.expense_fr_profile.all()
 
-    for expense in all_expenses:
-        expense.delete()
-    
-    messages.success(request, f'{profile.name}\'s expenses have been reset')
-    return redirect('rentsplit:user-profile', profile_name=profile_name)
+    if profile.name == 'Tommy\'s intern office':
+        messages.warning(request, 'Guest profile expenses can\'t be reset')
+        return redirect('rentsplit:user-profile', profile_name=profile_name)
+    else:
+
+        for expense in all_expenses:
+            expense.delete()
+        
+        messages.success(request, f'{profile.name}\'s expenses have been reset')
+        return redirect('rentsplit:user-profile', profile_name=profile_name)
 
 def profile_settings(request, profile_name):
     profile = ProfileAuth.objects.get(name=profile_name)
